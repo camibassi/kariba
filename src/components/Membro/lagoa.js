@@ -1,46 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Pilha from './pilha';
 
-
-//criação do componente pilha. Serão as imagens que ficarão em volta do lago
-
-class Lagoa extends Component{
-
-    constructor(props){
-        super(props);
-    
-    }
-
-    render(){
+export default function Lagoa(props)
+{
       return(
         <div id ="lagoa">
            <div>
                 <img src="images/lagoa.png" />
                 <div class="envelope">
-                    <Pilha id ="pilha1" value="1"/>
-                    <Pilha id ="pilha2" value="2"/>
-                    <Pilha id ="pilha3" value="3"/>
-                    <Pilha id ="pilha4" value="4"/>
-                    <Pilha id ="pilha5" value="5"/>
-                    <Pilha id ="pilha6" value="6"/>
-                    <Pilha id ="pilha7" value="7"/>
-                    <Pilha id ="pilha8" value="8"/>
+                  {
+                    [{id: 1, img: "images/cards/default/1.png"}, 
+                    { id: 2, img: 'images/cards/default/2.png' }, 
+                    { id: 3, img: 'images/cards/default/3.png' }, 
+                    { id: 4, img: 'images/cards/default/4.png' }, 
+                    { id: 5, img: 'images/cards/default/5.png' }, 
+                    { id: 6, img: 'images/cards/default/6.png' }, 
+                    { id: 7, img: 'images/cards/default/7.png' }, 
+                    { id: 8, img: 'images/cards/default/8.png' },
+                  ].map(item => <Pilha value={item} id={`pilha${item.id}`} img={item.img} />)
+                  }
                 </div>
            </div>
-            
- 
         </div>
       );
-    }
 }
-
-export default Lagoa;
-
-/*
-           <Pilha id ="pilha3" value="3"/>
-           <Pilha id ="pilha4" value="4"/>
-           <Pilha id ="pilha5" value="5"/>
-           <Pilha id ="pilha6" value="6"/>
-           <Pilha id ="pilha7" value="7"/>
-           <Pilha id ="pilha8" value="8"/> 
-*/

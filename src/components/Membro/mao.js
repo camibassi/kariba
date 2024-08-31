@@ -1,42 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Carta from '../carta';
 
-//criação do componente mao. Uma div para cada carta na mão com no maximo 5 cartas
-
-class Mao extends Component{
-
-    constructor(props){
-        super(props);
-    
-    }
-
-    render(){
-      return(
-        <div id="mao">
-            <div class="cartas"> 
-              <div class="carta">
-                 <img src="images/cards/default/1.png"/>             
-              </div>
-
-              <div class="carta">
-                  <img src="images/cards/default/2.png"/>             
-              </div>
-
-              <div class="carta">
-                  <img src="images/cards/default/3.png"/>             
-              </div>
-
-              <div class="carta">
-                  <img src="images/cards/default/4.png"/>             
-              </div>
-
-              <div class="carta">
-                  <img src="images/cards/default/5.png"/>             
-              </div>
-
-            </div>
+const Mao = (props) => 
+{
+    return(
+    <div id="mao">
+        <div class="cartas">
+        {
+            ["images/cards/default/1.png", 'images/cards/default/2.png', 
+                'images/cards/default/3.png', 
+                'images/cards/default/4.png', 'images/cards/default/5.png'].map(item => <Carta img={item} />)
+        } 
         </div>
-      );
-    }
+    </div>
+    );
 }
 
 export default Mao;

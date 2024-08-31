@@ -1,22 +1,12 @@
-import React, {Component} from 'react';
-import Membro from './components/Membro/';
-import Lagoa from './components/Membro/lagoa';
-import Deck from './components/Membro/deck';
-import Placar from './components/Membro/placar';
-import Mao from './components/Membro/mao';
+import { Outlet } from "react-router-dom";
+import MenuPrincipal from "./routes/menuPrincipal";
+import Game from "./routes/game";
 
-class App extends Component{
-
-  render(){
-      return(
-        <div>
-            <Lagoa/>
-            <Deck/>
-            <Placar/>
-            <Mao/>
-        </div>
-      );
-    }
+export default function App()
+{
+  return (
+    <>
+      <Game />
+    </>
+  );
 }
-
-export default App;
