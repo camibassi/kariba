@@ -1,0 +1,111 @@
+#root { 
+    background: url("images/natureza.png") #ccf; 
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.bem_vindo { 
+    color: #FFF;
+}
+
+#lagoa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline;
+    text-align: center;
+}
+
+#lagoa img{
+    width: 50%;
+}
+
+
+#lagoa .pilha {
+    position: absolute;
+    display: inline;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+}
+
+#lagoa #pilha1{
+    transform: translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+#lagoa #pilha2{
+    transform: rotate(0deg) translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+#lagoa #pilha3{
+    transform: rotate(0deg)  translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+#lagoa #pilha4{
+    transform: rotate(0deg)  translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+#lagoa #pilha5{
+    transform: rotate(0deg)  translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+#lagoa #pilha6{
+    transform: rotate(0deg)  translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+#lagoa #pilha7{
+    transform: rotate(0deg)  translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+
+#lagoa #pilha8{
+    transform: rotate(0deg)  translate(-50%, -50%);
+    transform-origin: top center;
+}
+
+
+#deck {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    
+    display: inline;
+    text-align: right;
+}
+
+#placar {
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    display: inline;
+    text-align: right;
+}
+
+#placar img{
+    width: 30%;
+}
+
+#mao {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    bottom:0%;
+    margin:5px;
+    width:150px;
+    display: inline;
+    text-align: center;
+    font-family: Arial;
+}
+
+#mao{
+    background-color: rgba(255, 255, 255, 0.596);
+}
