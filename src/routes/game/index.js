@@ -2,6 +2,7 @@ import Deck from "../../components/Membro/deck";
 import Lagoa from "../../components/Membro/lagoa";
 import Mao from "../../components/Membro/mao";
 import Placar from "../../components/Membro/placar";
+import "../game/index.css"
 
 export default function Game() {
     return(
