@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Deck = () => 
-{
-  return(
-    <div id="deck">
-        <img src="images/cards/default/verso.png"/> 
-    </div>
-  );
+const Deck = (props) => {
+      return(
+        <div id="deck">
+            <img src="images/cards/default/verso.png"/> 
+        </div>
+      );
 }
 
 export default Deck;

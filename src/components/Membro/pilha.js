@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 const Pilha = (props) => {
-        const cardClass = "carta " + "carta" + props.value;
+        let cardClass = "carta " + props.value;
         
       return(
         <div id={props.id} class="pilha">
