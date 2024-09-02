@@ -4,12 +4,20 @@ import App from './App';
 import MenuPrincipal from './routes/menuPrincipal';
 import Game from './routes/game';
 import User from './routes/user';
-import { Route, Router } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<App />}>
+          <Route path="*" element={<MenuPrincipal />} />
+          <Route path="game" element={<Game />} />
+          <Route path="user" element={<User />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
