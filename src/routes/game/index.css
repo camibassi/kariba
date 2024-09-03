@@ -43,6 +43,7 @@
 
 #lagoa .pilha {
     position: absolute;
+    width: 31vh;
 }
 
 #lagoa #pilha1{
@@ -148,8 +149,9 @@
 }
 
 #deck img {
-    width:70%;
+    width:15vh;
 }
+
 #placar {
     position: absolute;
     bottom: 1%;
@@ -159,7 +161,7 @@
 }
 
 #placar img{
-    width: 20%;
+    width: 40vh;
 }
 
 #mao {
