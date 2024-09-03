@@ -8,6 +8,9 @@ export default function Game() {
     return(
         <div>
             <Lagoa />
+            <div id = "finalizar">
+                <button > Finalizar jogada </button>
+            </div>
             <Deck/>
             <Placar/>
             <Mao />

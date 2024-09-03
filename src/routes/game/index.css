@@ -200,3 +200,26 @@
     width: auto;
     height: auto;
 }
+
+#finalizar {
+    position: absolute;   
+    margin-left: 12%;
+    margin-right: 12%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: inline;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#finalizar button{
+    background-color: #C9E8FC;
+    color: #41616E;
+    border: 2px solid #41616E;
+    font-size: larger;
+    font-weight: bold;
+}
