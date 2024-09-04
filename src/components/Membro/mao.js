@@ -1,18 +1,25 @@
-import React from 'react';
-import Carta from '../carta';
+import React, { useState } from 'react';
+import Carta from './carta';
 
 const Mao = (props) => 
 {
+    const [cartas, setCartas] = useState([ ]);
+
+    function adicionarCarta() {
+        let card = Math.round( Math.random()*8 )+1;
+        console.log( card );
+        setCartas([ ...cartas, card ] );
+    }
+
     return(
-    <div id="mao">
-        <div class="cartas">
-        {
-            ["images/cards/default/1.png", 'images/cards/default/2.png', 
-                'images/cards/default/3.png', 
-                'images/cards/default/4.png', 'images/cards/default/5.png'].map(item => <Carta img={item} />)
-        } 
-        </div>
-    </div>
+        <>
+            <div id="mao">
+                <div class="cartas">
+                    { cartas.map( i => <Carta value={i} />) }
+                </div>
+                <button onClick={adicionarCarta}>Adicionar</button>
+            </div>
+        </>
     );
 }
 
