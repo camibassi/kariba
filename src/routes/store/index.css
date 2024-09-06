@@ -21,9 +21,6 @@ h2, h3{
     text-align: center;
 }
 
-h2{
-    width: 50%;
-}
 
 .decks {
     display: flex;
@@ -56,9 +53,16 @@ h2{
     position: relative;
   }
   
+  .decks-container-full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden; /* Oculta o conteúdo que excede a largura */
+    position: relative;
+  }
   .decks {
     display: flex;
-    overflow-x: auto;
+    overflow: hidden;
     scroll-behavior: smooth; /* Rola suavemente ao clicar nos botões */
     width: 100%;
   }
@@ -88,3 +92,11 @@ h2{
     right: -20px;
   }
   
+  .containerCentral {
+    display: flex;
+    gap: 5px;
+}
+
+.itemLoja{
+  height: 30vh;
+}
