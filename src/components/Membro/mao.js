@@ -10,7 +10,7 @@ const Mao = (props) =>
         <>
             <div id="mao">
                 <div class="cartas" >
-                    { map( i => <Carta value={i} dragStart={dragStart} />) }
+                    { props.cartas.cartas.map( i => <Carta value={i} dragStart={dragStart} />) }
                 </div>
             </div>
         </>
