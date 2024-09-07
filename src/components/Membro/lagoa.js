@@ -9,7 +9,8 @@ export default function Lagoa(props)
                 <img src="images/lagoa.png" />
                 <div class="envelope">
                   {
-                    [{id: 1, img: "images/cards/default/1.png"}, 
+                    [
+                    {id: 1, img: "images/cards/default/1.png"}, 
                     { id: 2, img: 'images/cards/default/2.png' }, 
                     { id: 3, img: 'images/cards/default/3.png' }, 
                     { id: 4, img: 'images/cards/default/4.png' }, 

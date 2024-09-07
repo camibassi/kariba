@@ -1,0 +1,102 @@
+ 
+h1{
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o texto em relação às imagens */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo (texto e imagens) */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+h1 img{
+    width: 5vh;
+}
+
+#fundo{
+    background-color: #201f1f99;
+}
+
+h2, h3{
+    background-color: #41616E;
+    color: #C9E8FC;
+    text-align: center;
+}
+
+
+.decks {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os temas */
+    margin-left: 20px;
+  }
+  
+.decks div {
+    text-align: center; /* Centraliza o texto em relação à imagem */
+    margin-right: 25px; 
+}
+  
+.decks img {
+    height: 20vh;
+    width: 15vh;
+  }
+  
+#planos img{
+    height: 13vh;
+    width: 20vh;
+}
+
+
+  .decks-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50vw; /* Limita a div "Decks" a metade da largura da tela */
+    overflow: hidden; /* Oculta o conteúdo que excede a largura */
+    position: relative;
+  }
+  
+  .decks-container-full {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden; /* Oculta o conteúdo que excede a largura */
+    position: relative;
+  }
+  .decks {
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth; /* Rola suavemente ao clicar nos botões */
+    width: 100%;
+  }
+  
+  .decks div {
+    min-width: 150px; /* Largura mínima de cada item dentro da div "Decks" */
+    margin-right: 10px;
+    text-align: center;
+  }
+  
+  .scroll-button {
+        top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .scroll-left {
+    left: -20px;
+  }
+  
+  .scroll-right {
+    right: -20px;
+  }
+  
+  .containerCentral {
+    display: flex;
+    gap: 5px;
+}
+
+.itemLoja{
+  height: 30vh;
+}
