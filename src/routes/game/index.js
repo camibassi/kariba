@@ -2,6 +2,8 @@ import Deck from "../../components/Membro/deck";
 import Lagoa from "../../components/Membro/lagoa";
 import Mao from "../../components/Membro/mao";
 import Placar from "../../components/Membro/placar";
+import Adversario from "../../components/Membro/adversario";
+
 import "../game/index.css"
 
 export default function Game() {
@@ -14,6 +16,7 @@ export default function Game() {
             <Deck/>
             <Placar/>
             <Mao />
+            <Adversario/>
         </div>
       );
 }

@@ -47,55 +47,55 @@
 }
 
 #lagoa #pilha1{
-    top: 73.5%;
+    top: 70%;
     transform-origin: top center;
 }
 
 #lagoa #pilha2{
-    top: 67%;
-    left: 51% ;
+    top: 63%;
+    left: 49% ;
     transform: rotate(-45deg);
     transform-origin: top center;
 }
 
 #lagoa #pilha3{
     top:50%;
-    left: 55.5%;
+    left: 52%;
     transform: rotate(-90deg);
     transform-origin: top center;
 }
 
 #lagoa #pilha4{
-    top: 33%;
-    left: 51%;
+    top: 35%;
+    left: 49%;
     transform: rotate(-135deg);
     transform-origin: top center;
 }
 
 #lagoa #pilha5{
-    top: 26.5%;
+    top: 30%;
     transform: rotate(-180deg);
     transform-origin: top center;
 }
 
 #lagoa #pilha6{
-    top: 33%;
-    right: 51%;
+    top: 35%;
+    right: 49%;
     transform: rotate(-225deg);
     transform-origin: top center;
 }
 
 #lagoa #pilha7{
     top: 50%;
-    right: 55.5%;
+    right: 52%;
     transform: rotate(-270deg);
     transform-origin: top center;
 }
 
 
 #lagoa #pilha8{
-    top: 67%;
-    right: 51% ;
+    top: 63%;
+    right: 49% ;
     transform: rotate(-315deg);
     transform-origin: top center;
 }
@@ -143,13 +143,13 @@
 #deck {
     position: absolute;
     top: 5%;
-    right: 5%;
+    right: 10%;
     display: inline;
     text-align: right;
 }
 
 #deck img {
-    width:15vh;
+    width:13vh;
 }
 
 #placar {
@@ -223,3 +223,16 @@
     font-size: larger;
     font-weight: bold;
 }
+
+#maoAdversario {
+    position: absolute;
+    top: 0%;
+    right: 1%;
+    bottom:2%;
+    margin-top:20px;
+    width:80px;
+    display: inline;
+    text-align: center;
+    font-family: Arial;
+}
+

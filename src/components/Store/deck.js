@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import { useDeckStore } from "../../hooks/deck_store";
 import { useScroll } from "../../hooks/scroll";
+import { useImageChange } from "../../hooks/altera_imagem";
 
 
 export default function Deck() {
-  const { hoveredImage, handleMouseEnter, handleMouseLeave } = useDeckStore();
+  const { hoveredImage, handleMouseEnter, handleMouseLeave } = useImageChange();
   const deckRef = useRef(null);
   const { scrollLeft, scrollRight } = useScroll(deckRef);
 

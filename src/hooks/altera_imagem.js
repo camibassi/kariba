@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useDeckStore = () => {
+export const useImageChange = () => {
   const [hoveredImage, setHoveredImage] = useState("");
 
   const handleMouseEnter = (imgPath) => {
