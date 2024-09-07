@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+/*
+UseCartasMao obj = new UseCartasMao()
+obj.cartas = [];
+obj.adicionarCarta(){ 
+   // Adiciona uma carta
+}
+obj.removeCarta() {}
+*/
 const UseCartasMao = function() 
 {
     const [cartas, setCartas] = useState([]);

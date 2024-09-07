@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { useScroll } from "../../hooks/scroll";
-import ItemLoja from "../Membro/ItemLoja";
+import { useScroll } from "../hooks/scroll";
+import ItemLoja from "./ItemLoja";
 
 
 export default function Music() {

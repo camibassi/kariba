@@ -4,19 +4,19 @@ const Adversario = (props) => {
       return(
         <div id = "maoAdversario">
             <div class ="adversario">
-                <img src="images/cards/default/adversario.png"/> 
+                <img src="images/cards/default/verso.png"/> 
             </div>
             <div class ="adversario">
-                <img src="images/cards/default/adversario.png"/> 
+                <img src="images/cards/default/verso.png"/> 
             </div>
             <div class ="adversario">
-                <img src="images/cards/default/adversario.png"/> 
+                <img src="images/cards/default/verso.png"/> 
             </div>
             <div class ="adversario">
-                <img src="images/cards/default/adversario.png"/> 
+                <img src="images/cards/default/verso.png"/> 
             </div>
             <div class ="adversario">
-                <img src="images/cards/default/adversario.png"/> 
+                <img src="images/cards/default/verso.png"/> 
             </div>
         </div>
 
