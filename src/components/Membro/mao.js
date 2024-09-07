@@ -3,12 +3,17 @@ import Carta from './carta';
 
 const Mao = (props) => 
 {
+    function dragStart (e) {
+    }
+
     return(
         <>
             <div id="mao">
-                <div class="cartas">
-                    { props.cartas.cartas.map( i => <Carta value={i} />) }
+                <div class="cartas" >
+                    <Carta value={2} dragStart={dragStart}/>
+                    { map( i => <Carta value={i} dragStart={dragStart} />) }
                 </div>
+                <button onClick={adicionarCarta}>Adicionar</button>
             </div>
         </>
     );

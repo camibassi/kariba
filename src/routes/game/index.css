@@ -43,7 +43,8 @@
 
 #lagoa .pilha {
     position: absolute;
-    width: 31vh;
+    width: 20vh;
+    min-height: 10vh;
 }
 
 #lagoa #pilha1{
@@ -205,10 +206,6 @@
     position: absolute;   
     margin-left: 12%;
     margin-right: 12%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     display: inline;
     text-align: center;
     display: flex;
