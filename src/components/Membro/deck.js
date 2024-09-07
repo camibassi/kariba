@@ -3,12 +3,8 @@ import Mao from './mao';
 
 const Deck = (props) => 
 {
-  function click()
-  {
-    // alert(Mao.setCartas([1, 2, 3, 4, 5]));
-  }
   return(
-    <div id="deck" onClick={click}>
+    <div id="deck" onClick={props.cartas.adicionarCarta}>
         <img src="images/cards/default/verso.png"/>
     </div>
   );

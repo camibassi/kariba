@@ -1,17 +1,28 @@
-/*
-const cartasMao = function() {
+import { useState } from "react";
+
+const UseCartasMao = function() 
+{
     const [cartas, setCartas] = useState([]);
 
-    function adicionarCarta(valor)
-    {
-
+    function adicionarCarta() {
+        let card = Math.round( Math.random()*8 )+1;
+        console.log( card );
+        setCartas([ ...cartas, card ] );
     }
 
     function removerCarta(valor)
     {
     }
+
+    return {
+      adicionarCarta,
+      removerCarta,
+      setCartas,
+      cartas
+    }
 }
-*/
+
+export default UseCartasMao;
 /*
 import React, { useState } from 'react';
 
@@ -44,7 +55,7 @@ function cartasMao() {
 }
 
 export default cartasMao;
-*/
+
 import React, { useState } from 'react';
 
 
@@ -57,4 +68,4 @@ function CartasMao() {
   }
 }
 
-export default CartasMao;
+export default CartasMao; */

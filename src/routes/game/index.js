@@ -5,17 +5,21 @@ import Placar from "../../components/Membro/placar";
 import Adversario from "../../components/Membro/adversario";
 
 import "../game/index.css"
+import UseCartasMao from "../../hooks/UseCartasMao";
 
 export default function Game() {
+
+    const cartasMao = UseCartasMao();
+    
     return(
         <div>
             <Lagoa />
             <div id = "finalizar">
                 <button > Finalizar jogada </button>
             </div>
-            <Deck/>
+            <Deck cartas={cartasMao} />
             <Placar/>
-            <Mao />
+            <Mao cartas={cartasMao} />
             <Adversario/>
         </div>
       );

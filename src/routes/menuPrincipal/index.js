@@ -1,5 +1,6 @@
 import { FormatEmail } from "../../utils/format";
 import '../../routes/menuPrincipal/menuPrincipal.css'
+import { Link, useNavigate } from "react-router-dom";
 
 export default function menuPrincipal()
 {
@@ -17,11 +18,10 @@ export default function menuPrincipal()
                     <p>O objetivo em Kariba é coletar o maior número possível de cartas. Cada animal tem um numero que corresponde ao seu poder na Savana.</p>
                 </div>
                 <div class="imgheadline">
-                    <a id="botao" href="#Regras">Regras</a>
-                    <a id="botao" href="##Player-vs-Player">Player-vs-Player</a>
-                    <a id="botao" href="#Player-vs-PC">Player-vs-PC</a>
-                    <a id="botao" href="Loja">Loja</a>
-                    <a id="botao" href="Sobre-nos">Sobre Nós</a>
+                    <Link id="botao" to="/game">Jogar</Link>
+                    <Link id="botao" to="/store" >Loja</Link>
+                    <Link id="botao" to="/regras">Regras</Link>
+                    <Link id="botao" to="/sobre" >Sobre nós</Link>
                 </div>
             </header>
         </div>
