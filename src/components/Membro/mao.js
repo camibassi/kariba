@@ -10,10 +10,8 @@ const Mao = (props) =>
         <>
             <div id="mao">
                 <div class="cartas" >
-                    <Carta value={2} dragStart={dragStart}/>
                     { map( i => <Carta value={i} dragStart={dragStart} />) }
                 </div>
-                <button onClick={adicionarCarta}>Adicionar</button>
             </div>
         </>
     );
