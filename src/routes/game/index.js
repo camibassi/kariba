@@ -13,17 +13,26 @@ export default function Game() {
     const cartasMao = UseCartasMao();
     const visivel = useShowHide();
     
+    function iniciaPartida(){
+        visivel.apareceCarta();
+    }
+
+    function finalizaPartida(){
+    }
+
     return(
         <div>
             <Lagoa />
-            <div id = "finalizar">
-                <button onClick={visivel.apareceCarta}> Iniciar </button>
-                <button > Finalizar jogada </button>
+            <div id = "botoes">
+                <button onClick={iniciaPartida} 
+                style={{ display: visivel.status === true ? "none" : "block"}}> Iniciar </button>
+                <button onClick={finalizaPartida} 
+                style={{ display: visivel.status === false ? "none" : "block"}}> Finalizar jogada </button>
             </div>
             <Deck cartas={cartasMao} visibilidade={visivel}/>
             <Placar/>
             <Mao cartas={cartasMao} />
-            <Adversario/>
+            <Adversario visibilidade={visivel}/>
         </div>
       );
 }

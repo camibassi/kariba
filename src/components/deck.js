@@ -3,8 +3,10 @@ import Mao from './mao';
 
 const Deck = (props) => 
 {
+  let visible = props.visibilidade.status;
   return(
-    <div id="deck" onClick={props.cartas.adicionarCarta}>
+    <div id="deck" onClick={props.cartas.adicionarCarta} 
+        style={{ visibility: visible == true ? "visible" : "hidden"}}>
         <img src="images/cards/default/verso.png"/>
     </div>
   );

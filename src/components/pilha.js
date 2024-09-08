@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Carta from './carta';
 
 const Pilha = (props) => {
         let cardClass = "carta " + "carta" + props.value;
@@ -29,7 +30,6 @@ const Pilha = (props) => {
 
   return(
     <div id={props.id} class="pilha" onDrop={dropTarget} onDragOver={dragOver} onDragEnter={dragEnter} onDragLeave={dragLeave}>
-        
     </div>
   );
 }
