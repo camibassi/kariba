@@ -215,7 +215,7 @@
 
 #placar {
     position: absolute;
-    bottom: 1%;
+    bottom: 5%;
     right: 1%;
     display: inline;
     text-align: right;
@@ -297,3 +297,17 @@
 .adversario img{
     width: 8vh;
 }
+
+
+.protanopia {
+    filter: url('#protanopia-filter');
+  }
+  
+  .deuteranopia {
+    filter: url('#deuteranopia-filter');
+  }
+  
+  .tritanopia {
+    filter: url('#tritanopia-filter');
+  }
+  

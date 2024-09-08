@@ -29,7 +29,7 @@ export default function Game() {
 
     return(
         <div>
-            <Lagoa />
+            <Lagoa/>
             <div id = "botoes">
                 <button onClick={iniciaPartida} 
                 style={{ display: visivel.status === true ? "none" : "block"}}> Iniciar </button>
