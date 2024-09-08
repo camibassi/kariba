@@ -7,14 +7,21 @@ import Adversario from "../../components/adversario";
 import "../game/index.css"
 import UseCartasMao from "../../hooks/UseCartasMao";
 import useShowHide from "../../hooks/showHide";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 export default function Game() {
 
     const cartasMao = UseCartasMao();
     const visivel = useShowHide();
     
-    function iniciaPartida(){
+    async function iniciaPartida(){
         visivel.apareceCarta();
+        cartasMao.adicionarCarta();
+        cartasMao.adicionarCarta();
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function finalizaPartida(){
