@@ -14,10 +14,14 @@ export default function Background() {
         <div className="decks" id="planos" ref={backgroundRef}>
           {
             [{name: 'Deserto', imgSrc: 'images/natureza.png'},
-              {name: 'Natureza', imgSrc: 'images/natureza2.png'},
               {name: 'Deserto 2', imgSrc: 'images/deserto.png'},
-              {name: 'Deserto 2', imgSrc: 'images/deserto.png'},
-              {name: 'Deserto 2', imgSrc: 'images/deserto.png'},
+              {name: 'Natureza', imgSrc: 'images/natureza3.png'},
+              {name: 'Natureza 2', imgSrc: 'images/natureza2.png'},
+              {name: 'Pokemón', imgSrc: 'images/pokemon1.png'},
+              {name: 'Pokemón 2', imgSrc: 'images/pokemon2.png'},
+              {name: 'Pokemón 3', imgSrc: 'images/pokemon3.png'},
+              {name: 'Natal', imgSrc: 'images/natal.png'},
+              {name: 'Natal 2', imgSrc: 'images/natal2.png'},
             ].map(item => <ItemLoja name={item.name} imgSrc={item.imgSrc}/>)
           }
         </div>
