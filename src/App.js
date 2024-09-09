@@ -15,6 +15,8 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";  // Importando useState para controle de filtros
 import MenuPrincipal from "./routes/menuPrincipal";
 import Game from "./routes/game";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
   const [filter, setFilter] = useState('');

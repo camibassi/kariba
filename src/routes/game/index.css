@@ -201,7 +201,7 @@
     width:50%;
 }
 
-#deck {
+.deck {
     position: absolute;
     top: 5%;
     right: 10%;
@@ -209,8 +209,13 @@
     text-align: right;
 }
 
-#deck img {
+.deck img {
     width:13vh;
+}
+
+.deck img:hover, .carta img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 #placar {
@@ -311,3 +316,7 @@
     filter: url('#tritanopia-filter');
   }
   
+  .img:hover{
+    cursor: 'pointer';
+    transform: scale(1.1)
+  }

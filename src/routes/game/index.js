@@ -31,7 +31,7 @@ export default function Game() {
         <div>
             <Lagoa/>
             <div id = "botoes">
-                <button onClick={iniciaPartida} 
+                <button onClick={iniciaPartida}
                 style={{ display: visivel.status === true ? "none" : "block"}}> Iniciar </button>
                 <button onClick={finalizaPartida} 
                 style={{ display: visivel.status === false ? "none" : "block"}}> Finalizar jogada </button>
