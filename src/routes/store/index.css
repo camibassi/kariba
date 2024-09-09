@@ -38,11 +38,15 @@ h2, h3{
     width: 15vh;
   }
   
-#planos img{
+.imagemMenor img{
     height: 13vh;
     width: 20vh;
 }
 
+.decks img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
   .decks-container {
     display: flex;
