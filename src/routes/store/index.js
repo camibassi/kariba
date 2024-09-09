@@ -1,7 +1,7 @@
 import "../store/index.css";
-import Deck from "../../components/Store/deck";
-import Background from "../../components/Store/background";
-import Music from "../../components/Store/music";
+import Deck from "../../components/deckStore";
+import Background from "../../components/background";
+import Music from "../../components/music";
 
 export default function Store() {
   return (

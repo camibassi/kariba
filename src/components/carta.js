@@ -18,7 +18,7 @@ export default function Carta(props)
         default: imgCarta = 'teste2'; break;
     }
 
-    return <div class="carta">
+    return <div class="carta" draggable onDragStart={props.dragStart}>
         <img src={imgCarta} />             
     </div>
 }

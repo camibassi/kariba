@@ -3,11 +3,14 @@ import Carta from './carta';
 
 const Mao = (props) => 
 {
+    function dragStart (e) {
+    }
+
     return(
         <>
             <div id="mao">
-                <div class="cartas">
-                    { props.cartas.cartas.map( i => <Carta value={i} />) }
+                <div class="cartas" >
+                    { props.cartas.cartas.map( i => <Carta value={i} dragStart={dragStart} />) }
                 </div>
             </div>
         </>
