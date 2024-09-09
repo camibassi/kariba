@@ -18,10 +18,10 @@ export default function menuPrincipal()
                     <p>O objetivo em Kariba é coletar o maior número possível de cartas. Cada animal tem um numero que corresponde ao seu poder na Savana.</p>
                 </div>
                 <div class="imgheadline">
-                    <Link id="botao" to="/game">Jogar</Link>
-                    <Link id="botao" to="/store" >Loja</Link>
-                    <Link id="botao" to="/regras">Regras</Link>
-                    <Link id="botao" to="/sobre" >Sobre nós</Link>
+                    <Link className="botao" to="/game">Jogar</Link>
+                    <Link className="botao" to="/store" >Loja</Link>
+                    <Link className="botao" to="/regras">Regras</Link>
+                    <Link className="botao" to="/sobre" >Sobre nós</Link>
                 </div>
             </header>
         </div>

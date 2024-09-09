@@ -38,13 +38,12 @@ export default function App() {
       </div>
       
       {/* Botões para alternar os filtros */}
-      <div style={{ position: 'fixed', bottom: '10px', right: '10px' }}>
-        <button onClick={() => changeFilter('') }>Normal</button>
-        <button onClick={() => changeFilter("#protanopia") }  >Protanopia</button>
-        <button onClick={() => changeFilter("#deuteranopia") }>Deuteranopia</button>
-        <button onClick={() => changeFilter("#tritanopia") } >Tritanopia</button>
-        <button onClick={() => changeFilter("#achromatomaly") } >Achromatopsia</button>
-
+      <div style={{ position: 'fixed', bottom: '10px', right: '10px', display: 'flex', gap: '5px' }}>
+        <button className="botaoRodape" onClick={() => changeFilter('') }>Normal</button>
+        <button className="botaoRodape" onClick={() => changeFilter("#protanopia") }  >Protanopia</button>
+        <button className="botaoRodape" onClick={() => changeFilter("#deuteranopia") }>Deuteranopia</button>
+        <button className="botaoRodape" onClick={() => changeFilter("#tritanopia") } >Tritanopia</button>
+        <button className="botaoRodape" onClick={() => changeFilter("#achromatomaly") } >Achromatopsia</button>
       </div>
     </>
   );
