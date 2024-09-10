@@ -1,15 +1,20 @@
 import "../store/index.css";
 import GroupCard from "../../components/groupCard";
 import { useImageChange } from "../../hooks/altera_imagem";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { FaReply, FaRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 export default function Store() 
 {
   const { handleMouseEnter, handleMouseLeave } = useImageChange();
+  const navigate = useNavigate();
 
   return (
     <div>
+      
       <h1>
-        <img src="images/favicon.png" alt="Logo" /> Loja Kariba <img src="images/favicon.png" alt="Logo" />
+        <img src="images/favicon.png" alt="Logo" /> Loja <img src="images/favicon.png" alt="Logo" />
       </h1>
       <div id="fundo">
         <div>

@@ -8,6 +8,7 @@ import Store from './routes/store';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Regras from './routes/regras';
 import Sobre from './routes/sobre';
+import MenuNavbar from './components/menuNavbar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,10 +18,12 @@ root.render(
         <Route path="*" element={<App />}>
           <Route path="*" element={<MenuPrincipal />} />
           <Route path="game" element={<Game />} />
-          <Route path="user" element={<User />} />
-          <Route path="store" element={<Store />} />
-          <Route path="regras" element={<Regras />} />
-          <Route path="sobre" element={<Sobre />} />
+          <Route element={<MenuNavbar />}>
+            <Route path="user" element={<User />} />
+            <Route path="store" element={<Store />} />
+            <Route path="regras" element={<Regras />} />
+            <Route path="sobre" element={<Sobre />} />
+          </Route> 
         </Route>
       </Routes>
     </BrowserRouter>
