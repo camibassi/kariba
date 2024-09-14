@@ -21,6 +21,13 @@ h2, h3{
     text-align: center;
 }
 
+h2{
+  font-size: 1.5em;
+}
+
+h3{
+  font-size: 1.2em;
+}
 
 .decks {
     display: flex;
