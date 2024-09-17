@@ -22,27 +22,30 @@ export default function Store()
               className="decks-container-full"
               name="Decks"
               itens={[
-                { name: "Alice", imgSrc: "images/cards/alice/verso.png", onMouseLeave: () => handleMouseLeave('images/cards/alice/verso.png'), onMouseEnter: () => handleMouseEnter("images/cards/alice/1.png") },
-                { name: "Criaturas", imgSrc: "images/cards/criaturas/verso.png" },
-                { name: "Heróis", imgSrc: "images/cards/heroes/verso.png" },
-                { name: "Pokemón", imgSrc: "images/cards/pokemon/verso.png" },
-                { name: "Natal", imgSrc: "images/cards/natal/verso.png" },
-                { name: "Halloween", imgSrc: "images/cards/halloween/verso.png" },
-                { name: "Halloween 2", imgSrc: "images/cards/halloween2/verso.png" },
+                { name: "Alice", imgSrc: "images/cards/alice/1.png"},
+                { name: "Criaturas", imgSrc: "images/cards/criaturas/1.png" },
+                { name: "Heróis", imgSrc: "images/cards/heroes/1.png" },
+                { name: "Pokemón", imgSrc: "images/cards/pokemon/1.png" },
+                { name: "Folclore", imgSrc: "images/cards/folclore/1.png" },
+                { name: "Natal", imgSrc: "images/cards/natal/1.png" },
+                { name: "Halloween", imgSrc: "images/cards/halloween/1.png" },
+                { name: "Halloween 2", imgSrc: "images/cards/halloween2/1.png" },
               ]} 
             />
         </div>
         <div class="containerCentral">
-            <GroupCard classNameDeck="imagemMenor" name="Planos de Fundo" itens={[{name: 'Deserto', imgSrc: 'images/natureza.png'},
-              {name: 'Natureza', imgSrc: 'images/natureza2.png'},
-              {name: 'Deserto 2', imgSrc: 'images/deserto.png'},
-              {name: 'Deserto 2', imgSrc: 'images/deserto.png'},
-              {name: 'Deserto 2', imgSrc: 'images/deserto.png'},
+            <GroupCard classNameDeck="imagemMenor" name="Item" itens={[
+              {name: 'Item 1', imgSrc: 'images/natureza.png'},
+              {name: 'Item 2', imgSrc: 'images/natureza2.png'},
+              {name: 'Item 3', imgSrc: 'images/deserto.png'},
+              {name: 'Item 4', imgSrc: 'images/deserto.png'},
+              {name: 'Item 5', imgSrc: 'images/deserto.png'},
             ]}  />
-            <GroupCard classNameDeck="imagemMenor" name="Músicas" itens={[{name: 'Música 1', imgSrc: 'images/audio_icon.png'},
-              {name: 'Música 2', imgSrc: 'images/audio_icon.png'},
-              {name: 'Música 3', imgSrc: 'images/audio_icon.png'},
-              {name: 'Música 4', imgSrc: 'images/audio_icon.png'},
+            <GroupCard classNameDeck="imagemMenor" name="Item" itens={[
+              {name: 'Item 1', imgSrc: 'images/natureza.png'},
+              {name: 'Item 2', imgSrc: 'images/natureza.png'},
+              {name: 'Item 3', imgSrc: 'images/natureza.png'},
+              {name: 'Item 4', imgSrc: 'images/natureza.png'},
             ]}  />
         </div>
       </div>
