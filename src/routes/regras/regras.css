@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(../../../public/images/bordaMata.png);
+    padding: 20px;
+    font-weight: bold;
+}
+
+body h1{
+    width: 100%;
+    font-size: 50px;
+    margin: 0;
+    font-family: "Matemasie", sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+body h2{
+    width: 100%;
+    font-size: 50px;
+    margin: 0;
+    font-family: "Matemasie", sans-serif;
+    font-weight: bold;
+    color: #0a300a;
+    background-color: transparent;
+}
+
+.scroll-container {
+    width: auto;
+    height: 700px;
+    padding: 10px;
+    overflow-y: scroll; /* Ativa a barra de rolagem vertical */
+    background-image: url("../../../public/images/fundoRegras.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+section {
+    border: none;
+    margin-bottom: 0px;
+    padding: 0%;
+  }
+
+.content {
+    height: 600px; /* Conteúdo maior do que a altura da div */
+}
