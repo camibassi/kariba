@@ -30,6 +30,11 @@ export default function Game() {
     return(
         <div>
             <Lagoa/>
+            <div class= "botaoCancelar">
+                <button 
+                style={{ display: visivel.status === false ? "none" : "block"}}> Desfazer seleção</button>
+            </div>
+
             <div id = "botoes">
                 <button onClick={iniciaPartida}
                 style={{ display: visivel.status === true ? "none" : "block"}}> Iniciar </button>

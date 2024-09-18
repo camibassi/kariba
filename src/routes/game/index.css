@@ -285,6 +285,21 @@
     width: 20vh
 }
 
+.botaoCancelar{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    display: inline;
+    text-align: right;
+}
+
+.botaoCancelar button{
+    border: 2px solid;
+    font-size:medium;
+    font-weight: bold;
+    width: 20vh
+}
+
 
 
 #maoAdversario {
@@ -301,6 +316,7 @@
 
 .adversario img{
     width: 8vh;
+    margin-bottom:5px;
 }
 
 

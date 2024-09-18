@@ -23,6 +23,7 @@ export default function Store()
               name="Decks"
               itens={[
                 { name: "Alice", imgSrc: "images/cards/alice/1.png"},
+                { name: "Animais", imgSrc: "images/cards/animais/1.png" },
                 { name: "Criaturas", imgSrc: "images/cards/criaturas/1.png" },
                 { name: "Heróis", imgSrc: "images/cards/heroes/1.png" },
                 { name: "Pokemón", imgSrc: "images/cards/pokemon/1.png" },
