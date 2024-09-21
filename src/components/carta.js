@@ -3,7 +3,9 @@ import React from 'react';
 export default function Carta(props) 
 {
     let imgCarta = 'teste';
-    let card = props.value.toString()    
+    let card = props.value.toString();
+    let uid = "carta" + parseInt(Math.random() * 100000);
+    
     switch(card){
         case "1": imgCarta = 'images/cards/default/1.png'; break;
         case "2": imgCarta = 'images/cards/default/2.png'; break;
@@ -18,7 +20,7 @@ export default function Carta(props)
         default: imgCarta = 'teste2'; break;
     }
 
-    return <div class="carta" draggable onDragStart={props.dragStart}>
+    return <div id={uid} class="carta" draggable onDragStart={props.dragStart}>
         <img src={imgCarta} />             
     </div>
 }

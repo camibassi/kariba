@@ -9,15 +9,21 @@ const Pilha = (props) => {
   function dropTarget(e){
  //     console.log("DROP", e.target.attributes["id"].value);
       e.target.style = "border: none;";
+      // Obtem o nome da pilha que recebeu a carta
       let imageDrop = e.target.attributes["id"].value;
       imageDrop = imageDrop.replace("pilha","");
-      const dataDrag = e.dataTransfer.getData("cartaDrag");
-      console.log(dataDrag);
-      console.log(imageDrop);
-      if (dataDrag === imageDrop){
-          alert("ok"); //ação do backend? as cartas são retiradas a cada joagada ou ao final da partida?     
-      }
 
+      // Recebe as variaveis enviadas pelo evento DRAG da Mão
+      const dataValor = e.dataTransfer.getData("cartaValor");
+      const dataDiv = e.dataTransfer.getData("cartaDiv");
+
+      if (dataValor === imageDrop){
+          alert("ok"); //ação do backend? as cartas são retiradas a cada joagada ou ao final da partida?     
+          console.log( dataDiv);
+          console.log( dataValor);
+          let div = document.getElementById(dataDiv);
+          div.style.visibility = "hidden";
+        }
   }
 
   function dragOver(e)
