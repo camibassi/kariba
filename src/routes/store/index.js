@@ -4,6 +4,7 @@ import { useImageChange } from "../../hooks/altera_imagem";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { FaReply, FaRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import MenuNavbar from "../../components/menuNavbar";
 
 export default function Store() 
 {
@@ -13,9 +14,11 @@ export default function Store()
   return (
     <div>
       
+      <MenuNavbar>
       <h1>
         <img src="images/favicon.png" alt="Logo" /> Loja <img src="images/favicon.png" alt="Logo" />
       </h1>
+      </MenuNavbar>
       <div id="fundo">
         <div>
             <GroupCard 

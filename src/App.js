@@ -1,7 +1,7 @@
 
 import { Outlet } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from "./routes/login";
+import './App.css'
 
 export default function App() {
 

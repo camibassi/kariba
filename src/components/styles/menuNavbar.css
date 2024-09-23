@@ -1,0 +1,80 @@
+/* Estilos para o Navbar no mesmo estilo da tela de login */
+
+.styled-navbar {
+    background-color: #ff7f50; /* Laranja claro */
+    height: 80px;
+    box-shadow: 0px 4px 6px rgba(255, 175, 75, 0.3);
+    border-bottom: 3px solid #ff9a5c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-link {
+    color: white;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-link:hover {
+    color: #ffe6d8;
+  }
+  
+  .navbar-icon {
+    margin-right: 5px;
+  }
+  
+  .navbar-brand:hover,
+  .navbar-link:hover {
+    color: #ffe6d8; /* Tom claro de laranja no hover */
+  }
+  
+  /* Custom content (título com logo) */
+  .custom-content {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .custom-content h1 {
+    font-size: 1.5em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre os logos e o texto */
+  }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Ajuste responsivo */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1.3em;
+    }
+  
+    .navbar-link {
+      font-size: 1em;
+    }
+  
+    .custom-content h1 {
+      font-size: 1.2em;
+    }
+  
+    .navbar-logo {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  

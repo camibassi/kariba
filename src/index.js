@@ -17,15 +17,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<Login />} />
-        <Route path="*" element={<App />} />
+        <Route path="*" element={<App />}>
           <Route path="menu" element={<MenuPrincipal />} />
           <Route path="game" element={<Game />} />
-          <Route element={<MenuNavbar />}>
             <Route path="user" element={<User />} />
             <Route path="store" element={<Store />} />
             <Route path="regras" element={<Regras />} />
             <Route path="sobre" element={<Sobre />} />
-          </Route> 
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
