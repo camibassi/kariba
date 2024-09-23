@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext); 
+    const handleLogin = (event) => {
+      event.preventDefault(); 
+      const userData = { username, password }; 
+      login(userData);
 
-  const handleLogin = (event) => {
-    navigate('/menu');
-  };
+      navigate('/menu');
+    };
 
   return (
     <Container className="light-login-container">
