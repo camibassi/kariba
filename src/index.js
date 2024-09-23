@@ -9,14 +9,16 @@ import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Regras from './routes/regras';
 import Sobre from './routes/sobre';
 import MenuNavbar from './components/menuNavbar';
+import Login from './routes/login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<App />}>
-          <Route path="*" element={<MenuPrincipal />} />
+        <Route path="*" element={<Login />} />
+        <Route path="*" element={<App />} />
+          <Route path="menu" element={<MenuPrincipal />} />
           <Route path="game" element={<Game />} />
           <Route element={<MenuNavbar />}>
             <Route path="user" element={<User />} />
@@ -24,7 +26,6 @@ root.render(
             <Route path="regras" element={<Regras />} />
             <Route path="sobre" element={<Sobre />} />
           </Route> 
-        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
