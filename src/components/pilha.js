@@ -18,7 +18,6 @@ const Pilha = (props) => {
       const dataDiv = e.dataTransfer.getData("cartaDiv");
 
       if (dataValor === imageDrop){
-          alert("ok"); //ação do backend? as cartas são retiradas a cada joagada ou ao final da partida?     
           console.log( dataDiv);
           console.log( dataValor);
           let div = document.getElementById(dataDiv);
