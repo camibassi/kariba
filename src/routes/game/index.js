@@ -4,6 +4,7 @@ import Mao from "../../components/mao";
 import Placar from "../../components/placar";
 import Adversario from "../../components/adversario";
 import Contador from "../../hooks/contador_mensagem"; // Importando o Contador
+import useBoard from "../../hooks/useBoard";
 
 import "../game/index.css";
 import UseCartasMao from "../../hooks/UseCartasMao";
@@ -13,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Game() {
     const cartasMao = UseCartasMao();
+    const board = useBoard();
     const visivel = useShowHide();
     const [mostrarContador, setMostrarContador] = useState(false); // Estado para exibir o Contador
 
@@ -83,7 +85,7 @@ export default function Game() {
 
     return (
         <div>
-            <Lagoa />
+            <Lagoa board={board}/>
 
             <div id="botoes">
                 <button onClick={iniciaPartida}
@@ -95,7 +97,7 @@ export default function Game() {
 
             <Deck cartas={cartasMao} visibilidade={visivel} />
             <Placar />
-            <Mao cartas={cartasMao} />
+            <Mao cartas={cartasMao} board={board} />
             <Adversario visibilidade={visivel} />
         </div>
     );

@@ -9,10 +9,8 @@ export default function App() {
 
   function changeFilter(f) {
     let root = document.getElementById("root");
-    console.log(root, f);
     if (f === "") root.style = "";
     else root.style = "filter: url(" + f + ");";
-    console.log("filter: url(" + f + ");");
   }
 
   return (

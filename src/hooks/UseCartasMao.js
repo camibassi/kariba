@@ -16,7 +16,6 @@ const UseCartasMao = function()
         }
         
         setCartas( tmp.concat(cartas) );
-        console.log("depois", cartas );
       }
 
     function removerCarta(valor)

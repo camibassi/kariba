@@ -79,7 +79,7 @@
 */
 
 #lagoa .pilha .carta img { width: 90%; height: auto;}
-
+#lagoa .carta .cartaMensagem { display: none; }
 
 /*
 #lagoa .envelope {
@@ -338,13 +338,13 @@
   }
 
 
-  .carta {
+ 
+#mao .carta {
     position: relative;
     display: inline-block;
   }
 
-  
-  .cartaMensagem {
+#mao  .cartaMensagem {
     position: absolute;
     top: 50%;
     left: 200%;
@@ -360,4 +360,3 @@
     align-items: center;
     width: 25vh;
   }
-  
