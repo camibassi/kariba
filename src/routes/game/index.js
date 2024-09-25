@@ -3,22 +3,25 @@ import Lagoa from "../../components/lagoa";
 import Mao from "../../components/mao";
 import Placar from "../../components/placar";
 import Adversario from "../../components/adversario";
+import Contador from "../../hooks/contador_mensagem"; // Importando o Contador
 
-import "../game/index.css"
+import "../game/index.css";
 import UseCartasMao from "../../hooks/UseCartasMao";
 import useShowHide from "../../hooks/showHide";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Game() {
-
     const cartasMao = UseCartasMao();
     const visivel = useShowHide();
-    
-    async function iniciaPartida(){
+    const [mostrarContador, setMostrarContador] = useState(false); // Estado para exibir o Contador
+
+    // Função que inicia a partida
+    async function iniciaPartida() {
         visivel.apareceCarta();
         cartasMao.adicionarCarta();
         cartasMao.adicionarCarta();
+        setMostrarContador(true); // Exibe o contador ao iniciar a partida
     }
 
     const [socket, setSocket] = useState(null);
@@ -45,6 +48,7 @@ export default function Game() {
                 visivel.apareceCarta();
                 cartasMao.adicionarCarta();
                 cartasMao.adicionarCarta();
+                setMostrarContador(true); // Exibe o contador ao iniciar a partida
             };
 
             ws.onmessage = (event) => {
@@ -77,60 +81,24 @@ export default function Game() {
         }
     }
 
-    // async function enviarMensagem() {
-    //     if (socket && socket.readyState === WebSocket.OPEN) {
-    //         const payload = {
-    //             action: "sendMessage",
-    //             message: messageToSend
-    //         };
-    //         socket.send(JSON.stringify(payload));
-    //         console.log("Mensagem enviada: ", payload);
-    //     }
-    // }
-
-    async function fazerJogada(jogada) {
-        try {
-            const response = await fetch("https://368nvxbbr4.execute-api.sa-east-1.amazonaws.com/dev/makeMove", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(jogada)
-            });
-
-            const data = await response.json();
-            console.log("Resposta da rota makeMove:", data);
-
-            // Atualize o estado do jogo com a resposta, se necessário
-            setGameState(data.gameState);
-        } catch (error) {
-            console.error("Erro ao fazer a jogada:", error);
-        }
-    }
-
-    function finalizarJogada() {
-        const jogada = {
-            gameId: "example-game-id", // Substitua com o ID do jogo real
-            move: "player-move" // Substitua com a jogada real
-        };
-
-        fazerJogada(jogada);
-    }
-
-    return(
+    return (
         <div>
-            <Lagoa/>
+            <Lagoa />
 
-            <div id = "botoes">
+            <div id="botoes">
                 <button onClick={iniciaPartida}
-                style={{ display: visivel.status === true ? "none" : "block"}}> Iniciar </button>
+                    style={{ display: visivel.status === true ? "none" : "block" }}> Iniciar </button>
             </div>
-            <Deck cartas={cartasMao} visibilidade={visivel}/>
-            <Placar/>
+
+            {/* Exibe o Contador condicionalmente */}
+            {mostrarContador && <Contador />} 
+
+            <Deck cartas={cartasMao} visibilidade={visivel} />
+            <Placar />
             <Mao cartas={cartasMao} />
-            <Adversario visibilidade={visivel}/>
+            <Adversario visibilidade={visivel} />
         </div>
-      );
+    );
 }
 
 /*<button onClick={finalizaPartida} 

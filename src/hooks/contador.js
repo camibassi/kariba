@@ -32,6 +32,8 @@ export default function Contador() {
       }}
     >
       {timeLeft > 0 ? timeLeft : 'Tempo esgotado'}
+      {timeLeft > 0 ? timeLeft : 'Aguarde'}
+
     </div>
   );
 }
