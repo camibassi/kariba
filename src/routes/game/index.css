@@ -213,7 +213,7 @@
     width:13vh;
 }
 
-.deck img:hover, .carta img:hover {
+.deck img:hover, #mao .carta img:hover {
     transform: scale(1.1);
     cursor: pointer;
 }

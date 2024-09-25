@@ -34,7 +34,7 @@ export default function Carta(props)
             onMouseLeave={onMouseLeave}  // Adiciona o evento de drag leave
         >
             <img src={imgCarta} alt="Carta" />
-            {mostrarMensagem && (  // Exibe a mensagem apenas se mostrarMensagem for true
+            {mostrarMensagem == 1 && (  // Exibe a mensagem apenas se mostrarMensagem for true
                 <div className="cartaMensagem">
                     Arraste a carta até a posição correta
                 </div>

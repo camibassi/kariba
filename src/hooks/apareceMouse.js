@@ -2,13 +2,17 @@ import { useState } from "react";
 
 const useApareceMouse = function() 
 {
-    const [mostrarMensagem, setMostrarMensagem] = useState(false);
+    const [mostrarMensagem, setMostrarMensagem] = useState(0);
 
-    function onMouseEnter() {
-        setMostrarMensagem(true);    }
+    function onMouseEnter() 
+    {
+        
+        setMostrarMensagem(mostrarMensagem+1);
+    }
 
-    function onMouseLeave() {
-        setMostrarMensagem(false);
+    function onMouseLeave() 
+    {
+        setMostrarMensagem(mostrarMensagem+1);
     }
 
     return {
