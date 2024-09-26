@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../../../public/images/natureza.png); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background: none;
+}
+
+.logo h1 {
+    font-family: "Matemasie", sans-serif;
+    color: white;
+    font-size: 70px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    background: none;
+    flex-wrap: wrap; /* Adicionado para garantir que o layout se ajuste em telas menores */
+}
+
+.headline {
+    flex: 1;
+    margin: 20px;
+}
+
+.headline h2 {
+    font-weight: 900;
+    font-size: 40px;
+    color: white;
+    margin: 0;
+}
+
+.headline p {
+    color: #ffffff;
+    text-align: left;
+    font-size: 35px;
+    line-height: 1.4;
+}
+
+.imgheadline {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.botao {
+    display: inline-block;
+    background: orange;
+    padding: 20px 35px;
+    color: white;
+    border-radius: 5px;
+    margin: 10px auto;
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.botao:hover {
+    background: orangered;
+    cursor: pointer;
+}
+
+/* Ajustes para seções e cards */
+section {
+    display: inline-block;
+    margin-top: 80px;
+    border: 1px solid black;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 5%;
+    text-align: center;
+    width: 90%;
+}
+
+section h2 {
+    font-size: 50px;
+    margin: 0;
+    font-family: "Matemasie", sans-serif;
+    font-weight: bold;
+    color: #180f4a;
+}
+
+.card {
+    display: inline-block;
+    width: 30%;
+    padding: 20px;
+    margin: 1%;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.card:hover {
+    color: white;
+    background: #ff2978;
+}
+
+@media (max-width: 768px) {
+    .headline h2 {
+        font-size: 30px;
+    }
+
+    .headline p {
+        font-size: 25px;
+    }
+
+    .botao {
+        font-size: 18px;
+        padding: 15px 25px;
+    }
+
+    .card {
+        width: 90%;
+        margin: 5% auto;
+    }
+}

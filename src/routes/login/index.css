@@ -1,0 +1,114 @@
+/* Estilos de cores claras puxando para laranja */
+body {
+    background: linear-gradient(135deg, #ffecd2, #ffac81);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .light-login-container {
+    background-color: #fff5e6;
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0px 0px 20px 5px rgba(255, 175, 75, 0.3);
+    animation: slideIn 1s ease-in-out forwards;
+    border: 2px solid #ff9a5c;
+  }
+  
+  .light-login-form {
+    animation: fadeIn 1.5s ease-in-out forwards;
+  }
+  
+  .light-title {
+    font-size: 2em;
+    color: #ff6f47;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .light-label {
+    font-size: 1em;
+    color: #ff6f47;
+  }
+  
+  .light-input {
+    background-color: #fff0e1;
+    border: 2px solid #ff9a5c;
+    color: #ff6f47;
+    font-size: 1em;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .light-input::placeholder {
+    color: #ff9a5c;
+  }
+  
+  .light-button {
+    background-color: #ff7f50;
+    border: none;
+    width: 100%;
+    font-size: 1.2em;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(255, 112, 75, 0.3);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .light-button:hover {
+    background-color: #ff6b3b;
+  }
+  
+  /* Extra options: criar conta e esqueci minha senha */
+  .extra-options {
+    margin-top: 20px;
+  }
+  
+  .extra-link {
+    color: #ff6f47;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .extra-link:hover {
+    color: #ff9a5c;
+  }
+  
+  .divider {
+    color: #ff9a5c;
+    margin: 0 10px;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Fonte principal */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  

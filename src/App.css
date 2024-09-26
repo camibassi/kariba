@@ -1,0 +1,23 @@
+.fixed-buttons {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  z-index: 1000; /* Garante que os botões fiquem acima de outros elementos */
+}
+
+.botaoRodape {
+  background-color: #41616E; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Remove bordas padrão */
+  padding: 10px 15px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Muda o cursor ao passar o mouse */
+  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+}
+
+.botaoRodape:hover {
+  background-color: #C9E8FC; /* Cor ao passar o mouse */
+  color: #41616E; /* Muda a cor do texto ao passar o mouse */
+}

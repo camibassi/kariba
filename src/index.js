@@ -9,23 +9,26 @@ import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Regras from './routes/regras';
 import Sobre from './routes/sobre';
 import MenuNavbar from './components/menuNavbar';
+import Login from './routes/login';
+import { AuthProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <AuthProvider>
       <Routes>
+        <Route path="*" element={<Login />} />
         <Route path="*" element={<App />}>
-          <Route path="*" element={<MenuPrincipal />} />
+          <Route path="menu" element={<MenuPrincipal />} />
           <Route path="game" element={<Game />} />
-          <Route element={<MenuNavbar />}>
             <Route path="user" element={<User />} />
             <Route path="store" element={<Store />} />
             <Route path="regras" element={<Regras />} />
             <Route path="sobre" element={<Sobre />} />
-          </Route> 
         </Route>
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
