@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Pilha = (props) => {
     let cardClass = "carta " + "carta" + props.value;
-    const board = useBoard();
+    const board = props.board;
     let value = props.value.id;
 
     // essa função recebe o valor da carta arrastada da mao, armazena o valor da pilha que recebeu 
@@ -25,10 +25,12 @@ const Pilha = (props) => {
 
         if (dataValor === imageDrop || dataValor == "9" )
         {
-          let div = document.getElementById(dataDiv);
-          div.style.visibility = "hidden";
-          
-          board.mover(value, dataValor );
+          let x = board.mover(value, dataValor );
+          if( x == true ) 
+          {
+            let div = document.getElementById(dataDiv);
+            div.style.visibility = "hidden";    
+          }
         }
     }
 
