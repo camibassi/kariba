@@ -47,3 +47,14 @@ section {
 .content {
     height: 600px; /* Conteúdo maior do que a altura da div */
 }
+
+img{
+    width: 20%;
+    height: 90%;
+}
+
+#regras {
+    color: rgb(9, 54, 22);
+    font-size: 24px;
+    text-align: center;
+  }
