@@ -1,11 +1,20 @@
 import { FormatEmail } from "../../utils/format";
 import '../../routes/regras/regras.css'
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import MenuNavbar from "../../components/menuNavbar";
 
 export default function Regras()
 {
     return(
-        <body>
+        
+        <body> 
+        <div id="topo">
+        <MenuNavbar>
+            <h1>
+                <img src="images/favicon.png" alt="Logo" /> Loja <img src="images/favicon.png" alt="Logo" />
+            </h1>
+        </MenuNavbar>
         <h1>Como jogar o Kariba?</h1>
             <div class="scroll-container">
             <div class="container">
@@ -72,6 +81,7 @@ export default function Regras()
                     <p>Divirta-se jogando Kariba!</p>
                 </footer>
                 </div>
+            </div>
             </div>
     </body>
 
