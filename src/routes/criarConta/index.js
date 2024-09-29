@@ -1,26 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const CriarConta = () => {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    const { login } = useContext(AuthContext); 
-    const handleLogin = (event) => {
-      event.preventDefault(); 
-      const userData = { username, password }; 
-      login(userData);
-
-      navigate('/menu');
-    };
+  const [password, setPassword] = useState(''); 
+  const navigate = useNavigate();
 
   return (
     <Container className="light-login-container">
       <Form className="light-login-form">
-        <h2 className="light-title">Login</h2>
+        <h2 className="light-title">Kariba</h2>
         <Form.Group controlId="formBasicEmail">
           <Form.Label className="light-label">Nome de usuário</Form.Label>
           <Form.Control
@@ -43,18 +34,21 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" className="light-button mt-3" type="submit" onClick={handleLogin}>
-          Entrar
-        </Button>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label className="light-label">Confirme sua senha</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="Confirme a sua senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="light-input"
+          />
+        </Form.Group>
 
-        <div className="extra-options mt-4">
-          <Link to="/recuperarSenha" className="extra-link">Esqueci minha senha</Link>
-          <span className="divider">|</span>
-          <Link to="/criarConta" className="extra-link">Criar conta</Link>
-        </div>
+        <Button variant="primary" className="light-button mt-3" type="submit" onClick={() => navigate('../login')}>Criar Conta</Button>
       </Form>
     </Container>
   );
 };
 
-export default Login;
+export default CriarConta;

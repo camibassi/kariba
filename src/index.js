@@ -11,14 +11,20 @@ import Sobre from './routes/sobre';
 import MenuNavbar from './components/menuNavbar';
 import Login from './routes/login';
 import { AuthProvider } from './context/AuthContext';
+import CriarConta from './routes/criarConta';
+import RecuperarSenha from './routes/recuperarSenha';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Routes>
+    <Route path="criarConta" element={<CriarConta />} />
+    <Route path="recuperarSenha" element={<RecuperarSenha />} />
+    </Routes>
     <AuthProvider>
       <Routes>
-        <Route path="*" element={<Login />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<App />}>
           <Route path="menu" element={<MenuPrincipal />} />
           <Route path="game" element={<Game />} />

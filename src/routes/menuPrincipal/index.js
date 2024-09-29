@@ -3,6 +3,7 @@ import './index.css';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Menu from "../../components/menu";
+import Rodape from "../../components/rodape";
 
 export default function MenuPrincipal() {
     const { user } = useContext(AuthContext); 
@@ -31,6 +32,7 @@ export default function MenuPrincipal() {
                     <Link className="botao" to="/sobre">Sobre nós</Link>
                 </div>
             </header>
+            <Rodape />
         </div>
     );
 }
