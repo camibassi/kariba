@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from './context/AuthContext';
+import { AuthContext } from './components/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

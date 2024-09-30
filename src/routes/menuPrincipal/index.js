@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import './index.css'; 
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../components/AuthContext";
 import Menu from "../../components/menu";
 import Rodape from "../../components/rodape";
 

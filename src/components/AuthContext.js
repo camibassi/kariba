@@ -1,17 +1,17 @@
-// src/context/AuthContext.js
+// src/components/AuthContext.js
 import React, { createContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Estado para armazenar informações do usuário
+  const [user, setUser] = useState(null);
 
   const login = (userData) => {
-    setUser(userData); // Armazena os dados do usuário ao fazer login
+    setUser(userData);
   };
 
   const logout = () => {
-    setUser(null); // Remove os dados do usuário ao fazer logout
+    setUser(null); 
   };
 
   return (

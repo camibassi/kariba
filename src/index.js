@@ -10,7 +10,7 @@ import Regras from './routes/regras';
 import Sobre from './routes/sobre';
 import MenuNavbar from './components/menuNavbar';
 import Login from './routes/login';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './components/AuthContext';
 import CriarConta from './routes/criarConta';
 import RecuperarSenha from './routes/recuperarSenha';
 

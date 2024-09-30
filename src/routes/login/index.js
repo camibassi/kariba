@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../components/AuthContext';
 
 const Login = () => {
   const [username, setUsername] = useState('');
