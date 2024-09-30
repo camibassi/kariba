@@ -18,6 +18,7 @@ export default function GroupCard(props)
               <ItemLoja 
                 name={item.name} 
                 alt={props.alt} 
+                onClick={item.onClick}
                 onMouseLeave={props.onMouseLeave} 
                 onMouseEnter={props.onMouseEnter}
                 imgSrc={item.imgSrc}/>)

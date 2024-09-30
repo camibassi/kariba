@@ -5,6 +5,7 @@ const ItemLoja = (props) =>
       <h3>{props.name}</h3>
       <img className='rounded' src={props.imgSrc} 
         alt={props.alt}
+        onClick={props.onClick}
         onMouseEnter={props.onMouseEnter}
         onMouseLeave={props.onMouseLeave} />
       {props.children}
