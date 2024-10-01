@@ -6,11 +6,12 @@ import { FaEye, FaLock, FaReply, FaRightLong } from "react-icons/fa6";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import MenuNavbar from "../../components/menuNavbar";
 import { FaRegEye } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../components/AuthContext";
 
 export default function Store() 
 {
-  const { handleMouseEnter, handleMouseLeave } = useImageChange();
-  const navigate = useNavigate();
+  const { user } = useContext(AuthContext); 
   const context = useOutletContext();
   const cadeado = () => <FaLock style={{
       fontSize: '2rem',
@@ -38,72 +39,82 @@ export default function Store()
                 { 
                   name: "Padrão", 
                   imgSrc: "/images/cards/default/1.png", 
-                  styleSrc: context.backgroundCard == 'default' && {opacity: '50%'},
+                  styleSrc: (context.backgroundCard == 'default'|| !user.decksPermitidos.includes('default')) &&  {opacity: '50%'},
                   onClick: () => context.setBackgroundCard('default'),
-                  children: context.backgroundCard == 'default' && olho()
+                  children: (!user.decksPermitidos.includes('default') && cadeado()) ||
+                    (context.backgroundCard == 'default' && olho())
                 },
                 { 
                   name: "Alice", 
                   imgSrc: "/images/cards/alice/1.png", 
                   onClick: () => context.setBackgroundCard('alice'),
-                  styleSrc: context.backgroundCard == 'alice' && {opacity: '50%'},
-                  children: context.backgroundCard == 'alice' && olho()
+                  styleSrc: (context.backgroundCard == 'alice'|| !user.decksPermitidos.includes('alice')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('alice') && cadeado()) ||
+                    (context.backgroundCard == 'alice' && olho())
                 },
                 { 
                   name: "Animais", 
                   imgSrc: "/images/cards/animais/1.png", 
                   onClick: () => context.setBackgroundCard('animais'),
-                  styleSrc: context.backgroundCard == 'animais' && {opacity: '50%'},
-                  children: context.backgroundCard == 'animais' && olho() 
+                  styleSrc: (context.backgroundCard == 'animais'|| !user.decksPermitidos.includes('animais')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('animais') && cadeado()) ||
+                  (context.backgroundCard == 'animais' && olho()) 
                 },
                 { 
                   name: "Criaturas", 
                   imgSrc: "/images/cards/criaturas/1.png", 
                   onClick: () => context.setBackgroundCard('criaturas') ,
-                  styleSrc: context.backgroundCard == 'criaturas' && {opacity: '50%'},
-                  children: context.backgroundCard == 'criaturas' && olho()
+                  styleSrc: (context.backgroundCard == 'criaturas'|| !user.decksPermitidos.includes('criaturas')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('criaturas') && cadeado()) ||
+                  (context.backgroundCard == 'criaturas' && olho())
                 },
                 { 
                   name: "Heróis", 
                   imgSrc: "/images/cards/heroes/1.png", 
                   onClick: () => context.setBackgroundCard('heroes'),
-                  styleSrc: context.backgroundCard == 'heroes' && {opacity: '50%'},
-                  children: context.backgroundCard == 'heroes' && olho()
+                  styleSrc: (context.backgroundCard == 'heroes'|| !user.decksPermitidos.includes('heroes')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('heroes') && cadeado()) ||
+                  (context.backgroundCard == 'heroes' && olho())
                 },
                 { 
                   name: "Pokemón", 
                   imgSrc: "/images/cards/pokemon/1.png", 
                   onClick: () => context.setBackgroundCard('pokemon'),
-                  styleSrc: context.backgroundCard == 'pokemon' && {opacity: '50%'},
-                  children: context.backgroundCard == 'pokemon' && olho()
+                  styleSrc: (context.backgroundCard == 'pokemon'|| !user.decksPermitidos.includes('pokemon')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('pokemon') && cadeado()) ||
+                  (context.backgroundCard == 'pokemon' && olho())
                 },
                 {
                   name: "Folclore", 
                   imgSrc: "/images/cards/folclore/1.png", 
                   onClick: () => context.setBackgroundCard('folclore'),
-                  styleSrc: context.backgroundCard == 'folclore' && {opacity: '50%'},
-                  children: context.backgroundCard == 'folclore' && olho()
+                  styleSrc: (context.backgroundCard == 'folclore'|| !user.decksPermitidos.includes('folclore')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('folclore') && cadeado()) ||
+                  (context.backgroundCard == 'folclore' && olho())
                 },
                 { 
                   name: "Natal", 
                   imgSrc: "/images/cards/natal/1.png", 
                   onClick: () => context.setBackgroundCard('natal'),
-                  styleSrc: context.backgroundCard == 'natal' && {opacity: '50%'},
-                  children: context.backgroundCard == 'natal' && olho()
+                  styleSrc: (context.backgroundCard == 'natal'|| !user.decksPermitidos.includes('natal')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('natal') && cadeado()) ||
+                  (context.backgroundCard == 'natal' && olho())
                 },
                 { 
                   name: "Halloween", 
                   imgSrc: "/images/cards/halloween/1.png", 
                   onClick: () => context.setBackgroundCard('halloween'),
-                  styleSrc: context.backgroundCard == 'halloween' && {opacity: '50%'},
-                  children: context.backgroundCard == 'halloween' && olho()
+                  styleSrc: (context.backgroundCard == 'halloween'|| !user.decksPermitidos.includes('halloween')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('halloween') && cadeado()) ||
+                  (context.backgroundCard == 'halloween' && olho())
                 },
                 { 
                   name: "Halloween 2", 
                   imgSrc: "/images/cards/halloween2/1.png", 
                   onClick: () => context.setBackgroundCard('halloween2'),
-                  styleSrc: context.backgroundCard == 'halloween2' && {opacity: '50%'},
-                  children: context.backgroundCard == 'halloween2' && olho()
+                  styleSrc: (context.backgroundCard == 'halloween2'|| !user.decksPermitidos.includes('halloween2')) &&  {opacity: '50%'},
+                  children: (!user.decksPermitidos.includes('halloween2') && cadeado()) ||
+                  (context.backgroundCard == 'halloween2' && olho())
                 },
               ]} 
             />
