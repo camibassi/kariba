@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-const UseCartasMao = function() 
+const UseCartasMao = function(props) 
 {
     const [cartas, setCartas] = useState([]);
 
+    const numeroAleatorio = () => 
+      Math.round( Math.random()*8 )+1
+    
     function adicionarCarta() {
         let tmp = [];
         let i = 5 - cartas.length;
@@ -11,7 +14,11 @@ const UseCartasMao = function()
           return ;
         for( let c = 0; c < i; c++)
         {
-          let card = Math.round( Math.random()*8 )+1;
+          let card = numeroAleatorio();
+
+          while(cartas.includes(card))
+            card = numeroAleatorio();
+
           tmp.push(card);
         }
         
@@ -20,7 +27,7 @@ const UseCartasMao = function()
 
     function removerCarta(valor)
     {
-      alert(cartas);
+      setCartas(cartas.filter(carta => carta != valor));
     }
 
     return {

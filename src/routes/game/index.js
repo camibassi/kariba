@@ -13,10 +13,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Game() {
-    const cartasMao = UseCartasMao();
     const board = useBoard();
     const visivel = useShowHide();
-    const [mostrarContador, setMostrarContador] = useState(false); // Estado para exibir o Contador
+    const [mostrarContador, setMostrarContador] = useState(false);
+    const cartasMao = UseCartasMao({setContador: setMostrarContador});
 
     // Função que inicia a partida
     async function iniciaPartida() {
@@ -85,7 +85,7 @@ export default function Game() {
 
     return (
         <div>
-            <Lagoa board={board}/>
+            <Lagoa board={board} cartas={cartasMao}/>
 
             <div id="botoes">
                 <button onClick={iniciaPartida}
@@ -102,6 +102,3 @@ export default function Game() {
         </div>
     );
 }
-
-/*<button onClick={finalizaPartida} 
-style={{ display: visivel.status === false ? "none" : "block"}}> Finalizar jogada </button>*/

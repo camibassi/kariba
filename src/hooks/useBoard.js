@@ -17,18 +17,7 @@ const useBoard = function()
 
     function mover(pilha, carta)
     {
-      // Verifica a validade da jogada
-      if( jogada.length > 0 && jogada[0] != carta )
-      {
-        alert("Carta invalida");
-        return false;
-      }
-
-      // Se a jogada for valida
       let temp = [...jogada, carta];
-
-      // Cria uma copia para forçar o render nos componentes.
-      // Sem isso o framework não detecta que houve uma alteração no state e não renderiza a tela.
       board[pilha].push( carta );
       let clone = Object.assign({}, board);
       setBoard( clone );
