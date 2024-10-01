@@ -4,16 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url(../../../public/images/natureza.png); /* Substitua pelo caminho da sua imagem */
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
 .navbar {
     display: flex;
     justify-content: center;

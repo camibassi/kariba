@@ -11,7 +11,7 @@ export default function Store()
   const { handleMouseEnter, handleMouseLeave } = useImageChange();
   const navigate = useNavigate();
   const context = useOutletContext();
-  console.log(context);
+  
   return (
     <div>
       
@@ -41,7 +41,13 @@ export default function Store()
         <div class="containerCentral">
             <GroupCard classNameDeck="imagemMenor" name="Planos de Fundo" itens={[
               {name: 'Natureza', imgSrc: '/images/natureza.png', onClick: () => context.setBackground('/images/natureza.png')},
-              {name: 'Deserto', imgSrc: '/images/deserto.png', onClick: () => context.setBackground('/images/deserto.png')}
+              {name: 'Natureza (2)', imgSrc: '/images/natureza3.png', onClick: () => context.setBackground('/images/natureza3.png')},
+              {name: 'Deserto', imgSrc: '/images/deserto.png', onClick: () => context.setBackground('/images/deserto.png')},
+              {name: 'Mata', imgSrc: '/images/fundoRegras.png', onClick: () => context.setBackground('/images/fundoRegras.png')},
+              {name: 'Heróis', imgSrc: '/images/heroes.png', onClick: () => context.setBackground('/images/heroes.png')},
+              {name: 'Halloween', imgSrc: '/images/halloween.png', onClick: () => context.setBackground('/images/halloween.png')},
+              {name: 'Natal', imgSrc: '/images/natal.png', onClick: () => context.setBackground('/images/natal.png')},
+              {name: 'Natal (2)', imgSrc: '/images/natal2.png', onClick: () => context.setBackground('/images/natal2.png')},
             ]}  />
             <GroupCard classNameDeck="imagemMenor" name="Músicas" itens={[
               {name: 'Item 1', imgSrc: '/images/audio_icon.png'},

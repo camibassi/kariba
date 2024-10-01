@@ -1,10 +1,10 @@
 /* Estilos para o Navbar no mesmo estilo da tela de login */
 
 .styled-navbar {
-    background-color: #ff7f50; /* Laranja claro */
+    background-color: rgba(var(--bs-secondary-rgb))!important;
     height: 80px;
     box-shadow: 0px 4px 6px rgba(255, 175, 75, 0.3);
-    border-bottom: 3px solid #ff9a5c;
+    border-bottom: 3px solid rgba(var(--bs-secondary-rgb));
     display: flex;
     justify-content: space-between;
     align-items: center;
