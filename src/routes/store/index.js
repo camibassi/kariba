@@ -2,16 +2,25 @@ import "../store/index.css";
 import GroupCard from "../../components/groupCard";
 import { useImageChange } from "../../hooks/altera_imagem";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { FaReply, FaRightLong } from "react-icons/fa6";
+import { FaEye, FaLock, FaReply, FaRightLong } from "react-icons/fa6";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import MenuNavbar from "../../components/menuNavbar";
+import { FaRegEye } from "react-icons/fa";
 
 export default function Store() 
 {
   const { handleMouseEnter, handleMouseLeave } = useImageChange();
   const navigate = useNavigate();
   const context = useOutletContext();
-  
+  const cadeado = () => <FaLock style={{
+      fontSize: '2rem',
+      color: 'white',
+  }}/>;
+  const olho = () => <FaRegEye style={{
+      fontSize: '2rem',
+      color: 'white',
+  }}/>;
+
   return (
     <div>
       
@@ -26,15 +35,76 @@ export default function Store()
               className="decks-container-full"
               name="Decks"
               itens={[
-                { name: "Alice", imgSrc: "/images/cards/alice/1.png"},
-                { name: "Animais", imgSrc: "/images/cards/animais/1.png" },
-                { name: "Criaturas", imgSrc: "/images/cards/criaturas/1.png" },
-                { name: "Heróis", imgSrc: "/images/cards/heroes/1.png" },
-                { name: "Pokemón", imgSrc: "/images/cards/pokemon/1.png" },
-                { name: "Folclore", imgSrc: "/images/cards/folclore/1.png" },
-                { name: "Natal", imgSrc: "/images/cards/natal/1.png" },
-                { name: "Halloween", imgSrc: "/images/cards/halloween/1.png" },
-                { name: "Halloween 2", imgSrc: "/images/cards/halloween2/1.png" },
+                { 
+                  name: "Padrão", 
+                  imgSrc: "/images/cards/default/1.png", 
+                  styleSrc: context.backgroundCard == 'default' && {opacity: '50%'},
+                  onClick: () => context.setBackgroundCard('default'),
+                  children: context.backgroundCard == 'default' && olho()
+                },
+                { 
+                  name: "Alice", 
+                  imgSrc: "/images/cards/alice/1.png", 
+                  onClick: () => context.setBackgroundCard('alice'),
+                  styleSrc: context.backgroundCard == 'alice' && {opacity: '50%'},
+                  children: context.backgroundCard == 'alice' && olho()
+                },
+                { 
+                  name: "Animais", 
+                  imgSrc: "/images/cards/animais/1.png", 
+                  onClick: () => context.setBackgroundCard('animais'),
+                  styleSrc: context.backgroundCard == 'animais' && {opacity: '50%'},
+                  children: context.backgroundCard == 'animais' && olho() 
+                },
+                { 
+                  name: "Criaturas", 
+                  imgSrc: "/images/cards/criaturas/1.png", 
+                  onClick: () => context.setBackgroundCard('criaturas') ,
+                  styleSrc: context.backgroundCard == 'criaturas' && {opacity: '50%'},
+                  children: context.backgroundCard == 'criaturas' && olho()
+                },
+                { 
+                  name: "Heróis", 
+                  imgSrc: "/images/cards/heroes/1.png", 
+                  onClick: () => context.setBackgroundCard('heroes'),
+                  styleSrc: context.backgroundCard == 'heroes' && {opacity: '50%'},
+                  children: context.backgroundCard == 'heroes' && olho()
+                },
+                { 
+                  name: "Pokemón", 
+                  imgSrc: "/images/cards/pokemon/1.png", 
+                  onClick: () => context.setBackgroundCard('pokemon'),
+                  styleSrc: context.backgroundCard == 'pokemon' && {opacity: '50%'},
+                  children: context.backgroundCard == 'pokemon' && olho()
+                },
+                {
+                  name: "Folclore", 
+                  imgSrc: "/images/cards/folclore/1.png", 
+                  onClick: () => context.setBackgroundCard('folclore'),
+                  styleSrc: context.backgroundCard == 'folclore' && {opacity: '50%'},
+                  children: context.backgroundCard == 'folclore' && olho()
+                },
+                { 
+                  name: "Natal", 
+                  imgSrc: "/images/cards/natal/1.png", 
+                  onClick: () => context.setBackgroundCard('natal'),
+                  styleSrc: context.backgroundCard == 'natal' && {opacity: '50%'},
+                  children: context.backgroundCard == 'natal' && olho()
+                },
+                { 
+                  name: "Halloween", 
+                  imgSrc: "/images/cards/halloween/1.png", 
+                  onClick: () => context.setBackgroundCard('halloween'),
+                  styleSrc: context.backgroundCard == 'halloween' && {opacity: '50%'},
+                  children: context.backgroundCard == 'halloween' && olho()
+                },
+                { 
+                  name: "Halloween 2", 
+                  imgSrc: "/images/cards/halloween2/1.png", 
+                  onClick: () => context.setBackgroundCard('halloween2'),
+                  styleSrc: context.backgroundCard == 'halloween2' && {opacity: '50%'},
+                  children: context.backgroundCard == 'halloween2' && olho()
+                },
               ]} 
             />
         </div>

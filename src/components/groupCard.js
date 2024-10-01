@@ -20,8 +20,11 @@ export default function GroupCard(props)
                 alt={props.alt} 
                 onClick={item.onClick}
                 onMouseLeave={props.onMouseLeave} 
+                style={item.styleSrc}
                 onMouseEnter={props.onMouseEnter}
-                imgSrc={item.imgSrc}/>)
+                imgSrc={item.imgSrc}>
+                  {item.children}
+                </ItemLoja>)
           }
         </div>
         <button className="scroll-button scroll-right" onClick={scrollRight}>{">"}</button>

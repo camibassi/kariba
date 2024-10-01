@@ -1,46 +1,33 @@
-body h1{
-    width: 100%;
-    font-size: 50px;
-    margin: 0;
-    font-family: "Matemasie", sans-serif;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: transparent;
-    margin-bottom: 10px;
-}
-
 #topo{
     position: fixed;
     width: 100%;
 }
 
-body .container h2{
-    width: 100%;
-    font-size: 50px;
-    margin: 0;
-    font-family: "Matemasie", sans-serif;
-    font-weight: bold;
-    color: #0a300a;
-    background-color: transparent;
-}
-
-section {
+#regras section {
     border: none;
     margin-bottom: 0px;
     padding: 0%;
   }
 
-.content {
+  #regras .content {
     height: 570px; /* Conteúdo maior do que a altura da div */
 }
 
-img{
+#regras .divisor {
     width: 20%;
     height: 90%;
 }
 
-#regras {
-    color: rgb(9, 54, 22);
+#regras .container-fluid {
+    color: white;
     font-size: 24px;
     text-align: center;
   }
+
+#regras .container-fluid {
+    overflow-y: auto;  /* Adiciona rolagem vertical se o conteúdo for maior que o container */
+    max-height: 100vh;  /* Limita a altura ao tamanho da viewport */
+    padding: 20px;
+    box-sizing: border-box;
+    height: 85vh;
+}

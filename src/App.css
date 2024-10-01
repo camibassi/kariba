@@ -3,6 +3,7 @@
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image: url('../public/images/natureza.png');
+  font-weight: bold;
 }
 
 .fixed-buttons {
@@ -12,6 +13,28 @@
   display: flex;
   gap: 5px;
   z-index: 1000; /* Garante que os botões fiquem acima de outros elementos */
+}
+
+
+body .container h2{
+  width: 100%;
+  font-size: 50px;
+  margin: 0;
+  font-family: "Matemasie", sans-serif;
+  font-weight: bold;
+  color: #0a300a;
+  background-color: transparent;
+}
+
+body h1{
+  width: 100%;
+  font-size: 50px;
+  margin: 0;
+  font-family: "Matemasie", sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: transparent;
+  margin-bottom: 10px;
 }
 
 .botaoRodape {

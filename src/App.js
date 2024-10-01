@@ -7,6 +7,7 @@ import './App.css';
 export default function App() {
   const { user } = useContext(AuthContext);
   const [background, setBackground] = useState("/images/natureza.png");
+  const [backgroundCard, setBackgroundCard] = useState('default');
 
   useEffect(() => {
     const root = document.getElementById('root');
@@ -20,7 +21,12 @@ export default function App() {
     <>
       <div>
         {user || ["/criarConta", "/recuperarSenha"].includes(window.location.pathname) ? (
-          <Outlet context={{setBackground: setBackground}} />
+          <Outlet context={
+            {
+              setBackground: setBackground, 
+              setBackgroundCard: setBackgroundCard, 
+              backgroundCard: backgroundCard
+            }} />
         ) : (
           <Navigate to="login" />
         )}
