@@ -11,6 +11,7 @@ import UseCartasMao from "../../hooks/UseCartasMao";
 import useShowHide from "../../hooks/showHide";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MenuNavbar from "../../components/menuNavbar";
 
 export default function Game() {
     const board = useBoard();
@@ -84,7 +85,14 @@ export default function Game() {
     }
 
     return (
-        <div>
+        <div className="overflow-hidden">
+        <MenuNavbar>
+                <h1>
+                    <img src="/images/favicon.png" alt="Logo" /> Kariba <img src="/images/favicon.png" alt="Logo" />
+                </h1>
+        </MenuNavbar>
+        <div className="position-relative" style={{height: '92vh'}}>
+            
             <Lagoa board={board} cartas={cartasMao}/>
 
             <div id="botoes">
@@ -99,6 +107,7 @@ export default function Game() {
             <Placar />
             <Mao cartas={cartasMao} board={board} />
             <Adversario visibilidade={visivel} />
+        </div>
         </div>
     );
 }

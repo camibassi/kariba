@@ -8,7 +8,7 @@ const MenuNavbar = (props) => {
 
   return (
     <>
-      <Navbar className="styled-navbar">
+      <Navbar className={"styled-navbar w-100" + props.className || ""} style={{zIndex: '1', height: '45px'}}>
         <Container>
           <Navbar.Brand className="navbar-brand">Kariba</Navbar.Brand>
           <Nav className="me-auto">
