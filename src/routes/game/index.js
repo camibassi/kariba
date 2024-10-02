@@ -18,6 +18,9 @@ export default function Game() {
     const visivel = useShowHide();
     const [mostrarContador, setMostrarContador] = useState(false);
     const cartasMao = UseCartasMao({setContador: setMostrarContador});
+    const [meuPlacar, setMeuPlacar] = useState(0);
+    const [placarAdversario, setPlacarAdversario] = useState(0); // Futuramente virá do backend.
+    const [cartasGuardadas, setMinhasCartasGuardadas] = useState(0);
 
     // Função que inicia a partida
     async function iniciaPartida() {
@@ -93,7 +96,12 @@ export default function Game() {
         </MenuNavbar>
         <div className="position-relative" style={{height: '92vh'}}>
             
-            <Lagoa board={board} cartas={cartasMao}/>
+            <Lagoa board={board} 
+                cartas={cartasMao} 
+                guardarCartas={(numero) => {
+                    setMinhasCartasGuardadas(cartasGuardadas + numero);
+                    setMeuPlacar(meuPlacar + 1);
+                }}/>
 
             <div id="botoes">
                 <button onClick={iniciaPartida}
@@ -104,7 +112,7 @@ export default function Game() {
             {mostrarContador && <Contador />} 
 
             <Deck cartas={cartasMao} visibilidade={visivel} />
-            <Placar />
+            <Placar meuPlacar={meuPlacar} adversario={placarAdversario} />
             <Mao cartas={cartasMao} board={board} />
             <Adversario visibilidade={visivel} />
         </div>

@@ -15,11 +15,26 @@ const useBoard = function()
     });
 
 
-    function mover(pilha, carta)
+    function mover(pilha, carta, guardarCartas)
     {
       let temp = [...jogada, carta];
       board[pilha].push( carta );
       let clone = Object.assign({}, board);
+
+      let index = pilha - 1;
+      if(index == 0)
+        index = 8;
+
+      if(clone[pilha].length >= 3)
+      {
+        while(!clone[index].length && index > 0)
+          index--;
+
+        guardarCartas(clone[index].length);
+
+        clone[index] = [];
+      }
+
       setBoard( clone );
       setJogada( temp );
       return true;

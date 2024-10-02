@@ -218,6 +218,13 @@
     text-align: right;
 }
 
+#placar h6 {
+    bottom: 10%;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+}
+
 #placar img{
     width: 40vh;
 }

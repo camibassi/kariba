@@ -20,8 +20,8 @@ const Pilha = (props) => {
 
         if (dataValor === imageDrop || dataValor == "9" )
         {
-          let x = board.mover(value, dataValor );
-          if( x == true ) 
+          const movido = board.mover(value, dataValor, props.guardarCartas );
+          if(movido) 
             props.cartas.removerCarta(dataValor);  
         }
     }
