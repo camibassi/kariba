@@ -20,7 +20,7 @@ export default function Contador() {
     <div
       style={{
         position: 'absolute',
-        top: '50%',
+        top: '54%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
         color: 'white',
