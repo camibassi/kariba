@@ -7,10 +7,6 @@
     border: none;
     margin-bottom: 0px;
     padding: 0%;
-  }
-
-  #regras .content {
-    height: 570px; /* Conteúdo maior do que a altura da div */
 }
 
 #regras .divisor {
@@ -19,15 +15,18 @@
 }
 
 #regras .container-fluid {
-    color: white;
+    color: rgb(0, 0, 0);/*texto*/
     font-size: 24px;
     text-align: center;
-  }
-
-#regras .container-fluid {
+    margin-top: 2%;
     overflow-y: auto;  /* Adiciona rolagem vertical se o conteúdo for maior que o container */
     max-height: 100vh;  /* Limita a altura ao tamanho da viewport */
     padding: 20px;
     box-sizing: border-box;
     height: 85vh;
+    background-color: rgba(255, 255, 255, 0.49);
+  }
+
+#cartas .img{
+    max-width: 100vh;
 }
