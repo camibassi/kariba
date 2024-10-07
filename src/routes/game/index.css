@@ -212,14 +212,14 @@
 
 #placar {
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     right: 1%;
     display: inline;
     text-align: right;
 }
 
 #placar h6 {
-    bottom: 10%;
+    bottom: 5%;
     font-size: 30px;
     font-weight: bold;
     position: absolute;
@@ -269,7 +269,7 @@
 #botoes {
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 54%;
     left: 50%;
     -ms-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);

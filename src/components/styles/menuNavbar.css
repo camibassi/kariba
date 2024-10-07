@@ -49,9 +49,10 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     gap: 10px; /* Espaço entre os logos e o texto */
   }
+  
   
   .navbar-logo {
     width: 40px;
