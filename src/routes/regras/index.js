@@ -43,17 +43,17 @@ export default function Regras()
             </section>
 
             <section>
-                <h2 id="regras">Exceção</h2>
+                <img src="images/excecao.png"></img>
                 <p>Os ratos (número 1) são os únicos que podem afugentar os elefantes (número 8). Para isso, é necessário ter 3 ou mais ratos no tabuleiro.</p>
             </section>
 
             <section>
-                <h2 id="regras">Fim do Jogo</h2>
+                <img src="images/fimdojogo.png"></img>
                 <p>O jogo termina quando todas as cartas do baralho foram jogadas e não restam mais cartas na mão dos jogadores.</p>
             </section>
 
             <section>
-                <h2 id="regras">Vencedor</h2>
+                <img src="images/vencedor.png"></img>
                 <p>O vencedor é o jogador que capturou o maior número de cartas ao final do jogo.</p>
             </section>
 
