@@ -3,16 +3,26 @@ import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../components/AuthContext';
+import useRequest from '../../hooks/useRequest';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const request = useRequest({});
+
     const navigate = useNavigate();
     const { login } = useContext(AuthContext); 
     const handleLogin = (event) => {
       event.preventDefault(); 
       const userData = { username, password }; 
       login(userData);
+
+      request.sendRequest({
+        url: 'api/Users',
+        data: { username: username, password: password}
+      }, () => {
+        debugger;
+      })
 
       navigate('/menu');
     };
