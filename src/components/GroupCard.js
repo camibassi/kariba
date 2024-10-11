@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useScroll } from "../hooks/useScroll";
-import Card from "./Card";
+import Card from "./CardComponent";
 
 export default function GroupCard(props) 
 {
@@ -18,10 +18,13 @@ export default function GroupCard(props)
               <Card 
                 name={item.name} 
                 alt={props.alt} 
+                item={item.item}
                 onClick={item.onClick}
-                onMouseLeave={props.onMouseLeave} 
                 style={item.styleSrc}
-                onMouseEnter={props.onMouseEnter}
+                setImgSrc={item.setImgSrc}
+                verso={item.verso}
+                onMouseEnter={item.onMouseEnter}
+                onMouseLeave={item.onMouseLeave}
                 imgSrc={item.imgSrc}>
                   {item.children}
                 </Card>)

@@ -21,6 +21,21 @@ export default function Store()
       color: 'white',
   }}/>;
 
+  const render = (item, nome) => {
+    const objeto = { 
+      name: nome, 
+      item: item,
+      verso: true,
+      imgSrc: `/images/cards/${item}/1.png`, 
+      styleSrc: (context.backgroundCard == item|| !user.decksPermitidos.includes(item)) &&  {opacity: '50%'},
+      onClick: () => context.setBackgroundCard(item),
+      children: (!user.decksPermitidos.includes(item) && cadeado()) ||
+        (context.backgroundCard == item && olho())
+    };
+
+    return objeto;
+  }
+
   return (
     <div style={{overflow: 'hidden'}}>
       
@@ -35,86 +50,20 @@ export default function Store()
               className="decks-container-full"
               name="Decks"
               itens={[
-                { 
-                  name: "Padrão", 
-                  imgSrc: "/images/cards/default/1.png", 
-                  styleSrc: (context.backgroundCard == 'default'|| !user.decksPermitidos.includes('default')) &&  {opacity: '50%'},
-                  onClick: () => context.setBackgroundCard('default'),
-                  children: (!user.decksPermitidos.includes('default') && cadeado()) ||
-                    (context.backgroundCard == 'default' && olho())
-                },
-                { 
-                  name: "Alice", 
-                  imgSrc: "/images/cards/alice/1.png", 
-                  onClick: () => context.setBackgroundCard('alice'),
-                  styleSrc: (context.backgroundCard == 'alice'|| !user.decksPermitidos.includes('alice')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('alice') && cadeado()) ||
-                    (context.backgroundCard == 'alice' && olho())
-                },
-                { 
-                  name: "Animais", 
-                  imgSrc: "/images/cards/animais/1.png", 
-                  onClick: () => context.setBackgroundCard('animais'),
-                  styleSrc: (context.backgroundCard == 'animais'|| !user.decksPermitidos.includes('animais')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('animais') && cadeado()) ||
-                  (context.backgroundCard == 'animais' && olho()) 
-                },
-                { 
-                  name: "Criaturas", 
-                  imgSrc: "/images/cards/criaturas/1.png", 
-                  onClick: () => context.setBackgroundCard('criaturas') ,
-                  styleSrc: (context.backgroundCard == 'criaturas'|| !user.decksPermitidos.includes('criaturas')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('criaturas') && cadeado()) ||
-                  (context.backgroundCard == 'criaturas' && olho())
-                },
-                { 
-                  name: "Heróis", 
-                  imgSrc: "/images/cards/heroes/1.png", 
-                  onClick: () => context.setBackgroundCard('heroes'),
-                  styleSrc: (context.backgroundCard == 'heroes'|| !user.decksPermitidos.includes('heroes')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('heroes') && cadeado()) ||
-                  (context.backgroundCard == 'heroes' && olho())
-                },
-                { 
-                  name: "Pokemón", 
-                  imgSrc: "/images/cards/pokemon/1.png", 
-                  onClick: () => context.setBackgroundCard('pokemon'),
-                  styleSrc: (context.backgroundCard == 'pokemon'|| !user.decksPermitidos.includes('pokemon')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('pokemon') && cadeado()) ||
-                  (context.backgroundCard == 'pokemon' && olho())
-                },
-                {
-                  name: "Folclore", 
-                  imgSrc: "/images/cards/folclore/1.png", 
-                  onClick: () => context.setBackgroundCard('folclore'),
-                  styleSrc: (context.backgroundCard == 'folclore'|| !user.decksPermitidos.includes('folclore')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('folclore') && cadeado()) ||
-                  (context.backgroundCard == 'folclore' && olho())
-                },
-                { 
-                  name: "Natal", 
-                  imgSrc: "/images/cards/natal/1.png", 
-                  onClick: () => context.setBackgroundCard('natal'),
-                  styleSrc: (context.backgroundCard == 'natal'|| !user.decksPermitidos.includes('natal')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('natal') && cadeado()) ||
-                  (context.backgroundCard == 'natal' && olho())
-                },
-                { 
-                  name: "Halloween", 
-                  imgSrc: "/images/cards/halloween/1.png", 
-                  onClick: () => context.setBackgroundCard('halloween'),
-                  styleSrc: (context.backgroundCard == 'halloween'|| !user.decksPermitidos.includes('halloween')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('halloween') && cadeado()) ||
-                  (context.backgroundCard == 'halloween' && olho())
-                },
-                { 
-                  name: "Halloween 2", 
-                  imgSrc: "/images/cards/halloween2/1.png", 
-                  onClick: () => context.setBackgroundCard('halloween2'),
-                  styleSrc: (context.backgroundCard == 'halloween2'|| !user.decksPermitidos.includes('halloween2')) &&  {opacity: '50%'},
-                  children: (!user.decksPermitidos.includes('halloween2') && cadeado()) ||
-                  (context.backgroundCard == 'halloween2' && olho())
-                },
+                render('default', 'Padrão'),
+                render('alice', 'Alice'),
+                render('animais', 'Animais'),
+                render('criaturas', 'Criaturas'),
+                render('heroes', 'Pokemón'),
+                render('pokemon', 'Animais'),
+                render('folclore', 'Folclore'),
+                render('animais', 'Animais'),
+                render('animais', 'Animais'),
+                render('animais', 'Animais'),
+                render('natal', 'Natal'),
+                render('natal', 'Natal'),
+                render('halloween', 'Halloween'),
+                render('halloween2', 'Halloween ')
               ]} 
             />
         </div>
