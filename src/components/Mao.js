@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Carta from './carta';
+import Carta from './AvisoPosicaoCarta';
 
 const Mao = (props) => 
 {

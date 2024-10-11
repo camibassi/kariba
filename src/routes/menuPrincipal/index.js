@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import './index.css'; 
 import { useContext } from "react";
 import { AuthContext } from "../../components/AuthContext";
-import Menu from "../../components/menu";
-import Rodape from "../../components/rodape";
+import Menu from "../../components/Menu";
+import Rodape from "../../components/Rodape";
 
 export default function MenuPrincipal() {
     const { user } = useContext(AuthContext); 

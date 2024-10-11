@@ -1,4 +1,4 @@
-import MenuNavbar from "../../components/menuNavbar";
+import MenuNavbar from "../../components/MenuNavbar";
 
 const Sobre = (props) => {
     return <MenuNavbar>

@@ -1,10 +1,9 @@
 import "../store/index.css";
-import GroupCard from "../../components/groupCard";
-import { useImageChange } from "../../hooks/altera_imagem";
+import GroupCard from "../../components/GroupCard";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { FaEye, FaLock, FaReply, FaRightLong } from "react-icons/fa6";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import MenuNavbar from "../../components/menuNavbar";
+import MenuNavbar from "../../components/MenuNavbar";
 import { FaRegEye } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../components/AuthContext";
@@ -23,7 +22,7 @@ export default function Store()
   }}/>;
 
   return (
-    <div>
+    <div style={{overflow: 'hidden'}}>
       
       <MenuNavbar>
       <h1>

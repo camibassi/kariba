@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ItemLoja = (props) => 
-  <div className="itemLoja">
+const Card = (props) => 
+  <div className="cardComponent">
       <h3>{props.name}</h3>
       <img className='rounded' style={props.style || {}} src={props.imgSrc} 
         alt={props.alt}
@@ -11,4 +11,4 @@ const ItemLoja = (props) =>
       {props.children}
   </div>
 
-export default ItemLoja;
+export default Card;

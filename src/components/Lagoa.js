@@ -1,6 +1,6 @@
 // Lagoa.js
 import React from 'react';
-import Pilha from './pilha';
+import Pilha from './Pilha';
 import useBoard from '../hooks/useBoard';
 
 export default function Lagoa(props) {

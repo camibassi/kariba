@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { useScroll } from "../hooks/scroll";
-import ItemLoja from "./ItemLoja";
+import { useScroll } from "../hooks/useScroll";
+import Card from "./Card";
 
 export default function GroupCard(props) 
 {
@@ -15,7 +15,7 @@ export default function GroupCard(props)
         <div className={props.classNameDeck + " decks"} ref={backgroundRef}>
           {
             props.itens.map(item => 
-              <ItemLoja 
+              <Card 
                 name={item.name} 
                 alt={props.alt} 
                 onClick={item.onClick}
@@ -24,7 +24,7 @@ export default function GroupCard(props)
                 onMouseEnter={props.onMouseEnter}
                 imgSrc={item.imgSrc}>
                   {item.children}
-                </ItemLoja>)
+                </Card>)
           }
         </div>
         <button className="scroll-button scroll-right" onClick={scrollRight}>{">"}</button>

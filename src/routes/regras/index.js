@@ -1,5 +1,5 @@
 import './index.css'
-import MenuNavbar from "../../components/menuNavbar";
+import MenuNavbar from "../../components/MenuNavbar";
 import { Container } from 'react-bootstrap';
 
 export default function Regras()

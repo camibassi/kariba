@@ -2,7 +2,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { FaReply, FaSignOutAlt } from "react-icons/fa"; // Ícone de logout
 import { Outlet, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from '../components/AuthContext'; // Ajuste o caminho conforme necessário
+import { AuthContext } from './AuthContext'; // Ajuste o caminho conforme necessário
 import './styles/menuNavbar.css'; // Estilos adicionais
 
 const Menu = () => {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Carta from './carta';
+import Carta from './AvisoPosicaoCarta';
 import useBoard from '../hooks/useBoard';
 import { useState } from 'react';
 

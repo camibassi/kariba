@@ -8,7 +8,7 @@ import Store from './routes/store';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import Regras from './routes/regras';
 import Sobre from './routes/sobre';
-import MenuNavbar from './components/menuNavbar';
+import MenuNavbar from './components/MenuNavbar';
 import Login from './routes/login';
 import { AuthProvider } from './components/AuthContext';
 import CriarConta from './routes/criarConta';

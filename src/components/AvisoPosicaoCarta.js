@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import useApareceMouse from '../hooks/apareceMouse';
+import useApareceMouse from '../hooks/useApareceMouse';
 import { useOutletContext } from 'react-router-dom';
 
 export default function Carta(props) 

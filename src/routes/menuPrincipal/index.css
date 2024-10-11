@@ -79,7 +79,6 @@
 section {
     display: inline-block;
     margin-top: 80px;
-    border: 1px solid black;
     margin-left: 5%;
     margin-right: 5%;
     padding: 5%;
@@ -100,7 +99,6 @@ section h2 {
     width: 30%;
     padding: 20px;
     margin: 1%;
-    border: 1px solid black;
     border-radius: 10px;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
@@ -108,7 +106,6 @@ section h2 {
 
 .card:hover {
     color: white;
-    background: #ff2978;
 }
 
 @media (max-width: 768px) {
