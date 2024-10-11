@@ -51,10 +51,9 @@ export default function Game() {
     // Efeito que realiza a requisição quando a conexão WebSocket é estabelecida (isConnected === true)
     useEffect(() => {
         if (isConnected) {
-            // Faz uma requisição quando o WebSocket estiver conectado
             sendRequest(
                 {
-                    url: '/iniciarPartida', // Substitua pela URL real da API
+                    url: '/iniciarPartida', 
                     method: 'POST',
                 },
                 (response) => {
