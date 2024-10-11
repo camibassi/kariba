@@ -19,10 +19,11 @@ const useWebSocket = (url) => {
     // Recebe mensagens do WebSocket
     newSocket.onmessage = (event) => {
       setMessages((prevMessages) => [...prevMessages, event.data]);
+      console.log(event);
 
       // Atualiza estado do jogo se a mensagem for relevante
       const data = JSON.parse(event.data);
-      if (data.action === 'updateGameState') {
+      if (data.action === 'gameState') {
         setGameState(data.gameState);
       }
     };

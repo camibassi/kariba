@@ -25,8 +25,7 @@ export default function Game() {
     const [cartasGuardadas, setMinhasCartasGuardadas] = useState(0);
 
     // Usando o hook useWebSocket
-    const { messages, sendMessage, closeSocket, gameState, isConnected } = useWebSocket("wss://1na5t5v281.execute-api.sa-east-1.amazonaws.com/dev");
-
+    const { messages, sendMessage, closeSocket, gameState, isConnected } = useWebSocket("wss://1na5t5v281.execute-api.sa-east-1.amazonaws.com/production");
     // Usando o hook useRequest para realizar requisições HTTP
     const { data, loading, error, sendRequest } = useRequest();
 
@@ -35,6 +34,7 @@ export default function Game() {
     // Função que inicia a partida
     async function iniciaPartida() {
         sendMessage("Iniciar partida");
+                
         visivel.apareceCarta();
         cartasMao.adicionarCarta();
         cartasMao.adicionarCarta();
