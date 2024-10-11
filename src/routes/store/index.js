@@ -9,7 +9,6 @@ import { useOutletContext } from "react-router-dom";
 export default function Store() {
   const { user } = useContext(AuthContext);
   const context = useOutletContext();
-  
   const renderCardProps = (item, nome) => {
     return {
       name: nome,
@@ -21,6 +20,19 @@ export default function Store() {
       onClick: () => context.setBackgroundCard(item),
       children: (!user.decksPermitidos.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
                 (context.backgroundCard === item ? <FaRegEye style={{ fontSize: '2rem', color: 'white' }} /> : null))
+    };
+  };
+
+  const renderBackgroundProps = (item, nome) => {
+    return {
+      name: nome,
+      item: item,
+      imgSrc: `/images/${item}.png`,
+      styleSrc: (context.background === item || !user.backgroundsPermitidos.includes(item)) ? 
+      { opacity: '50%' } : {},
+      onClick: () => context.setBackground(`/images/${item}.png`),
+      children: (!user.backgroundsPermitidos.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
+                (context.background === `/images/${item}.png` ? <FaRegEye style={{ fontSize: '2rem', color: 'white' }} /> : null))
     };
   };
 
@@ -49,25 +61,22 @@ export default function Store() {
           ]}
         />
         <div className="containerCentral">
-          <GroupCard 
-            classNameDeck="imagemMenor" 
-            name="Planos de Fundo" 
-            itens={[
-              { name: 'Natureza', imgSrc: '/images/natureza.png', onClick: () => context.setBackground('/images/natureza.png') },
-              { name: 'Deserto', imgSrc: '/images/deserto.png', onClick: () => context.setBackground('/images/deserto.png') },
-              { name: 'Mata', imgSrc: '/images/fundoRegras.png', onClick: () => context.setBackground('/images/fundoRegras.png') },
-              // Adicione outros itens conforme necessário
-            ]}
-          />
-          <GroupCard 
-            classNameDeck="imagemMenor" 
-            name="Músicas" 
-            itens={[
-              { name: 'Item 1', imgSrc: '/images/audio_icon.png' },
-              { name: 'Item 2', imgSrc: '/images/audio_icon.png' },
-              // Adicione outros itens conforme necessário
-            ]}
-          />
+          <GroupCard classNameDeck="imagemMenor" name="Planos de Fundo" itens={[
+            renderBackgroundProps('natureza', 'Natureza'),
+            renderBackgroundProps('natureza3', 'Natureza (2)'),
+            renderBackgroundProps('deserto', 'Deserto'),
+            renderBackgroundProps('fundoRegras', 'Mata'),
+            renderBackgroundProps('heroes', 'Heróis'),
+            renderBackgroundProps('halloween', 'Halloween'),
+            renderBackgroundProps('natal', 'Natal'),
+            renderBackgroundProps('natal2', 'Natal (2)')
+            ]}  />
+          <GroupCard classNameDeck="imagemMenor" name="Músicas" itens={[
+            {name: 'Item 1', imgSrc: '/images/audio_icon.png'},
+            {name: 'Item 2', imgSrc: '/images/audio_icon.png'},
+            {name: 'Item 3', imgSrc: '/images/audio_icon.png'},
+            {name: 'Item 4', imgSrc: '/images/audio_icon.png'},
+          ]}  />
         </div>
       </div>
     </div>

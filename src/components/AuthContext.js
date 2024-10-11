@@ -11,6 +11,11 @@ const AuthProvider = ({ children }) => {
       decksPermitidos: [
         'default',
         'alice'
+      ],
+      backgroundsPermitidos: [
+        'natureza',
+        'natureza2',
+        'deserto',
       ]
     }});
   };

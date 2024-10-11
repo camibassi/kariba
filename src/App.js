@@ -25,7 +25,8 @@ export default function App() {
             {
               setBackground: setBackground, 
               setBackgroundCard: setBackgroundCard, 
-              backgroundCard: backgroundCard
+              backgroundCard: backgroundCard,
+              background: background
             }} />
         ) : (
           <Navigate to="login" />
