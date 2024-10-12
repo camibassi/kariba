@@ -22,12 +22,19 @@ const UseCartasMao = function(props)
           tmp.push(card);
         }
         
-        setCartas( tmp.concat(cartas) );
+        setCartas( cartas.concat(tmp) );
       }
 
     function removerCarta(valor)
     {
-      setCartas(cartas.filter(carta => carta != valor));
+      // Remove uma carta do array
+      valor = parseInt(valor);
+      let index = cartas.indexOf(valor);
+      if( index >= 0 )
+      {
+        cartas.splice(index, 1);
+        setCartas( cartas );
+      }
     }
 
     return {

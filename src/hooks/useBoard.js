@@ -3,6 +3,8 @@ import { useState } from "react";
 const useBoard = function() 
 {
     const [jogada, setJogada] = useState([]);
+    const [ultimaJogada, setUltimaJogada] = useState(0);
+
     const [board, setBoard] = useState({
       "1": [],
       "2": [],
@@ -17,11 +19,25 @@ const useBoard = function()
 
     function mover(pilha, carta, guardarCartas)
     {
+      // Verifica a validade da jogada
+      if( jogada.length > 0 )
+      {
+        if( ultimaJogada != pilha ) 
+        {
+          alert("Jogada inválida");
+          return false;  
+        }
+      }
+
+      // Se a jogada for valid
       let temp = [...jogada, carta];
       board[pilha].push( carta );
-      let clone = Object.assign({}, board);
 
+
+      let clone = Object.assign({}, board);
       let index = pilha - 1;
+      
+      /*
       if(index == 0)
         index = 8;
 
@@ -34,9 +50,11 @@ const useBoard = function()
 
         clone[index] = [];
       }
+      */
 
       setBoard( clone );
       setJogada( temp );
+      setUltimaJogada(pilha);
       return true;
     }
 

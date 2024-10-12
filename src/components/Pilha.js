@@ -17,12 +17,14 @@ const Pilha = (props) => {
         imageDrop = imageDrop.replace("pilha","");
       
         const dataValor = e.dataTransfer.getData("cartaValor");
-
         if (dataValor === imageDrop || dataValor == "9" )
         {
           const movido = board.mover(value, dataValor, props.guardarCartas );
-          if(movido) 
-            props.cartas.removerCarta(dataValor);  
+          if(movido)
+          { 
+            // Retira a carta do estado da mao.
+            props.cartas.removerCarta(dataValor);
+          }  
         }
     }
 
