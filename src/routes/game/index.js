@@ -8,8 +8,8 @@ import UseCartasMao from "../../hooks/useCartasMao";
 import MenuNavbar from "../../components/MenuNavbar";
 import CartasAdversario from "../../components/CartasAdversario";
 import useShowHide from "../../hooks/useShowHide";
-import useWebSocket from "../../hooks/useWebSocket"; // Hook useWebSocket
-import useRequest from "../../hooks/useRequest"; // Hook useRequest
+import useWebSocket from "../../hooks/useWebSocket";
+import useRequest from "../../hooks/useRequest";
 
 import "../game/index.css";
 import { useEffect, useState } from "react";
@@ -25,16 +25,15 @@ export default function Game() {
     const [cartasGuardadas, setMinhasCartasGuardadas] = useState(0);
 
     // Usando o hook useWebSocket
-    const { messages, sendMessage, closeSocket, gameState, isConnected } = useWebSocket("wss://1na5t5v281.execute-api.sa-east-1.amazonaws.com/production");
+    const { sendMessage, closeSocket, gameState, isConnected } = useWebSocket("wss://1na5t5v281.execute-api.sa-east-1.amazonaws.com/production");
     // Usando o hook useRequest para realizar requisições HTTP
-    const { data, loading, error, sendRequest } = useRequest();
+    const { loading, error, sendRequest } = useRequest();
 
     const navigate = useNavigate();
 
     // Função que inicia a partida
     async function iniciaPartida() {
         sendMessage("Iniciar partida");
-                
         visivel.apareceCarta();
         cartasMao.adicionarCarta();
         cartasMao.adicionarCarta();
@@ -45,20 +44,25 @@ export default function Game() {
     async function finalizaPartida() {
         sendMessage("Finalizar partida");
         closeSocket(); // Fecha a conexão WebSocket
-        navigate("/");
+        navigate("/menu");
     }
 
-    // Efeito que realiza a requisição quando a conexão WebSocket é estabelecida (isConnected === true)
+    // Array de objetos para os botões
+    const botoes = [
+        { texto: 'Iniciar', onClick: iniciaPartida, mostrar: !visivel.status },
+        { texto: 'Encerrar', onClick: finalizaPartida, mostrar: visivel.status }
+    ];
+
+    // Efeito para monitorar a conexão WebSocket
     useEffect(() => {
         if (isConnected) {
             sendRequest(
                 {
-                    url: '/iniciarPartida', 
+                    url: '/iniciarPartida',
                     method: 'POST',
                 },
                 (response) => {
                     console.log('Dados recebidos:', response);
-                    // Lógica para manipular a resposta da API, se necessário
                 }
             );
         }
@@ -67,10 +71,9 @@ export default function Game() {
     // Efeito para monitorar mudanças no estado do jogo (gameState)
     useEffect(() => {
         if (gameState) {
-            // Lógica para atualizar o placar ou o estado visual do jogo com base em gameState
             console.log("Estado do jogo atualizado: ", gameState);
         }
-    }, [gameState]); // Executa quando o gameState muda
+    }, [gameState]);
 
     return (
         <div className="overflow-hidden">
@@ -79,7 +82,7 @@ export default function Game() {
                     <img src="/images/favicon.png" alt="Logo" /> Kariba <img src="/images/favicon.png" alt="Logo" />
                 </h1>
             </MenuNavbar>
-            <div className="position-relative" style={{ height: '92vh' }}>
+            <div className="position-relative" style={{ height: '90vh' }}>
 
                 <Lagoa board={board}
                     cartas={cartasMao}
@@ -89,8 +92,13 @@ export default function Game() {
                     }} />
 
                 <div id="botoes">
-                    <button onClick={iniciaPartida}
-                        style={{ display: visivel.status === true ? "none" : "block" }}> Iniciar </button>
+                    {botoes.map((botao, index) =>
+                        botao.mostrar && (
+                            <button key={index} onClick={botao.onClick}>
+                                {botao.texto}
+                            </button>
+                        )
+                    )}
                 </div>
 
                 {/* Exibe o Contador condicionalmente */}
