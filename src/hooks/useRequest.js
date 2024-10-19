@@ -8,7 +8,7 @@ const useRequest = (initialState = null) => {
 
   const sendRequest = useCallback(async (settings = {}, callback = null) => {
     const { url, method = 'GET', body = null, config = {} } = settings;
-    
+
     setLoading(true);
     setError(null);
 
@@ -19,12 +19,22 @@ const useRequest = (initialState = null) => {
         data: body,
         ...config,
       });
-      
+
       const result = callback ? callback(response) : response.data;
       setData(result);
       
     } catch (err) {
-      setError(err);
+      // Verifica se o erro tem uma resposta e se o status é 400, 500 ou 403
+      if (err.response) {
+        const { status } = err.response;
+        if (status === 400 || status === 403 || status === 500) {
+          setError(`Erro ${status}: ${err.response.data.message || err.message}`);
+        } else {
+          setError('Erro desconhecido. Tente novamente.');
+        }
+      } else {
+        setError('Erro de conexão. Tente novamente.');
+      }
     } finally {
       setLoading(false);
     }

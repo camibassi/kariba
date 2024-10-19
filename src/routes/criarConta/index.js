@@ -2,11 +2,28 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
 import { useNavigate } from 'react-router-dom';
+import useRequest from '../../hooks/useRequest';
 
 const CriarConta = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
+  const [passwordConfirm, setPasswordConfirm] = useState(''); 
   const navigate = useNavigate();
+  const request = useRequest();
+
+  const criarConta = () => {
+
+    if(password !== passwordConfirm)
+      return alert("As senhas estão diferentes. Corrija.");
+
+    request.sendRequest({
+      url: 'https://nfba1cx8uf.execute-api.sa-east-1.amazonaws.com/production/user',
+      method: 'POST',
+      body: { username: username, password: passwordConfirm }
+    }, (response) => {
+      debugger;
+    })
+  }
 
   return (
     <Container className="light-login-container">
@@ -39,13 +56,13 @@ const CriarConta = () => {
           <Form.Control
             type="password"
             placeholder="Confirme a sua senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
             className="light-input"
           />
         </Form.Group>
 
-        <Button variant="primary" className="light-button mt-3" type="submit" onClick={() => navigate('../login')}>Criar Conta</Button>
+        <Button variant="primary" type="button" className="light-button mt-3" onClick={criarConta}>Criar Conta</Button>
       </Form>
     </Container>
   );

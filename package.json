@@ -1,7 +1,6 @@
 {
   "name": "kariba",
   "version": "0.1.0",
-  "proxy": "https://nfba1cx8uf.execute-api.sa-east-1.amazonaws.com",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
