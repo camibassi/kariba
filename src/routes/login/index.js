@@ -27,7 +27,7 @@ const Login = () => {
       request.sendRequest({
         url: `user?username=${username}&password=${password}`,
       }, (response) => {
-        debugger;
+        
         if(response.details.username)
         {
           login(response.details);

@@ -13,6 +13,7 @@ import Login from './routes/login';
 import { AuthProvider } from './components/AuthContext';
 import CriarConta from './routes/criarConta';
 import RecuperarSenha from './routes/recuperarSenha';
+import WebSocketScreen from './routes/webSocketScreen';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,6 +33,7 @@ root.render(
             <Route path="store" element={<Store />} />
             <Route path="regras" element={<Regras />} />
             <Route path="sobre" element={<Sobre />} />
+            <Route path="aguardando" element={<WebSocketScreen />} />
         </Route>
       </Routes>
       </AuthProvider>
