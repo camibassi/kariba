@@ -20,8 +20,9 @@ const CriarConta = () => {
       url: 'user',
       method: 'POST',
       body: { username: username, password: passwordConfirm }
-    }, (response) => {
-      debugger;
+    }, ({message}) => {
+      alert(message);
+      navigate('../login')
     })
   }
 

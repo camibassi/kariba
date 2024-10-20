@@ -24,15 +24,18 @@ const Login = () => {
 
       setValidated(false);
 
-      const userData = { username, password }; 
-      login(userData); 
       request.sendRequest({
         url: `user?username=${username}&password=${password}`,
       }, (response) => {
         debugger;
-      })
-
-      navigate('/menu');
+        if(response.details.username)
+        {
+          login(response.details);
+          navigate('/menu');
+        }
+        else
+          alert(response.details)
+      });
     };
 
   return (
