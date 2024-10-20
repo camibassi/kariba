@@ -25,12 +25,10 @@ const Login = () => {
       setValidated(false);
 
       const userData = { username, password }; 
-      login(userData); // após a requisição para buscar o usuário estiver em funcionamento, faz essa açao somente no retorno da requisição, com os dados do usuário.
-
+      login(userData); 
       request.sendRequest({
-        url: 'api/Users',
-        data: { username: username, password: password}
-      }, () => {
+        url: `user?username=${username}&password=${password}`,
+      }, (response) => {
         debugger;
       })
 
@@ -48,7 +46,7 @@ const Login = () => {
             required={true}
             placeholder="Digite seu nome de usuário"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value?.toLowerCase())}
             className="light-input"
           />
         </Form.Group>

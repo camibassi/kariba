@@ -17,7 +17,7 @@ const CriarConta = () => {
       return alert("As senhas estão diferentes. Corrija.");
 
     request.sendRequest({
-      url: 'https://nfba1cx8uf.execute-api.sa-east-1.amazonaws.com/production/user',
+      url: 'user',
       method: 'POST',
       body: { username: username, password: passwordConfirm }
     }, (response) => {
@@ -35,7 +35,7 @@ const CriarConta = () => {
             type="text"
             placeholder="Digite seu nome de usuário"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value?.toLowerCase())}
             className="light-input"
           />
         </Form.Group>

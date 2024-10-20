@@ -14,21 +14,26 @@ const useRequest = (initialState = null) => {
 
     try {
       const response = await axios({
-        url,
+        url: 'https://nfba1cx8uf.execute-api.sa-east-1.amazonaws.com/production/' + url,
         method,
         data: body,
-        ...config,
+        config,
       });
 
-      const result = callback ? callback(response) : response.data;
+      const data = JSON.parse(response.data.body);
+
+      const result = callback ? callback(data) : data;
       setData(result);
-      
+
     } catch (err) {
-      // Verifica se o erro tem uma resposta e se o status é 400, 500 ou 403
+      console.log(err);
       if (err.response) {
-        const { status } = err.response;
+        const { status, data } = err.response;
         if (status === 400 || status === 403 || status === 500) {
-          setError(`Erro ${status}: ${err.response.data.message || err.message}`);
+          const message = data.message || 'Erro não especificado';
+          const errors = data.errors || [];
+          const details = data.details || 'Sem detalhes adicionais';
+          setError(`Erro ${status}: ${message}. ${details}`);
         } else {
           setError('Erro desconhecido. Tente novamente.');
         }
