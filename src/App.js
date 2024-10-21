@@ -2,6 +2,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from './components/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 import './App.css';
 
 export default function App() {
