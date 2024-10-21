@@ -1,0 +1,75 @@
+/* Estilização somente para a página com id "sobre" */
+#sobre {
+    text-align: center;
+}
+
+#sobre h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#sobre .ceo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#sobre .container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+#sobre .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sobre .box {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#sobre .sub-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#sobre .analista {
+    background-color: #1a76d2;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    width: 190px;
+    text-align: center;
+}
+
+#sobre .ceo {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#sobre .cfo, #sobre .marketing, #sobre .operacoes {
+    font-size: 16px;
+}
+
+#sobre p {
+    margin-bottom: 5px;
+}
+
+#sobre span {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+
