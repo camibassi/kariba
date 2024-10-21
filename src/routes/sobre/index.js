@@ -8,11 +8,10 @@ export default function Sobre()
     <div id="sobre">
       <MenuNavbar>
             <h1>
-                <img src="/images/favicon.png" alt="Logo" /> Como jogar o Kariba? <img src="/images/favicon.png" alt="Logo" />
+                <img src="/images/favicon.png" alt="Logo" /> Equipe Kariba <img src="/images/favicon.png" alt="Logo" />
             </h1>
         </MenuNavbar>
         <div class="organograma">
-            <h1>Equipe Kariba</h1>
             <div class="ceo-container">
                 <div class="box ceo">
                     <p>Alan Soares</p>
