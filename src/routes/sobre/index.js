@@ -27,7 +27,7 @@ export default function Sobre()
                     <div class="sub-boxes">
                         <div class="box analista">Camila Bassi</div>
                         <div class="box analista">Gabriel Rodrigues</div>
-                        <div class="box analista">Roger Oliveira</div>
+                        <div class="box analista">Roger Albuquerque</div>
                         <div class="box analista">Rosemeire Ramos</div>
                     </div>
                 </div>
@@ -39,6 +39,7 @@ export default function Sobre()
                         <div class="box analista">Alan Soares</div>
                         <div class="box analista">Amanda Pires</div>
                         <div class="box analista">Isaac Figueiredo</div>
+                        <div class="box analista">Roger Albuquerque</div>
                     </div>
                 </div>
                 <div class="col">
@@ -50,6 +51,7 @@ export default function Sobre()
                         <div class="box analista">Raul Cezar</div>
                         <div class="box analista">Roger Tioji</div>
                         <div class="box analista">Thaiany Paina</div>
+                        <div class="box analista">Roger Albuquerque</div>
                     </div>
                 </div>
             </div>

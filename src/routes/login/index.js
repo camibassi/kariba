@@ -4,6 +4,7 @@ import '../login/index.css'; // Estilos adicionais
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../components/AuthContext';
 import useRequest from '../../hooks/useRequest';
+import Loading from '../../components/Loading';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -39,6 +40,8 @@ const Login = () => {
     };
 
   return (
+    <>
+    {request.loading && <Loading />}
     <Container className="light-login-container">
       <Form className="light-login-form" noValidate validated={validated ?? false} ref={setRef}>
         <h2 className="light-title">Login</h2>
@@ -77,6 +80,7 @@ const Login = () => {
         </div>
       </Form>
     </Container>
+    </>
   );
 };
 

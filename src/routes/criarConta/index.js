@@ -3,6 +3,8 @@ import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
 import { useNavigate } from 'react-router-dom';
 import useRequest from '../../hooks/useRequest';
+import Loading from '../../components/Loading';
+import { FaReply } from 'react-icons/fa6';
 
 const CriarConta = () => {
   const [username, setUsername] = useState('');
@@ -20,13 +22,18 @@ const CriarConta = () => {
       url: 'user',
       method: 'POST',
       body: { username: username, password: passwordConfirm }
-    }, ({message}) => {
-      alert(message);
+    }, (response) => {
+      if(response.error)
+        return alert(response.error);
+
+      alert(response.message);
       navigate('../login')
     })
   }
 
-  return (
+  return (<>
+  
+  {request.loading && <Loading />}
     <Container className="light-login-container">
       <Form className="light-login-form">
         <h2 className="light-title">Kariba</h2>
@@ -64,8 +71,12 @@ const CriarConta = () => {
         </Form.Group>
 
         <Button variant="primary" type="button" className="light-button mt-3" onClick={criarConta}>Criar Conta</Button>
+        <Button variant="primary" type="button" className="light-button mt-3" onClick={() => {
+          navigate('/login')
+        }}><FaReply /> Voltar para o login</Button>
       </Form>
     </Container>
+    </>
   );
 };
 
