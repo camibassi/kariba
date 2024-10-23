@@ -58,7 +58,7 @@
     margin-bottom: 10px;
 }
 
-#sobre .cfo, #sobre .marketing, #sobre .operacoes {
+#sobre .front, #sobre .back, #sobre .bd {
     font-size: 16px;
 }
 

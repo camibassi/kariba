@@ -21,7 +21,7 @@ export default function Sobre()
             </div>
             <div class="container">
                 <div class="col">
-                    <div class="box cfo">
+                    <div class="box front">
                         <p>FRONT-END</p>
                     </div>
                     <div class="sub-boxes">
@@ -32,7 +32,7 @@ export default function Sobre()
                     </div>
                 </div>
                 <div class="col">
-                    <div class="box marketing">
+                    <div class="box back">
                         <p>BACK-END</p>
                     </div>
                     <div class="sub-boxes">
@@ -42,7 +42,7 @@ export default function Sobre()
                     </div>
                 </div>
                 <div class="col">
-                    <div class="box operacoes">
+                    <div class="box bd">
                         <p>BANCO DE DADOS</p>
                     </div>
                     <div class="sub-boxes">
