@@ -8,11 +8,10 @@ export default function Sobre()
     <div id="sobre">
       <MenuNavbar>
             <h1>
-                <img src="/images/favicon.png" alt="Logo" /> Como jogar o Kariba? <img src="/images/favicon.png" alt="Logo" />
+                <img src="/images/favicon.png" alt="Logo" /> Equipe Kariba <img src="/images/favicon.png" alt="Logo" />
             </h1>
         </MenuNavbar>
         <div class="organograma">
-            <h1>Equipe Kariba</h1>
             <div class="ceo-container">
                 <div class="box ceo">
                     <p>Alan Soares</p>
@@ -27,7 +26,7 @@ export default function Sobre()
                     <div class="sub-boxes">
                         <div class="box analista">Camila Bassi</div>
                         <div class="box analista">Gabriel Rodrigues</div>
-                        <div class="box analista">Roger Oliveira</div>
+                        <div class="box analista">Roger Albuquerque</div>
                         <div class="box analista">Rosemeire Ramos</div>
                     </div>
                 </div>
@@ -39,6 +38,7 @@ export default function Sobre()
                         <div class="box analista">Alan Soares</div>
                         <div class="box analista">Amanda Pires</div>
                         <div class="box analista">Isaac Figueiredo</div>
+                        <div class="box analista">Roger Albuquerque</div>
                     </div>
                 </div>
                 <div class="col">
@@ -50,6 +50,7 @@ export default function Sobre()
                         <div class="box analista">Raul Cezar</div>
                         <div class="box analista">Roger Tioji</div>
                         <div class="box analista">Thaiany Paina</div>
+                        <div class="box analista">Roger Albuquerque</div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ const useRequest = (initialState = null) => {
         url: 'https://nfba1cx8uf.execute-api.sa-east-1.amazonaws.com/production/' + url,
         method,
         data: body,
+        timeout: 15000,
         config,
       });
 
