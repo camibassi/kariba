@@ -3,56 +3,45 @@ import { useEffect, useState, useCallback } from 'react';
 const useWebSocket = (url) => {
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
-  const [gameState, setGameState] = useState({}); // Adicionar estado do jogo
-  const [isConnected, setIsConnected] = useState(false); // Adicionar flag para conexão
+  const [gameState, setGameState] = useState({});
+  const [connectionId, setConnectionId] = useState({});
+  const [isConnected, setIsConnected] = useState(false); 
 
-  // Conecta ao WebSocket quando o hook é usado
-  useEffect(() => {
-    const newSocket = new WebSocket(url); // Conecta ao WebSocket
+  const open = () => {
+    const newSocket = new WebSocket(url);
     setSocket(newSocket);
-
+  
     newSocket.onopen = () => {
       console.log("Conectado ao WebSocket");
       setIsConnected(true); // WebSocket conectado
     };
 
-    // Recebe mensagens do WebSocket
     newSocket.onmessage = (event) => {
       setMessages((prevMessages) => [...prevMessages, event.data]);
-      console.log(event);
-
-      // Atualiza estado do jogo se a mensagem for relevante
       const data = JSON.parse(event.data);
-      if (data.action === 'gameState') {
+
+      if (data.action === 'gameState') 
+      {
         setGameState(data.gameState);
+        setConnectionId(data.connectionId);
       }
     };
 
-    // Função de erro
     newSocket.onerror = (error) => {
       console.error('WebSocket Error: ', error);
     };
-
-    // Desconecta ao desmontar o componente
-    return () => {
-//      debugger
-      if (newSocket) {
-        newSocket.close();
-      }
-    }; 
-  }, [url]);
-
-  // Função para enviar mensagens
+  }
+  
   const sendMessage = useCallback(
     (message) => {
       if (socket && socket.readyState === WebSocket.OPEN) {
-        socket.send(message); // Envia mensagem ao WebSocket
+        socket.send(message); 
       }
     },
-    [socket] // Dependência de socket
+    [socket]
   );
 
-  // Função para fechar o WebSocket manualmente
+
   const closeSocket = useCallback(() => {
     if (socket) {
       socket.close();
@@ -65,9 +54,11 @@ const useWebSocket = (url) => {
   return {
     messages,
     sendMessage,
-    closeSocket, // Retorna a função de fechamento do WebSocket
-    gameState,   // Retorna o estado do jogo
-    isConnected, // Retorna o estado de conexão
+    closeSocket,
+    gameState, 
+    isConnected, 
+    open,
+    connectionId
   };
 };
 
