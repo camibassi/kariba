@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from './AuthContext'; // Ajuste o caminho conforme necessário
 import './styles/menuNavbar.css'; // Estilos adicionais
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const Menu = () => {
             <Nav.Link className="navbar-link" onClick={handleLogout}>
               <FaSignOutAlt className="navbar-icon" /> Sair
             </Nav.Link>
+            <Link className="icone" to="/user"><img src="images/icone50.png"/></Link>
+
           </Nav>
         </Container>
       </Navbar>

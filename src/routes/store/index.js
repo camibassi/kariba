@@ -5,6 +5,7 @@ import { AuthContext } from "../../components/AuthContext";
 import MenuNavbar from "../../components/MenuNavbar";
 import { FaLock, FaRegEye } from "react-icons/fa6";
 import { useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Store() {
   const { user } = useContext(AuthContext);
@@ -42,6 +43,8 @@ export default function Store() {
         <h1>
           <img src="/images/favicon.png" alt="Logo" /> Loja <img src="/images/favicon.png" alt="Logo" />
         </h1>
+        <Link className="icone" to="/user"><img src="images/icone50.png"/></Link>
+
       </MenuNavbar>
       <div id="fundo">
         <GroupCard 
@@ -52,8 +55,8 @@ export default function Store() {
             renderCardProps('alice', 'Alice'),
             renderCardProps('animais', 'Animais'),
             renderCardProps('criaturas', 'Criaturas'),
-            renderCardProps('heroes', 'Pokemón'),
-            renderCardProps('pokemon', 'Animais'),
+            renderCardProps('heroes', 'Heróis'),
+            renderCardProps('pokemon', 'Pokemon'),
             renderCardProps('folclore', 'Folclore'),
             renderCardProps('natal', 'Natal'),
             renderCardProps('halloween', 'Halloween'),
@@ -71,11 +74,11 @@ export default function Store() {
             renderBackgroundProps('natal', 'Natal'),
             renderBackgroundProps('natal2', 'Natal (2)')
             ]}  />
-          <GroupCard classNameDeck="imagemMenor" name="Músicas" itens={[
-            {name: 'Item 1', imgSrc: '/images/audio_icon.png'},
-            {name: 'Item 2', imgSrc: '/images/audio_icon.png'},
-            {name: 'Item 3', imgSrc: '/images/audio_icon.png'},
-            {name: 'Item 4', imgSrc: '/images/audio_icon.png'},
+          <GroupCard classNameDeck="imagemMenor" name="Ações" itens={[
+            {name: 'Item 1', imgSrc: ''},
+            {name: 'Item 2', imgSrc: ''},
+            {name: 'Item 3', imgSrc: ''},
+            {name: 'Item 4', imgSrc: ''},
           ]}  />
         </div>
       </div>

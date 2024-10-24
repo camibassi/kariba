@@ -1,15 +1,19 @@
 import './index.css'
 import MenuNavbar from "../../components/MenuNavbar";
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Sobre()
 {
   return(
     <div id="sobre">
-      <MenuNavbar>
+        <MenuNavbar>
+        <div id="navSobre" >    
             <h1>
                 <img src="/images/favicon.png" alt="Logo" /> Equipe Kariba <img src="/images/favicon.png" alt="Logo" />
             </h1>
+            <Link className="icone" to="/user"><img src="images/icone50.png"/></Link>
+        </div>
         </MenuNavbar>
         <div class="organograma">
             <div class="ceo-container">
