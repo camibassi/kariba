@@ -1,26 +1,28 @@
-body {
+#vencedor .container-fluid {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column; /* Alinha os elementos na vertical */
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('../../../public/images/fundovencedor.png'); /* Adicione a imagem de fundo com medalhas se disponível */
-    background-size: contain;
-    background-repeat: repeat;
+    width: 100vw;
+    background-image: url('../../../public/images/fundovencedor.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-h1 {
-    font-size: 70px;
+#vencedor h1 {
+    font-size: 100px;
     color: #0046e6;
     margin: 0;
     padding: 0;
 }
 
-p {
-    font-size: 24px;
+#vencedor p {
+    font-size: 25px;
     color: #ff6c42;
     margin-top: 10px;
     margin-bottom: 50px;
@@ -29,7 +31,7 @@ p {
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px; /* Espaçamento entre os botões */
 }
 
 .button {
