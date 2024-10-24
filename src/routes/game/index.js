@@ -8,10 +8,9 @@ import UseCartasMao from "../../hooks/useCartasMao";
 import MenuNavbar from "../../components/MenuNavbar";
 import CartasAdversario from "../../components/CartasAdversario";
 import useShowHide from "../../hooks/useShowHide";
-import useWebSocket from "../../hooks/useWebSocket";
 import useRequest from "../../hooks/useRequest";
-
-import "../game/index.css";
+import {useOutletContext} from 'react-router-dom'; 
+import '../game/index.css'
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -23,27 +22,22 @@ export default function Game() {
     const [meuPlacar, setMeuPlacar] = useState(0);
     const [placarAdversario, setPlacarAdversario] = useState(0); // Futuramente virá do backend.
     const [cartasGuardadas, setMinhasCartasGuardadas] = useState(0);
-
-    // Usando o hook useWebSocket
-    const { sendMessage, closeSocket, gameState, isConnected } = useWebSocket("wss://1na5t5v281.execute-api.sa-east-1.amazonaws.com/production");
-    // Usando o hook useRequest para realizar requisições HTTP
+    const context = useOutletContext();
+    const webSocket = context.webSocket;
     const { loading, error, sendRequest } = useRequest();
-
     const navigate = useNavigate();
 
-    // Função que inicia a partida
     async function iniciaPartida() {
-        sendMessage("Iniciar partida");
+        //sendMessage("Iniciar partida");
         visivel.apareceCarta();
         cartasMao.adicionarCarta();
         cartasMao.adicionarCarta();
-        setMostrarContador(true); // Exibe o contador ao iniciar a partida
+        setMostrarContador(true);
     }
 
     // Função que finaliza a partida
     async function finalizaPartida() {
-        sendMessage("Finalizar partida");
-        closeSocket(); // Fecha a conexão WebSocket
+        webSocket.closeSocket();
         navigate("/menu");
     }
 
@@ -53,9 +47,9 @@ export default function Game() {
         { texto: 'Encerrar', onClick: finalizaPartida, mostrar: visivel.status }
     ];
 
-    // Efeito para monitorar a conexão WebSocket
+    /*
     useEffect(() => {
-        if (isConnected) {
+        if (webSocket.isConnected) {
             sendRequest(
                 {
                     url: '/iniciarPartida',
@@ -66,14 +60,14 @@ export default function Game() {
                 }
             );
         }
-    }, [isConnected, sendRequest]);
+    }, [webSocket.isConnected, sendRequest]); */
 
     // Efeito para monitorar mudanças no estado do jogo (gameState)
     useEffect(() => {
-        if (gameState) {
-            console.log("Estado do jogo atualizado: ", gameState);
+        if (webSocket.gameState) {
+            console.log("Estado do jogo atualizado: ", webSocket.gameState);
         }
-    }, [gameState]);
+    }, [webSocket.gameState]);
 
     return (
         <div className="overflow-hidden">
