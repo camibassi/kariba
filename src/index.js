@@ -15,6 +15,7 @@ import CriarConta from './routes/criarConta';
 import RecuperarSenha from './routes/recuperarSenha';
 import WebSocketScreen from './routes/webSocketScreen';
 import Vencedor from './routes/vencedor/vencedor';
+import Perdedor from './routes/perdedor/perdedor';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,6 +36,7 @@ root.render(
             <Route path="regras" element={<Regras />} />
             <Route path="sobre" element={<Sobre />} />
             <Route path="vencedor" element={<Vencedor />} />
+            <Route path="perdedor" element={<Perdedor />} />
             <Route path="aguardando" element={<WebSocketScreen />} />
         </Route>
       </Routes>
