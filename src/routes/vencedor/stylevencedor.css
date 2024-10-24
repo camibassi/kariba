@@ -1,40 +1,59 @@
-#vencedor .container-fluid {
+/* Estilo para o GIF de confete */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../public/images/confetti.gif'); /* Caminho do GIF */
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1000; /* Garantir que o confete fique no topo */
+    pointer-events: none; /* Permite a interação com os botões abaixo */
+  }
+  
+  /* Estilo da página do vencedor */
+  #vencedor .container-fluid {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Alinha os elementos na vertical */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-image: url('../../../public/images/fundovencedor.png'); 
+    background-image: url('../../../public/images/fundovencedor.png'); /* Caminho do fundo */
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-#vencedor h1 {
+    z-index: 1; /* Certifique-se de que o fundo fique abaixo do confete */
+  }
+  
+  /* Estilos de texto */
+  #vencedor h1 {
     font-size: 100px;
     color: #0046e6;
     margin: 0;
     padding: 0;
-}
-
-#vencedor p {
+  }
+  
+  #vencedor p {
     font-size: 25px;
     color: #ff6c42;
     margin-top: 10px;
     margin-bottom: 50px;
-}
-
-.button-container {
+  }
+  
+  /* Botões */
+  .button-container {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Espaçamento entre os botões */
-}
-
-.button {
+    gap: 80px; /* Espaçamento entre os botões */
+    z-index: 1001;
+  }
+  
+  .button {
     background-color: #0046e6;
     color: white;
     padding: 20px 40px;
@@ -43,8 +62,9 @@
     font-weight: bold;
     border-radius: 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.button:hover {
+  }
+  
+  .button:hover {
     background-color: #003bb5;
-}
+  }
+  
