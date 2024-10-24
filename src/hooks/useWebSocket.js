@@ -3,7 +3,8 @@ import { useEffect, useState, useCallback } from 'react';
 const useWebSocket = (url) => {
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
-  const [gameState, setGameState] = useState({}); // Adicionar estado do jogo
+  const [gameState, setGameState] = useState({});
+  const [connectionId, setConnectionId] = useState({});
   const [isConnected, setIsConnected] = useState(false); 
 
   const open = () => {
@@ -20,7 +21,10 @@ const useWebSocket = (url) => {
       const data = JSON.parse(event.data);
 
       if (data.action === 'gameState') 
+      {
         setGameState(data.gameState);
+        setConnectionId(data.connectionId);
+      }
     };
 
     newSocket.onerror = (error) => {
@@ -53,7 +57,8 @@ const useWebSocket = (url) => {
     closeSocket,
     gameState, 
     isConnected, 
-    open
+    open,
+    connectionId
   };
 };
 

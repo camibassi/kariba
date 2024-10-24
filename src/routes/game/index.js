@@ -46,26 +46,13 @@ export default function Game() {
         { texto: 'Iniciar', onClick: iniciaPartida, mostrar: !visivel.status },
         { texto: 'Encerrar', onClick: finalizaPartida, mostrar: visivel.status }
     ];
-
-    /*
-    useEffect(() => {
-        if (webSocket.isConnected) {
-            sendRequest(
-                {
-                    url: '/iniciarPartida',
-                    method: 'POST',
-                },
-                (response) => {
-                    console.log('Dados recebidos:', response);
-                }
-            );
-        }
-    }, [webSocket.isConnected, sendRequest]); */
-
-    // Efeito para monitorar mudanças no estado do jogo (gameState)
+    
     useEffect(() => {
         if (webSocket.gameState) {
-            console.log("Estado do jogo atualizado: ", webSocket.gameState);
+            const placar = webSocket.gameState.score;
+            setMeuPlacar(placar.find(placar => placar.connectionId == webSocket.connectionId)?.collectedCards);
+            setPlacarAdversario(placar.find(placar => placar.connectionId != webSocket.connectionId)?.collectedCards);
+            
         }
     }, [webSocket.gameState]);
 
@@ -96,7 +83,9 @@ export default function Game() {
                 </div>
 
                 {/* Exibe o Contador condicionalmente */}
-                {mostrarContador && <Contador />}
+                {mostrarContador && <Contador 
+                    match={webSocket.gameState.match}
+                    currentPlayerConId={webSocket.connectionId}/>}
 
                 <Deck cartas={cartasMao} visibilidade={visivel} />
                 <Placar meuPlacar={meuPlacar} adversario={placarAdversario} />
