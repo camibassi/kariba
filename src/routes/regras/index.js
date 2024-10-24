@@ -1,6 +1,7 @@
 import './index.css'
 import MenuNavbar from "../../components/MenuNavbar";
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Regras()
 {
@@ -10,6 +11,8 @@ export default function Regras()
             <h1>
                 <img src="/images/favicon.png" alt="Logo" /> Como jogar o Kariba? <img src="/images/favicon.png" alt="Logo" />
             </h1>
+            <Link className="icone" to="/user"><img src="images/icone50.png"/></Link>
+
         </MenuNavbar>
         <Container fluid>
             <section>

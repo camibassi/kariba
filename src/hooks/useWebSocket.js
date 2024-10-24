@@ -35,7 +35,7 @@ const useWebSocket = (url) => {
 
     // Desconecta ao desmontar o componente
     return () => {
-      debugger
+//      debugger
       if (newSocket) {
         newSocket.close();
       }
