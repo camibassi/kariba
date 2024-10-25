@@ -1,0 +1,81 @@
+.iconePerfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.iconePerfil img {
+    display: block;
+    margin: 0 auto;
+}
+
+.iconePerfil h2 {
+    color: black;
+    font-weight: bold;
+}
+
+#userContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 60px;
+    margin-right: 60px;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#userEsq, #userDir {
+    flex: 1;
+    padding: 10px;
+    border-radius: 3%;
+}
+
+#userEsq, #userDir h2 {
+    color: black;
+    font-weight: bold;
+}
+
+#userEsq {
+    background-color: lightyellow;
+}
+
+#userDir {
+    background-color: lightyellow;
+}
+
+/* Novo estilo para alinhar imagem e botão */
+.mediaControl {
+    display: inline-flex;
+    align-items: center; /* Centraliza verticalmente a imagem e o botão */
+    gap: 10px; /* Espaçamento entre a imagem e o botão */
+    margin-left: 40px;
+    margin-top:20px;
+    margin-bottom:30px;
+}
+
+.mediaControl img {
+    width: 40px; /* Ajuste o tamanho da imagem, se necessário */
+    height: auto;
+}
+
+.mediaControl h3, #userEsq h2 {
+    color: black !important; /* O !important garante que este estilo tenha prioridade */
+    font-weight: bold;
+}
+
+#moeda {
+    width:30%;
+}
+
+#divMoeda{
+    background-color: rgba(204, 202, 202, 0.979);
+    padding: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left:5px;
+}
+
+#divMoeda2{
+    display: inline-block;
+}
