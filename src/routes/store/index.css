@@ -51,6 +51,10 @@ h3{
     width: 20vh;
 }
 
+.imagemMenorAcoes img{
+  height: 13vh;
+  width: auto;
+}
 .decks img:hover {
   transform: scale(1.1);
   cursor: pointer;
@@ -145,4 +149,8 @@ h3{
 
 .cardComponent.flip .card-inner {
   transform: rotateY(180deg);
+}
+
+.label{
+    margin-right: 10px;
 }

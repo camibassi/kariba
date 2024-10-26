@@ -74,9 +74,9 @@ export default function Store() {
             renderBackgroundProps('natal', 'Natal'),
             renderBackgroundProps('natal2', 'Natal (2)')
             ]}  />
-          <GroupCard classNameDeck="imagemMenor" name="Ações" itens={[
-            {name: 'Item 1', imgSrc: ''},
-            {name: 'Item 2', imgSrc: ''},
+          <GroupCard classNameDeck="imagemMenorAcoes" name="Ações" itens={[
+            {name: 'Carta coringa', imgSrc: 'images/9.png'},
+            {name: 'Trombeta', imgSrc: 'images/perfil.png'},
             {name: 'Item 3', imgSrc: ''},
             {name: 'Item 4', imgSrc: ''},
           ]}  />

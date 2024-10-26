@@ -5,6 +5,7 @@ import './index.css';
 import BotaoLigarDesligar from "../../hooks/useOnOff";
 import MenuNavbar from "../../components/MenuNavbar";
 import { Link } from "react-router-dom";
+import UpdateUserForm from "../../hooks/useAtualizaPerfil";
 
 export default function User() {
     const context = useOutletContext();
@@ -41,32 +42,18 @@ export default function User() {
                             <h3>Som</h3>
                             <BotaoLigarDesligar/>
                         </div>
-                    <h2>Ações</h2>
-                        <div className="mediaControl">
-                            <img src="images/cards/default/9.png"/>
-                            <h3>Carta coringa</h3>
-                            <BotaoLigarDesligar/>
+
+                        <div id='gifPerfil'>
+                            <img src="images/fant51.gif"/>
                         </div>
-                        <div className="mediaControl">
-                            <img src="images/perfil.png"/>
-                            <h3>Trombeta</h3>
-                            <BotaoLigarDesligar/>
-                        </div>
-                        <div className="mediaControl">
-                            <img src="images/play.png"/>
-                            <h3>Ação 3</h3>
-                            <BotaoLigarDesligar/>
-                        </div>
-                        <div className="mediaControl">
-                            <img src="images/audio.png"/>
-                            <h3>Ação 4</h3>
-                            <BotaoLigarDesligar/>
-                        </div>                        
+
                 </div>
 
                 <div id="userDir">
-                    <h2>Histórico de Pontuação</h2>
-            
+                    <h2>Atualizar perfil</h2>
+                        <div className="mediaControl">
+                            <UpdateUserForm/>
+                        </div>
                 </div>
             </div>
 

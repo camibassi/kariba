@@ -19,7 +19,7 @@ export default function BotaoLigarDesligar() {
                     fontWeight: 'bold',
                     border: 'none',
                     borderRadius: '20px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                 }}
             >
                 {ligado ? 'Desligar' : 'Ligar'}
