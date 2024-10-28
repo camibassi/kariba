@@ -29,6 +29,10 @@
     flex: 1;
     padding: 10px;
     border-radius: 3%;
+    max-height: 400px; /* Defina a altura conforme necessário */
+    overflow-y: auto;  /* Adiciona uma barra de rolagem vertical */
+    padding-right: 10px; /* Espaço para evitar sobreposição com a barra de rolagem */
+
 }
 
 #userEsq, #userDir h2 {
@@ -128,3 +132,4 @@ body, html {
 #gifPerfil img{
     width: 40%;
 }
+

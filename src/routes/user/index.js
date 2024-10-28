@@ -30,6 +30,33 @@ export default function User() {
             </div>
 
             <div id="userContainer">
+                <div id="userDir">
+                    <h2>Atualizar perfil</h2>
+                        <div className="mediaControl">
+                            <UpdateUserForm/>
+                        </div>
+            
+                </div>
+
+            </div>
+
+        </>
+    );
+}
+
+/*
+não remover! div da moeda, ainda verei onde vou colocar
+               <div id="divMoeda2">    
+                        <img id="moeda" src="images/moeda.png"/>
+                        <div id="divMoeda">
+                            R$ 0,00
+                        </div>
+                </div>
+*/
+
+/*
+não remover! se der para configurar audio, utilizarei essa parte
+
                 <div id="userEsq">
                     <h2>Configurações</h2>
                         <div className="mediaControl">
@@ -49,23 +76,4 @@ export default function User() {
 
                 </div>
 
-                <div id="userDir">
-                    <h2>Atualizar perfil</h2>
-                        <div className="mediaControl">
-                            <UpdateUserForm/>
-                        </div>
-                </div>
-            </div>
-
-        </>
-    );
-}
-
-/*
-               <div id="divMoeda2">    
-                        <img id="moeda" src="images/moeda.png"/>
-                        <div id="divMoeda">
-                            R$ 0,00
-                        </div>
-                </div>
 */
