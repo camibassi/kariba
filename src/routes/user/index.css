@@ -1,135 +1,122 @@
-.iconePerfil {
+/* Estilo para o componente User com tema de cores claras puxando para o laranja */
+body {
+    background: linear-gradient(135deg, #ffecd2, #ffac81);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 15px;
-}
+  }
 
-.iconePerfil img {
-    display: block;
-    margin: 0 auto;
-}
-
-.iconePerfil h2 {
-    color: black;
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .stat-title {
+    font-size: 1.5em;
+    color: #ff6f47;
     font-weight: bold;
-}
-
-#userContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 60px;
-    margin-right: 60px;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-#userEsq, #userDir {
-    flex: 1;
+    animation: pulse 2s infinite ease-in-out;
+  }
+  
+  .stat-badge {
+    font-size: 1.5em;
+    color: #ff6f47;
+    font-weight: bold;
+  }
+  
+  
+  .container-fluid {
+    color: #ff6f47;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .card {
+    background-color: #fff5e6;
+    border: 2px solid #ff9a5c;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px 5px rgba(255, 175, 75, 0.3);
+  }
+  
+  .profile-icon {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .iconePerfil h2 {
+    font-size: 2em;
+    color: #ff6f47;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .form-label {
+    color: #ff6f47;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    background-color: #fff0e1;
+    border: 2px solid #ff9a5c;
+    color: #ff6f47;
+    border-radius: 8px;
+  }
+  
+  .form-control::placeholder {
+    color: #ff9a5c;
+  }
+  
+  .stat-badge {
+    font-size: 1.5em;
+    color: #ff6f47;
+    font-weight: bold;
+  }
+  
+  button, .btn-primary {
+    background-color: #ff7f50;
+    border: none;
+    color: white;
+    font-size: 1.2em;
     padding: 10px;
-    border-radius: 3%;
-    max-height: 400px; /* Defina a altura conforme necessário */
-    overflow-y: auto;  /* Adiciona uma barra de rolagem vertical */
-    padding-right: 10px; /* Espaço para evitar sobreposição com a barra de rolagem */
-
-}
-
-#userEsq, #userDir h2 {
-    color: black;
-    font-weight: bold;
-}
-
-#userEsq {
-    background-color: lightyellow;
-}
-
-#userDir {
-    background-color: lightyellow;
-}
-
-/* Novo estilo para alinhar imagem e botão */
-.mediaControl {
-    display: inline-flex;
-    align-items: center; /* Centraliza verticalmente a imagem e o botão */
-    gap: 10px; /* Espaçamento entre a imagem e o botão */
-    margin-left: 70px;
-    margin-top:20px;
-    margin-bottom:30px;
-}
-
-.mediaControl img {
-    width: 40px; /* Ajuste o tamanho da imagem, se necessário */
-    height: auto;
-}
-
-.mediaControl h3, #userEsq h2 {
-    color: black !important; /* O !important garante que este estilo tenha prioridade */
-    font-weight: bold;
-}
-
-#moeda {
-    width:30%;
-}
-
-#divMoeda{
-    background-color: rgba(204, 202, 202, 0.979);
-    padding: 5px;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(255, 112, 75, 0.3);
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover, .btn-primary:hover {
+    background-color: #ff6b3b;
+  }
+  
+  .dropdown .p-dropdown {
+    color: #ff6f47;
+    background-color: #fff0e1;
+  }
+  
+  .dropdown .p-dropdown-panel {
+    border-color: #ff9a5c;
+  }
+  
+  /* Ícones de vitórias, derrotas e saldo */
+  .d-flex .text-warning {
+    color: #ff6f47;
+  }
+  
+  #divMoeda2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffecd2;
+    padding: 10px;
     border-radius: 10px;
-    display: inline-block;
-    margin-left:5px;
-}
-
-#divMoeda2{
-    display: inline-block;
-}
-
-
-.formulario {
-    display: flex;
-    align-items: center; /* Alinha os itens no centro horizontalmente */
-    margin-bottom: 10px;
- }
-  
-.label {
-    width: 150px; /* Define uma largura fixa para alinhar os labels */
     font-weight: bold;
- }
-  
- input[type="text"],
- input[type="password"] {
-    width: 300px; /* Define a largura fixa para alinhar as caixas de preenchimento */
-    padding: 8px;
-    margin-left: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
- }
-  
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* Centraliza o contêiner inteiro */
-body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 1.1em;
+    color: #ff6f47;
   }
   
-  /* Estilos específicos para o gif */
-  #gifPerfil {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-    
-
-#gifPerfil img{
-    width: 40%;
-}
-
