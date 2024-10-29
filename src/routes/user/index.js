@@ -25,7 +25,7 @@ export default function User() {
     const [selectedCountry, setSelectedCountry] = useState(null);
 
     return(   
-        <>
+        <div id="user">
             <MenuNavbar>
                 <Container fluid className="text-center mt-3">
                     <h1>
@@ -101,7 +101,7 @@ export default function User() {
                     </Form>
                 </Card>
             </Container>
-        </>
+        </div>
     );
 }
 
