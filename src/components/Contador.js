@@ -1,12 +1,26 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Contador() {
+export default function Contador({ match, currentPlayerConId }) {
   const [timeLeft, setTimeLeft] = useState(15); // Contador inicial de 15 segundos
-  const [message, setMessage] = useState('Sua vez'); // Estado para controlar as mensagens
+  const [message, setMessage] = useState('Aguarde sua vez'); // Estado para controlar as mensagens
   const [isCounting, setIsCounting] = useState(false); // Controle do estado de contagem
 
   useEffect(() => {
     let timer;
+
+    const isPlayer1 = match.player1conId === currentPlayerConId;
+    const isPlayer2 = match.player2conId === currentPlayerConId;
+
+    // Verifica o estado do jogo e se o jogador atual está jogando
+    if (match.gameState === 'in progress') {
+      if ((isPlayer1 && match.player1State === 'playing') || 
+          (isPlayer2 && match.player2State === 'playing')) {
+        setMessage('Sua vez');
+      } else {
+        setMessage('Aguarde sua vez');
+        setIsCounting(false); // Para a contagem se não for a vez do jogador
+      }
+    }
 
     switch (message) {
       case 'Sua vez':
@@ -33,15 +47,8 @@ export default function Contador() {
         // Exibe "Tempo esgotado" por 2 segundos
         timer = setTimeout(() => {
           setMessage('Aguarde sua vez');
-        }, 2000);
-        break;
-
-      case 'Aguarde sua vez':
-        // Reinicia o ciclo após 3 segundos
-        timer = setTimeout(() => {
-          setMessage('Sua vez');
           setTimeLeft(15); // Reseta o contador
-        }, 3000);
+        }, 2000);
         break;
 
       default:
@@ -53,7 +60,7 @@ export default function Contador() {
       clearTimeout(timer);
       clearInterval(timer);
     };
-  }, [message, timeLeft, isCounting]);
+  }, [match, currentPlayerConId, message, timeLeft, isCounting]);
 
   return (
     <div

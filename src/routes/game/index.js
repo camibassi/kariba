@@ -46,7 +46,7 @@ export default function Game() {
         { texto: 'Iniciar', onClick: iniciaPartida, mostrar: !visivel.status },
         { texto: 'Encerrar', onClick: finalizaPartida, mostrar: visivel.status }
     ];
-    
+
     useEffect(() => {
         if (webSocket.gameState) {
             const placar = webSocket.gameState.score;
@@ -69,7 +69,7 @@ export default function Game() {
                     cartas={cartasMao}
                     guardarCartas={(numero) => {
                         setMinhasCartasGuardadas(cartasGuardadas + numero);
-                        setMeuPlacar(meuPlacar + 1);
+                        setMeuPlacar(cartasGuardadas + numero);
                     }} />
 
                 <div id="botoes">

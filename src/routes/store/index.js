@@ -16,10 +16,10 @@ export default function Store() {
       item: item,
       verso: true,
       imgSrc: `/images/cards/${item}/1.png`,
-      styleSrc: (context.backgroundCard === item || !user.decksPermitidos.includes(item)) ? 
+      styleSrc: (context.backgroundCard === item || !user.permissoes?.deck.includes(item)) ? 
       { opacity: '50%' } : {},
       onClick: () => context.setBackgroundCard(item),
-      children: (!user.decksPermitidos.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
+      children: (!user.permissoes?.deck.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
                 (context.backgroundCard === item ? <FaRegEye style={{ fontSize: '2rem', color: 'white' }} /> : null))
     };
   };
@@ -29,10 +29,10 @@ export default function Store() {
       name: nome,
       item: item,
       imgSrc: `/images/${item}.png`,
-      styleSrc: (context.background === item || !user.backgroundsPermitidos.includes(item)) ? 
+      styleSrc: (context.background === item || !user.permissoes?.background.includes(item)) ? 
       { opacity: '50%' } : {},
       onClick: () => context.setBackground(`/images/${item}.png`),
-      children: (!user.backgroundsPermitidos.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
+      children: (!user.permissoes?.background.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
                 (context.background === `/images/${item}.png` ? <FaRegEye style={{ fontSize: '2rem', color: 'white' }} /> : null))
     };
   };
