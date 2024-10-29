@@ -7,17 +7,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const login = (userData) => {
-    setUser({...userData, ...{
-      decksPermitidos: [
-        'default',
-        'alice'
-      ],
-      backgroundsPermitidos: [
-        'natureza',
-        'natureza2',
-        'deserto',
-      ]
-    }});
+    setUser(userData);
   };
 
   const logout = () => {
