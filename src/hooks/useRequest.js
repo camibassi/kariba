@@ -22,7 +22,7 @@ const useRequest = (initialState = null) => {
       });
 
       const data = JSON.parse(response.data.body);
-
+      
       const result = callback ? callback(data) : data;
       setData(result);
 

@@ -17,8 +17,9 @@ export default function Store() {
   const [selectedItem, setSelectedItem] = useState(null);
   const toast = useRef(null); 
   const request = useRequest(user);
+  const { login } = useContext(AuthContext); 
 
-  const showConfirm = (item) => {
+  const showConfirm = (item, origem) => {
     if (user.saldo < 50) {
       toast.current.show({
         severity: "error",
@@ -39,18 +40,41 @@ export default function Store() {
       icon: "pi pi-exclamation-triangle",
       acceptLabel: "Sim",
       rejectLabel: "Não",
-      accept: () => handlePurchase(item),
+      accept: () => handlePurchase(item, origem),
     });
   };
 
-  const handlePurchase = (item) => {
+  const handlePurchase = (item, permissao) => {
+
+    let permissoes = structuredClone(user.permissoes);
+
+    if(user.permissoes[permissao]?.length)
+      permissoes[permissao].push(item);
+
     request.sendRequest({
       url: 'user',
-      method: 'PATCH',
-      body: createJsonPatch({
-        saldo: (user.saldo - 50),
+      method: 'PUT',
+      body: {
+        username: user.username,
+        updateFields: {...user, ... {
+          username: undefined,
+          saldo: user.saldo - 50,
+          permissoes: permissoes
+        }}
+      },
+    }, (response) => {
+      request.sendRequest({
+        url:  `user?username=${user.username}&password=${user.password}`,
+      }, (objUser) => {
+        login(objUser.details);
+      });
 
-      })
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso",
+        detail: `Você comprou o item ${item} por 50 moedas!`,
+        life: 3000,
+      });
     })
   };
 
@@ -62,7 +86,7 @@ export default function Store() {
       verso: true,
       imgSrc: `/images/cards/${item}/1.png`,
       styleSrc: (context.backgroundCard === item || isLocked) ? { opacity: "50%" } : {},
-      onClick: () => isLocked ? showConfirm(nome) : context.setBackgroundCard(item),
+      onClick: () => isLocked ? showConfirm(item, 'deck') : context.setBackgroundCard(item),
       children: isLocked ? (
         <FaLock style={{ fontSize: "2rem", color: "white" }} />
       ) : (
@@ -78,7 +102,7 @@ export default function Store() {
       item: item,
       imgSrc: `/images/${item}.png`,
       styleSrc: (context.background === item || isLocked) ? { opacity: "50%" } : {},
-      onClick: () => isLocked ? showConfirm(nome) : context.setBackground(`/images/${item}.png`),
+      onClick: () => isLocked ? showConfirm(item, 'background') : context.setBackground(`/images/${item}.png`),
       children: isLocked ? (
         <FaLock style={{ fontSize: "2rem", color: "white" }} />
       ) : (
@@ -89,7 +113,7 @@ export default function Store() {
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <Toast ref={toast} /> {/* Componente Toast */}
+      <Toast ref={toast} position="center" />
       <ConfirmDialog />
       <MenuNavbar>
         <h1>
