@@ -1,85 +1,146 @@
 import "../store/index.css";
 import GroupCard from "../../components/GroupCard";
-import { useContext } from "react";
+import { useContext, useState, useRef } from "react";
 import { AuthContext } from "../../components/AuthContext";
 import MenuNavbar from "../../components/MenuNavbar";
-import { FaLock, FaRegEye } from "react-icons/fa6";
+import { FaCoins, FaLock, FaRegEye } from "react-icons/fa6";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { Toast } from 'primereact/toast';
+import useRequest from "../../hooks/useRequest";
+import createJsonPatch from "../../utils/createJsonPatch";
 
 export default function Store() {
   const { user } = useContext(AuthContext);
   const context = useOutletContext();
+  const [selectedItem, setSelectedItem] = useState(null);
+  const toast = useRef(null); 
+  const request = useRequest(user);
+
+  const showConfirm = (item) => {
+    if (user.saldo < 50) {
+      toast.current.show({
+        severity: "error",
+        summary: "Saldo Insuficiente",
+        detail: `Você possui ${user.saldo} moedas, mas o item custa 50 moedas.`,
+        life: 3000,
+      });
+      return;
+    }
+    setSelectedItem(item);
+    confirmDialog({
+      message: (
+        <>
+          Você possui {user.saldo} <FaCoins />. Deseja realmente comprar o item {item} por 50 <FaCoins />?
+        </>
+      ),
+      header: "Confirmação de Compra",
+      icon: "pi pi-exclamation-triangle",
+      acceptLabel: "Sim",
+      rejectLabel: "Não",
+      accept: () => handlePurchase(item),
+    });
+  };
+
+  const handlePurchase = (item) => {
+    request.sendRequest({
+      url: 'user',
+      method: 'PATCH',
+      body: createJsonPatch({
+        saldo: (user.saldo - 50),
+
+      })
+    })
+  };
+
   const renderCardProps = (item, nome) => {
+    const isLocked = !user.permissoes?.deck.includes(item);
     return {
       name: nome,
       item: item,
       verso: true,
       imgSrc: `/images/cards/${item}/1.png`,
-      styleSrc: (context.backgroundCard === item || !user.permissoes?.deck.includes(item)) ? 
-      { opacity: '50%' } : {},
-      onClick: () => context.setBackgroundCard(item),
-      children: (!user.permissoes?.deck.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
-                (context.backgroundCard === item ? <FaRegEye style={{ fontSize: '2rem', color: 'white' }} /> : null))
+      styleSrc: (context.backgroundCard === item || isLocked) ? { opacity: "50%" } : {},
+      onClick: () => isLocked ? showConfirm(nome) : context.setBackgroundCard(item),
+      children: isLocked ? (
+        <FaLock style={{ fontSize: "2rem", color: "white" }} />
+      ) : (
+        context.backgroundCard === item && <FaRegEye style={{ fontSize: "2rem", color: "white" }} />
+      ),
     };
   };
 
   const renderBackgroundProps = (item, nome) => {
+    const isLocked = !user.permissoes?.background.includes(item);
     return {
       name: nome,
       item: item,
       imgSrc: `/images/${item}.png`,
-      styleSrc: (context.background === item || !user.permissoes?.background.includes(item)) ? 
-      { opacity: '50%' } : {},
-      onClick: () => context.setBackground(`/images/${item}.png`),
-      children: (!user.permissoes?.background.includes(item) ? <FaLock style={{ fontSize: '2rem', color: 'white' }} /> : 
-                (context.background === `/images/${item}.png` ? <FaRegEye style={{ fontSize: '2rem', color: 'white' }} /> : null))
+      styleSrc: (context.background === item || isLocked) ? { opacity: "50%" } : {},
+      onClick: () => isLocked ? showConfirm(nome) : context.setBackground(`/images/${item}.png`),
+      children: isLocked ? (
+        <FaLock style={{ fontSize: "2rem", color: "white" }} />
+      ) : (
+        context.background === `/images/${item}.png` && <FaRegEye style={{ fontSize: "2rem", color: "white" }} />
+      ),
     };
   };
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div style={{ overflow: "hidden" }}>
+      <Toast ref={toast} /> {/* Componente Toast */}
+      <ConfirmDialog />
       <MenuNavbar>
         <h1>
           <img src="/images/favicon.png" alt="Logo" /> Loja <img src="/images/favicon.png" alt="Logo" />
         </h1>
-        <Link className="icone" to="/user"><img src="images/icone50.png"/></Link>
-
+        <Link className="icone" to="/user">
+          <img src="images/icone50.png" />
+        </Link>
       </MenuNavbar>
       <div id="fundo">
-        <GroupCard 
+        <GroupCard
           className="decks-container-full"
           name="Decks"
           itens={[
-            renderCardProps('default', 'Padrão'),
-            renderCardProps('alice', 'Alice'),
-            renderCardProps('animais', 'Animais'),
-            renderCardProps('criaturas', 'Criaturas'),
-            renderCardProps('heroes', 'Heróis'),
-            renderCardProps('pokemon', 'Pokemon'),
-            renderCardProps('folclore', 'Folclore'),
-            renderCardProps('natal', 'Natal'),
-            renderCardProps('halloween', 'Halloween'),
-            renderCardProps('halloween2', 'Halloween ')
+            renderCardProps("default", "Padrão"),
+            renderCardProps("alice", "Alice"),
+            renderCardProps("animais", "Animais"),
+            renderCardProps("criaturas", "Criaturas"),
+            renderCardProps("heroes", "Heróis"),
+            renderCardProps("pokemon", "Pokemon"),
+            renderCardProps("folclore", "Folclore"),
+            renderCardProps("natal", "Natal"),
+            renderCardProps("halloween", "Halloween"),
+            renderCardProps("halloween2", "Halloween (2)"),
           ]}
         />
         <div className="containerCentral">
-          <GroupCard classNameDeck="imagemMenor" name="Planos de Fundo" itens={[
-            renderBackgroundProps('natureza', 'Natureza'),
-            renderBackgroundProps('natureza3', 'Natureza (2)'),
-            renderBackgroundProps('deserto', 'Deserto'),
-            renderBackgroundProps('fundoRegras', 'Mata'),
-            renderBackgroundProps('heroes', 'Heróis'),
-            renderBackgroundProps('halloween', 'Halloween'),
-            renderBackgroundProps('natal', 'Natal'),
-            renderBackgroundProps('natal2', 'Natal (2)')
-            ]}  />
-          <GroupCard classNameDeck="imagemMenorAcoes" name="Ações" itens={[
-            {name: 'Carta coringa', imgSrc: 'images/9.png'},
-            {name: 'Trombeta', imgSrc: 'images/perfil.png'},
-            {name: 'Item 3', imgSrc: ''},
-            {name: 'Item 4', imgSrc: ''},
-          ]}  />
+          <GroupCard
+            classNameDeck="imagemMenor"
+            name="Planos de Fundo"
+            itens={[
+              renderBackgroundProps("natureza", "Natureza"),
+              renderBackgroundProps("natureza3", "Natureza (2)"),
+              renderBackgroundProps("deserto", "Deserto"),
+              renderBackgroundProps("fundoRegras", "Mata"),
+              renderBackgroundProps("heroes", "Heróis"),
+              renderBackgroundProps("halloween", "Halloween"),
+              renderBackgroundProps("natal", "Natal"),
+              renderBackgroundProps("natal2", "Natal (2)"),
+            ]}
+          />
+          <GroupCard
+            classNameDeck="imagemMenorAcoes"
+            name="Ações"
+            itens={[
+              { name: "Carta coringa", imgSrc: "images/9.png" },
+              { name: "Trombeta", imgSrc: "images/perfil.png" },
+              { name: "Item 3", imgSrc: "" },
+              { name: "Item 4", imgSrc: "" },
+            ]}
+          />
         </div>
       </div>
     </div>
