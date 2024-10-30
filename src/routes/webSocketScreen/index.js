@@ -11,7 +11,13 @@ function WebSocketScreen()
   const [foundPlayer, setFoundPlayer] = useState(false); 
   const navigate = useNavigate(); 
 
-  // Monitora se o WebSocket conectou e recebeu mensagens
+  // Função que finaliza a partida
+      async function finalizaPartida() {
+        webSocket.closeSocket();
+        navigate("/menu");
+    }
+
+    // Monitora se o WebSocket conectou e recebeu mensagens
   useEffect(() => {
 
     if (webSocket.messages.length > 0) {
@@ -25,6 +31,26 @@ function WebSocketScreen()
       return () => clearTimeout(timer);
     }
   }, [webSocket.messages, navigate]);
+
+
+  
+  useEffect(() => {
+    const handleBeforeUnload = async () => {
+      await finalizaPartida();
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+  async function finalizaPartida() {
+    webSocket.closeSocket();
+    navigate("/menu");
+  }
+
 
   return (
     <div className="websocket-container">
