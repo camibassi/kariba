@@ -3,23 +3,20 @@ import { useNavigate, useOutletContext } from 'react-router-dom'; // Importa o h
 import useWebSocket from '../../hooks/useWebSocket'; // Importa o hook personalizado
 import './index.css';
 
-function WebSocketScreen() 
-{
+function WebSocketScreen() {
   const context = useOutletContext();
   const webSocket = context.webSocket;
   const [isWaiting, setIsWaiting] = useState(true);
   const [foundPlayer, setFoundPlayer] = useState(false); 
   const navigate = useNavigate(); 
 
-  // Função que finaliza a partida
-      async function finalizaPartida() {
-        webSocket.closeSocket();
-        navigate("/menu");
-    }
+  async function finalizaPartida() {
+    webSocket.closeSocket();
+    navigate("/menu");
+  }
 
-    // Monitora se o WebSocket conectou e recebeu mensagens
+  // Monitora se o WebSocket conectou e recebeu mensagens
   useEffect(() => {
-
     if (webSocket.messages.length > 0) {
       setIsWaiting(false);
       setFoundPlayer(true);
@@ -32,8 +29,6 @@ function WebSocketScreen()
     }
   }, [webSocket.messages, navigate]);
 
-
-  
   useEffect(() => {
     const handleBeforeUnload = async () => {
       await finalizaPartida();
@@ -46,12 +41,6 @@ function WebSocketScreen()
     };
   }, []);
 
-  async function finalizaPartida() {
-    webSocket.closeSocket();
-    navigate("/menu");
-  }
-
-
   return (
     <div className="websocket-container">
       {isWaiting ? (
@@ -60,6 +49,10 @@ function WebSocketScreen()
         <h1 className="loading-text">Jogador encontrado! Conectando-se à partida...</h1>
       ) : null // Não exibe a última mensagem
       }
+      {/* Botão para desistir de esperar */}
+      <button className="desist-button" onClick={finalizaPartida}>
+        Desistir de esperar
+      </button>
     </div>
   );
 }

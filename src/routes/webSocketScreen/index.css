@@ -6,8 +6,26 @@
     background-image: url('../../../public/images/natureza.png'); /* Certifique-se de que o caminho da imagem está correto */
     background-size: cover;
     background-position: center;
+    flex-direction: column;
     position: relative; /* Para criar uma sobreposição opaca */
   }
+  .desist-button {
+    margin-top: 20px; /* Espaçamento acima do botão */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 1.5rem; /* Tamanho da fonte */
+    font-family: 'Roboto', sans-serif; /* Fonte */
+    color: #fff; /* Cor do texto */
+    background-color: #d9534f; /* Cor de fundo (vermelho) */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    z-index: 2; /* Coloca o botão acima da sobreposição */
+}
+
+.desist-button:hover {
+    background-color: #c9302c; /* Cor de fundo ao passar o mouse */
+}
+
   
   .websocket-container::before {
     content: '';

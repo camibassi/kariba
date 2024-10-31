@@ -49,7 +49,7 @@ export default function Game() {
 
     useEffect(() => {
         if (webSocket.gameState) {
-            const placar = webSocket.gameState.score;
+            const placar = webSocket.gameState.score.players;
             setMeuPlacar(placar.find(placar => placar.connectionId == webSocket.connectionId)?.collectedCards);
             setPlacarAdversario(placar.find(placar => placar.connectionId != webSocket.connectionId)?.collectedCards);
             
