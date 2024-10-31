@@ -54,14 +54,10 @@ export default function Store() {
     request.sendRequest({
       url: 'user',
       method: 'PUT',
-      body: {
-        username: user.username,
-        updateFields: {...user, ... {
-          username: undefined,
+      body: {...user, ... {
           saldo: user.saldo - 50,
           permissoes: permissoes
-        }}
-      },
+        }},
     }, (response) => {
       request.sendRequest({
         url:  `user?username=${user.username}&password=${user.password}`,

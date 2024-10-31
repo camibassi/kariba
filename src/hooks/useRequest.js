@@ -6,11 +6,21 @@ const useRequest = (initialState = null) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const onChange = (event) => {
+      const name = event.target.name;
+      const value = event.target.value;
+      setData(values => ({ ...values, [name]: value }))
+  }
+
   const sendRequest = useCallback(async (settings = {}, callback = null) => {
-    const { url, method = 'GET', body = null, config = {} } = settings;
+    const { url, method = 'GET', config = {} } = settings;
+    let { body = null } = settings;
 
     setLoading(true);
     setError(null);
+
+   // if(config.put)
+ //     body = { username: body.username, updateFields: {...body, ...{username: null}}}
 
     try {
       const response = await axios({
@@ -25,6 +35,7 @@ const useRequest = (initialState = null) => {
       
       const result = callback ? callback(data) : data;
       setData(result);
+      return result;
 
     } catch (err) {
       console.log(err);
@@ -46,7 +57,7 @@ const useRequest = (initialState = null) => {
     }
   }, []);
 
-  return { data, loading, error, sendRequest };
+  return { data, loading, error, sendRequest, onChange, setData };
 };
 
 export default useRequest;

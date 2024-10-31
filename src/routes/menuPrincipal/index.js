@@ -22,7 +22,7 @@ export default function MenuPrincipal() {
             <header className="header">
                 <div className="headline">
                     <div className="rounded-pill bg-secondary">
-                        <h2>BEM VINDO, {user.username?.toUpperCase()}!
+                        <h2>BEM VINDO, {user.nome?.toUpperCase() || user.username?.toUpperCase()}!
                             <br/>
                         VOCÊ ACHOU O MELHOR 
                         <br/> JOGO DE CARTAS</h2>
