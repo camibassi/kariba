@@ -7,7 +7,7 @@ import MenuNavbar from "../../components/MenuNavbar";
 import UpdateUserForm from "../../hooks/useAtualizaPerfil";
 import { Button, Form, Row, Col, Container, Card } from "react-bootstrap";
 import { Dropdown } from 'primereact/dropdown';
-import { FaCoins } from "react-icons/fa"; // Ícone para o saldo de moedas
+import { FaCoins, FaEye, FaEyeSlash } from "react-icons/fa"; // Importação dos ícones de olho
 import { BsFillPersonFill } from "react-icons/bs";
 import useRequest from "../../hooks/useRequest";
 import Loading from "../../components/Loading";
@@ -15,13 +15,13 @@ import ReactInputMask from "react-input-mask";
 
 export default function User() {
     const countryOptions = [
-        { label: "Brazil", value: "Brazil" },
-        { label: "United States", value: "United States" },
-        { label: "Germany", value: "Germany" },
+        { label: "Brasil", value: "Brasil" },
+        { label: "Estados Unidos", value: "Estados Unidos" },
+        { label: "Alemanha", value: "Alemanha" },
         { label: "India", value: "India" },
-        { label: "Japan", value: "Japan" }
+        { label: "Japão", value: "Japão" }
     ];
-    
+
     const { login } = useContext(AuthContext);
     const { user } = useContext(AuthContext);
     const [isEditingSaldo, setIsEditingSaldo] = useState(false);
@@ -29,7 +29,6 @@ export default function User() {
     const toggleEditingSaldo = () => setIsEditingSaldo(!isEditingSaldo);
     const handleSaldoChange = (e) => setSaldo(e.target.value);
     const handleSaldoBlur = () => setIsEditingSaldo(false);
-
 
     const salvar = () => {
         sendRequest({
@@ -39,7 +38,7 @@ export default function User() {
         }, async () => 
         {
             return await sendRequest({
-                url: `user?username=${user.username}&password=${user.password}`,
+                url: `user?username=${data.username}&password=${data.password}`,
             }, (responseUser) => {
                 login(responseUser.details);
                 return responseUser.details;
@@ -49,6 +48,9 @@ export default function User() {
 
     const { onChange, sendRequest, data, loading } = useRequest(user);
     const [selectedCountry, setSelectedCountry] = useState(null);
+    const [showPassword, setShowPassword] = useState(false); // Estado para visibilidade da senha
+
+    const togglePasswordVisibility = () => setShowPassword(!showPassword);
 
     return(   
         <div id="user">
@@ -94,7 +96,22 @@ export default function User() {
                         </Row>
 
                         <Row>
-                            <Col md={6}>
+                            <Col md={3}>
+                                <Form.Group className="mb-3 password-container" controlId="formPassword">
+                                    <Form.Label>Senha</Form.Label>
+                                    <Form.Control 
+                                        name="password" 
+                                        onChange={onChange} 
+                                        value={data.password} 
+                                        type={showPassword ? "text" : "password"} 
+                                        placeholder="Altere sua senha..." 
+                                    />
+                                    <div className="eye-icon" onClick={togglePasswordVisibility}>
+                                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                    </div>
+                                </Form.Group>
+                            </Col>
+                            <Col md={3}>
                                 <Form.Group className="mb-3" controlId="formDataNascimento">
                                     <Form.Label>Data de Nascimento</Form.Label>
                                     <Form.Control as={ReactInputMask} mask="**/**/****"
@@ -155,28 +172,3 @@ export default function User() {
         </div>
     );
 }
-
-/*
-não remover! se der para configurar audio, utilizarei essa parte
-
-                <div id="userEsq">
-                    <h2>Configurações</h2>
-                        <div className="mediaControl">
-                            <img src="images/play.png"/>
-                            <h3>Música</h3>
-                            <BotaoLigarDesligar/>
-                        </div>
-                        <div className="mediaControl">
-                            <img src="images/audio.png"/>
-                            <h3>Som</h3>
-                            <BotaoLigarDesligar/>
-                        </div>
-
-                        <div id='gifPerfil'>
-                            <img src="images/fant51.gif"/>
-                        </div>
-
-                </div>
-
-*/
-
