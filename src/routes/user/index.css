@@ -108,6 +108,19 @@
     color: #333;
 }
 
+.password-container {
+  position: relative;
+}
+
+.password-container .eye-icon {
+  position: absolute;
+  right: 10px; 
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer; 
+  color: #ff6f47; 
+}
+
   
   /* Ícones de vitórias, derrotas e saldo */
   #user .d-flex .text-warning {
