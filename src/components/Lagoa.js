@@ -1,7 +1,6 @@
 // Lagoa.js
 import React from 'react';
 import Pilha from './Pilha';
-import useBoard from '../hooks/useBoard';
 
 export default function Lagoa(props) {
   return (
@@ -19,7 +18,8 @@ export default function Lagoa(props) {
           { id: 7, img: "images/cards/default/7.png" },
           { id: 8, img: "images/cards/default/8.png" },
         ].map(item => <Pilha guardarCartas={props.guardarCartas}
-          cartas={props.cartas} value={item} id={`pilha${item.id}`} board={props.board}/>)}
+          cartas={props.cartas} connectionId={props.connectionId} gameId={props.gameId}
+          value={item} id={`pilha${item.id}`} board={props.board}/>)}
       </div>
     </div>
   );

@@ -3,8 +3,6 @@ import Lagoa from "../../components/Lagoa";
 import Mao from "../../components/Mao";
 import Placar from "../../components/Placar";
 import Contador from "../../components/Contador";
-import useBoard from "../../hooks/useBoard";
-import UseCartasMao from "../../hooks/useCartasMao";
 import MenuNavbar from "../../components/MenuNavbar";
 import CartasAdversario from "../../components/CartasAdversario";
 import useShowHide from "../../hooks/useShowHide";
@@ -15,10 +13,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Game() {
-    const board = useBoard();
     const visivel = useShowHide();
     const [mostrarContador, setMostrarContador] = useState(false);
-    const cartasMao = UseCartasMao({ setContador: setMostrarContador });
     const [meuPlacar, setMeuPlacar] = useState(0);
     const [placarAdversario, setPlacarAdversario] = useState(0); // Futuramente virá do backend.
     const [cartasGuardadas, setMinhasCartasGuardadas] = useState(0);
@@ -26,12 +22,10 @@ export default function Game() {
     const webSocket = context.webSocket;
     const { loading, error, sendRequest } = useRequest();
     const navigate = useNavigate();
+    const [cartas, setCartas] = useState([]);
 
     async function iniciaPartida() {
-        //sendMessage("Iniciar partida");
         visivel.apareceCarta();
-        cartasMao.adicionarCarta();
-        cartasMao.adicionarCarta();
         setMostrarContador(true);
     }
 
@@ -52,7 +46,7 @@ export default function Game() {
             const placar = webSocket.gameState.score.players;
             setMeuPlacar(placar.find(placar => placar.connectionId == webSocket.connectionId)?.collectedCards);
             setPlacarAdversario(placar.find(placar => placar.connectionId != webSocket.connectionId)?.collectedCards);
-            
+            setCartas(webSocket.gameState.deck.players.find(cartas => cartas.connectionId  == webSocket.connectionId)?.deck);
         }
     }, [webSocket.gameState]);
 
@@ -65,8 +59,10 @@ export default function Game() {
             </MenuNavbar>
             <div className="position-relative" style={{ height: '90vh' }}>
 
-                <Lagoa board={board}
-                    cartas={cartasMao}
+                <Lagoa board={webSocket.gameState.board.positions}
+                    cartas={cartas}
+                    connectionId={webSocket.connectionId}
+                    gameId={webSocket.gameId}
                     guardarCartas={(numero) => {
                         setMinhasCartasGuardadas(cartasGuardadas + numero);
                         setMeuPlacar(cartasGuardadas + numero);
@@ -87,9 +83,9 @@ export default function Game() {
                     match={webSocket.gameState.match}
                     currentPlayerConId={webSocket.connectionId}/>}
 
-                <Deck cartas={cartasMao} visibilidade={visivel} />
+                <Deck cartas={cartas} visibilidade={visivel} />
                 <Placar meuPlacar={meuPlacar} adversario={placarAdversario} />
-                <Mao cartas={cartasMao} board={board} />
+                <Mao cartas={cartas} board={webSocket.gameState.board} />
                 <CartasAdversario visibilidade={visivel} />
             </div>
 

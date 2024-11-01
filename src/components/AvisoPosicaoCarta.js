@@ -10,7 +10,6 @@ export default function Carta(props)
     const backgroundCard = useOutletContext().backgroundCard;
 
     const { mostrarMensagem, onMouseEnter, onMouseLeave } = useApareceMouse(); // Usa o hook
-    
     switch(card){
         case "1": imgCarta = `images/cards/${backgroundCard}/1.png`; break;
         case "2": imgCarta = `images/cards/${backgroundCard}/2.png`; break;

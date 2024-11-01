@@ -6,7 +6,7 @@ const Deck = (props) =>
   const backgroundCard = useOutletContext().backgroundCard;
 
   return(
-    <div className="deck" onClick={props.cartas.adicionarCarta} 
+    <div className="deck" 
         style={{ visibility: props.visibilidade.status == true ? "visible" : "hidden"}}>
         <img src={`images/cards/${backgroundCard}/verso.png`}/>
     </div>

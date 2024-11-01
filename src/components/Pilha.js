@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import Carta from './AvisoPosicaoCarta';
-import useBoard from '../hooks/useBoard';
-import { useState } from 'react';
+import useRequest from '../hooks/useRequest';
 
 const Pilha = (props) => {
-    let cardClass = "carta " + "carta" + props.value;
     const board = props.board;
     let value = props.value.id;
-    
+    const {sendRequest} = useRequest({});
+
     function dropTarget(e)
     {
         e.target.style = "border: none;";
@@ -19,12 +18,16 @@ const Pilha = (props) => {
         const dataValor = e.dataTransfer.getData("cartaValor");
         if (dataValor === imageDrop || dataValor == "9" )
         {
-          const movido = board.mover(value, dataValor, props.guardarCartas );
-          if(movido)
-          { 
-            // Retira a carta do estado da mao.
-            props.cartas.removerCarta(dataValor);
-          }  
+          sendRequest({
+            url: 'makeMove',
+            method: 'POST',
+            body: {
+              player: props.connectionId,
+              quantity: 1,
+              position: value,
+              gameId: props.gameId
+            }
+          })
         }
     }
 
@@ -47,7 +50,14 @@ const Pilha = (props) => {
 
     return(
       <div id={props.id} class="pilha" onDrop={dropTarget} onDragOver={dragOver} onDragEnter={dragEnter} onDragLeave={dragLeave}>
-        { board.board[value].map( i => <Carta value={i} /> ) }
+        {board.map(card => {
+
+          let retorno = <></>;
+          for(let i = 0; i < card.quantity; i++)
+            retorno += <Carta value={card.position} />;
+
+          return retorno;
+        } ) }
       </div>
     );
 }

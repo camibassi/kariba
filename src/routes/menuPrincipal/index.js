@@ -31,7 +31,7 @@ export default function MenuPrincipal() {
                 </div>
                 <div className="imgheadline">
                     <Link className="botao" onClick={() => {
-                        debugger;
+                        
                         webSocket.open();
                     }} to="/aguardando">Jogar</Link>
                     <Link className="botao" to="/store">Loja</Link>

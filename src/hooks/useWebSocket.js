@@ -6,6 +6,7 @@ const useWebSocket = (url) => {
   const [gameState, setGameState] = useState({});
   const [connectionId, setConnectionId] = useState({});
   const [isConnected, setIsConnected] = useState(false); 
+  const [gameId, setGameId] = useState(null);
 
   const open = () => {
     const newSocket = new WebSocket(url);
@@ -22,6 +23,7 @@ const useWebSocket = (url) => {
 
       if (data.action === 'gameState') 
       {
+        setGameId(data.gameState.cards.gameId);
         setGameState(data.gameState);
         setConnectionId(data.connectionId);
       }
@@ -58,7 +60,8 @@ const useWebSocket = (url) => {
     gameState, 
     isConnected, 
     open,
-    connectionId
+    connectionId,
+    gameId
   };
 };
 

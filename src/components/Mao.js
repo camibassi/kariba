@@ -21,7 +21,14 @@ const Mao = (props) =>
         <>
             <div id="mao">
                 <div class="cartas" >
-                    { props.cartas.cartas.map( i => <Carta value={i} dragStart={dragStart} />) }
+                {props.cartas.map(card => {
+                    const retorno = [];
+                    
+                    for (let i = 0; i < card.quantity; i++) {
+                        retorno.push(<Carta key={`${card.cardId}-${i}`} dragStart={dragStart} value={card.cardId} />);
+                    }
+                    return retorno;
+                })}
                 </div>
             </div>
         </>
