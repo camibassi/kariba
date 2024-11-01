@@ -52,9 +52,9 @@ const Pilha = (props) => {
       <div id={props.id} class="pilha" onDrop={dropTarget} onDragOver={dragOver} onDragEnter={dragEnter} onDragLeave={dragLeave}>
         {board.map(card => {
 
-          let retorno = <></>;
+          let retorno = [];
           for(let i = 0; i < card.quantity; i++)
-            retorno += <Carta value={card.position} />;
+            retorno.push(<Carta value={card.position} />);
 
           return retorno;
         } ) }
