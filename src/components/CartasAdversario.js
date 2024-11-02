@@ -8,7 +8,7 @@ const CartasAdversario = (props) => {
 
       return(
         <div id="maoAdversario" style={{ visibility: visible == true ? "visible" : "hidden"}}>
-            {[1, 2, 3, 4, 5].map(() => 
+            {props.cartas.map(() => 
                 <div class ="adversario">
                     <img src={`images/cards/${backgroundCard}/verso.png`}/> 
                 </div>

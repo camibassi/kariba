@@ -14,7 +14,9 @@ import { useNavigate } from "react-router-dom";
 
 export default function Game() {
     const visivel = useShowHide();
+    const [minhaVez, setMinhaVez] = useState(true);
     const [mostrarContador, setMostrarContador] = useState(false);
+    const [match, setMatch] = useState({});
     const [meuPlacar, setMeuPlacar] = useState(0);
     const [placarAdversario, setPlacarAdversario] = useState(0); // Futuramente virá do backend.
     const [cartasGuardadas, setMinhasCartasGuardadas] = useState(0);
@@ -23,6 +25,7 @@ export default function Game() {
     const { loading, error, sendRequest } = useRequest();
     const navigate = useNavigate();
     const [cartas, setCartas] = useState([]);
+    const [cartasAdversario, setCartasAdversario] = useState([]);
 
     async function iniciaPartida() {
         visivel.apareceCarta();
@@ -43,10 +46,13 @@ export default function Game() {
 
     useEffect(() => {
         if (webSocket.gameState) {
+            debugger;
             const placar = webSocket.gameState.score.players;
+            setMatch(webSocket.gameState.match)
             setMeuPlacar(placar.find(placar => placar.connectionId == webSocket.connectionId)?.collectedCards);
             setPlacarAdversario(placar.find(placar => placar.connectionId != webSocket.connectionId)?.collectedCards);
             setCartas(webSocket.gameState.deck.players.find(cartas => cartas.connectionId  == webSocket.connectionId)?.deck);
+            setCartasAdversario(webSocket.gameState.deck.players.find(cartas => cartas.connectionId  != webSocket.connectionId)?.deck);
         }
     }, [webSocket.gameState]);
 
@@ -80,13 +86,14 @@ export default function Game() {
 
                 {/* Exibe o Contador condicionalmente */}
                 {mostrarContador && <Contador 
-                    match={webSocket.gameState.match}
+                    setMinhaVez={setMinhaVez}
+                    match={match}
                     currentPlayerConId={webSocket.connectionId}/>}
 
                 <Deck cartas={cartas} visibilidade={visivel} />
                 <Placar meuPlacar={meuPlacar} adversario={placarAdversario} />
-                <Mao cartas={cartas} board={webSocket.gameState.board} />
-                <CartasAdversario visibilidade={visivel} />
+                <Mao minhaVez={minhaVez} cartas={cartas} board={webSocket.gameState.board} />
+                <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />
             </div>
 
             {/* Exibe loading e erros da requisição */}

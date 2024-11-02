@@ -65,7 +65,8 @@ const useWebSocket = (url) => {
     isConnected,
     open,
     connectionId,
-    gameId
+    gameId, 
+    setGameState
   };
 };
 

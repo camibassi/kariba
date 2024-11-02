@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import Carta from './AvisoPosicaoCarta';
+import Carta from './Carta';
 import useRequest from '../hooks/useRequest';
+import { useOutletContext } from 'react-router-dom';
 
 const Pilha = (props) => {
+    const webSocket = useOutletContext().webSocket;
     const board = props.board;
     let value = props.value.id;
     const {sendRequest} = useRequest({});
@@ -18,6 +20,46 @@ const Pilha = (props) => {
         const dataValor = e.dataTransfer.getData("cartaValor");
         if (dataValor === imageDrop || dataValor == "9" )
         {
+
+          const board = webSocket.gameState.board;
+          const existe = board.positions.filter(x => x.position == dataValor);
+          if(existe)
+            board.positions.forEach(x => {
+              if(x.position == dataValor)
+                x.quantity = x.quantity + 1;
+            })
+          else
+            board.positions.push({
+              position: dataValor,
+              quantity: 1
+            })
+
+          const deck = webSocket.gameState.deck;
+          const meuDeck = deck.players.find(x => x.connectionId == webSocket.connectionId)?.deck;
+          meuDeck.forEach(item => {
+            if(item.cardId == dataValor)
+              item.quantity = item.quantity - 1;
+          })
+debugger;
+          const match = webSocket.gameState.match;
+          const isPlayer1 = match.player1conId === webSocket.connectionId;
+          const isPlayer2 = match.player2conId === webSocket.connectionId;
+          
+          if(isPlayer1)
+          {
+            match.player1State = 'waiting';
+            match.player2State = 'playing';
+          }
+          else
+          {
+            match.player2State = 'waiting';
+            match.player1State = 'playing';
+          }
+
+          webSocket.setGameState({
+            ...webSocket.gameState,
+            ...{board: board, deck: deck, match: match}
+          })
           sendRequest({
             url: 'makeMove',
             method: 'POST',
