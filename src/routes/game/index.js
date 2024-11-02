@@ -9,13 +9,16 @@ import useShowHide from "../../hooks/useShowHide";
 import useRequest from "../../hooks/useRequest";
 import {useOutletContext} from 'react-router-dom'; 
 import '../game/index.css'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Toast } from "primereact/toast";
 
 export default function Game() {
     const visivel = useShowHide();
     const [minhaVez, setMinhaVez] = useState(true);
     const [mostrarContador, setMostrarContador] = useState(false);
+    const [quantidadeMovimentada, setQuantidadeMovimentada] = useState(0);
+    const [cartaMovimentada, setCartaMovimentada] = useState('');
     const [match, setMatch] = useState({});
     const [meuPlacar, setMeuPlacar] = useState(0);
     const [placarAdversario, setPlacarAdversario] = useState(0); // Futuramente virá do backend.
@@ -38,6 +41,8 @@ export default function Game() {
         navigate("/menu");
     }
 
+    const toast = useRef(null);
+
     // Array de objetos para os botões
     const botoes = [
         { texto: 'Iniciar', onClick: iniciaPartida, mostrar: !visivel.status },
@@ -46,7 +51,6 @@ export default function Game() {
 
     useEffect(() => {
         if (webSocket.gameState) {
-            debugger;
             const placar = webSocket.gameState.score.players;
             setMatch(webSocket.gameState.match)
             setMeuPlacar(placar.find(placar => placar.connectionId == webSocket.connectionId)?.collectedCards);
@@ -58,6 +62,8 @@ export default function Game() {
 
     return (
         <div className="overflow-hidden">
+            
+    <Toast ref={toast} position="center" />
             <MenuNavbar>
                 <h1>
                     <img src="/images/favicon.png" alt="Logo" /> Kariba <img src="/images/favicon.png" alt="Logo" />
@@ -67,11 +73,15 @@ export default function Game() {
 
                 <Lagoa board={webSocket.gameState.board.positions}
                     cartas={cartas}
+                    setMensagemErroMovimentacao={(mensagem) => {
+                        toast.current.show({ severity: 'error', summary: 'Erro', detail: mensagem, life: 3000 });
+                    }}
+                    cartaMovimentada={cartaMovimentada}
                     connectionId={webSocket.connectionId}
                     gameId={webSocket.gameId}
                     guardarCartas={(numero) => {
-                        setMinhasCartasGuardadas(cartasGuardadas + numero);
-                        setMeuPlacar(cartasGuardadas + numero);
+                       setCartaMovimentada(numero);
+                       setQuantidadeMovimentada(quantidadeMovimentada + 1);
                     }} />
 
                 <div id="botoes">
@@ -90,7 +100,21 @@ export default function Game() {
                     match={match}
                     currentPlayerConId={webSocket.connectionId}/>}
 
-                <Deck cartas={cartas} visibilidade={visivel} />
+                <Deck onClick={() => {
+                    sendRequest({
+                        url: 'makeMove',
+                        method: 'POST',
+                        body: {
+                          player: webSocket.connectionId,
+                          quantity: parseInt(quantidadeMovimentada),
+                          position: parseInt(cartaMovimentada),
+                          gameId: webSocket.gameId
+                        }
+                      }, () => {
+                        setCartaMovimentada('');
+                        setQuantidadeMovimentada(0);
+                      })
+                }} cartas={cartas} visibilidade={visivel} />
                 <Placar meuPlacar={meuPlacar} adversario={placarAdversario} />
                 <Mao minhaVez={minhaVez} cartas={cartas} board={webSocket.gameState.board} />
                 <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />

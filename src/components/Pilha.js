@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, useRef} from 'react';
 import Carta from './Carta';
 import useRequest from '../hooks/useRequest';
 import { useOutletContext } from 'react-router-dom';
+import { Toast } from 'primereact/toast';
 
 const Pilha = (props) => {
     const webSocket = useOutletContext().webSocket;
     const board = props.board;
     let value = props.value.id;
-    const {sendRequest} = useRequest({});
-
+    
     function dropTarget(e)
     {
         e.target.style = "border: none;";
@@ -18,9 +18,12 @@ const Pilha = (props) => {
         imageDrop = imageDrop.replace("pilha","");
       
         const dataValor = e.dataTransfer.getData("cartaValor");
-        if (dataValor === imageDrop || dataValor == "9" )
-        {
 
+        if(props.cartaMovimentada && props.cartaMovimentada != dataValor)
+          return props.setMensagemErroMovimentacao(`Carta não permitida nessa rodada. Você movimentou a ${props.cartaMovimentada}, então só pode jogar com ela.`);
+
+        if (dataValor === imageDrop || dataValor == "9")
+        {
           const board = webSocket.gameState.board;
           const existe = board.positions.filter(x => x.position == dataValor);
           if(existe)
@@ -39,37 +42,14 @@ const Pilha = (props) => {
           meuDeck.forEach(item => {
             if(item.cardId == dataValor)
               item.quantity = item.quantity - 1;
-          })
-debugger;
-          const match = webSocket.gameState.match;
-          const isPlayer1 = match.player1conId === webSocket.connectionId;
-          const isPlayer2 = match.player2conId === webSocket.connectionId;
-          
-          if(isPlayer1)
-          {
-            match.player1State = 'waiting';
-            match.player2State = 'playing';
-          }
-          else
-          {
-            match.player2State = 'waiting';
-            match.player1State = 'playing';
-          }
+          });
 
           webSocket.setGameState({
             ...webSocket.gameState,
-            ...{board: board, deck: deck, match: match}
-          })
-          sendRequest({
-            url: 'makeMove',
-            method: 'POST',
-            body: {
-              player: props.connectionId,
-              quantity: 1,
-              position: value,
-              gameId: props.gameId
-            }
-          })
+            ...{board: board, deck: deck}
+          });
+          
+          props.guardarCartas(dataValor);
         }
     }
 
@@ -87,6 +67,7 @@ debugger;
 
     function dragLeave(e)
     {
+      console.log('dragleave');
       e.target.style = "border: none;";
     }
 

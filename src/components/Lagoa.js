@@ -17,7 +17,8 @@ export default function Lagoa(props) {
           { id: 6, img: "images/cards/default/6.png" },
           { id: 7, img: "images/cards/default/7.png" },
           { id: 8, img: "images/cards/default/8.png" },
-        ].map(item => <Pilha guardarCartas={props.guardarCartas}
+        ].map(item => <Pilha setMensagemErroMovimentacao={props.setMensagemErroMovimentacao}
+          cartaMovimentada={props.cartaMovimentada} guardarCartas={props.guardarCartas}
           cartas={props.cartas} connectionId={props.connectionId} gameId={props.gameId}
           value={item} id={`pilha${item.id}`} board={props.board}/>)}
       </div>
