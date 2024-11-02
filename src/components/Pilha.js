@@ -50,7 +50,7 @@ const Pilha = (props) => {
 
     return(
       <div id={props.id} class="pilha" onDrop={dropTarget} onDragOver={dragOver} onDragEnter={dragEnter} onDragLeave={dragLeave}>
-        {board.map(card => {
+        {board.filter(x => x.position == value).map(card => {
 
           let retorno = [];
           for(let i = 0; i < card.quantity; i++)

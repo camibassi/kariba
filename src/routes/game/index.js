@@ -25,7 +25,7 @@ export default function Game() {
     const [cartas, setCartas] = useState([]);
 
     async function iniciaPartida() {
-        //visivel.apareceCarta();
+        visivel.apareceCarta();
         setMostrarContador(true);
     }
 
