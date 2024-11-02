@@ -6,9 +6,14 @@ import random
 import time
 
 # Conectar ao DynamoDB
+dynamodb = boto3.resource('dynamodb')
 lambda_client = boto3.client('lambda')
 
+WEBSOCKET_TABLE = os.environ['WEBSOCKET_TABLE'];
+API_GATEWAY_URL = os.environ['API_GATEWAY_URL'];
+
 def lambda_handler(event, context):
+    global WEBSOCKET_TABLE;
     game_id = int(event['gameId'])
     player = event['player']      # O connectionId do jogador
 
@@ -19,7 +24,7 @@ def lambda_handler(event, context):
     }
 
     # Busca todas as conexões abertas
-    tabela_conexoes = os.environ['WEBSOCKET_TABLE'];
+    tabela_conexoes = WEBSOCKET_TABLE;
     response = dynamodb.Table(tabela_conexoes).scan(
         ProjectionExpression='connectionId'
     )
@@ -39,7 +44,8 @@ def lambda_handler(event, context):
 
 
 def send_message_to_websocket(connection_id, message):
-    api_gateway_url = os.environ['API_GATEWAY_URL']
+    global API_GATEWAY_URL
+    api_gateway_url = API_GATEWAY_URL;
 
     response = lambda_client.invoke(
         FunctionName='kariba-send',
