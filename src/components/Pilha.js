@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
-import Carta from './AvisoPosicaoCarta';
+import React, {Component, useRef} from 'react';
+import Carta from './Carta';
 import useRequest from '../hooks/useRequest';
+import { useOutletContext } from 'react-router-dom';
+import { Toast } from 'primereact/toast';
 
 const Pilha = (props) => {
+    const webSocket = useOutletContext().webSocket;
     const board = props.board;
     let value = props.value.id;
-    const {sendRequest} = useRequest({});
-
+    
     function dropTarget(e)
     {
         e.target.style = "border: none;";
@@ -16,18 +18,38 @@ const Pilha = (props) => {
         imageDrop = imageDrop.replace("pilha","");
       
         const dataValor = e.dataTransfer.getData("cartaValor");
-        if (dataValor === imageDrop || dataValor == "9" )
+
+        if(props.cartaMovimentada && props.cartaMovimentada != dataValor)
+          return props.setMensagemErroMovimentacao(`Carta não permitida nessa rodada. Você movimentou a ${props.cartaMovimentada}, então só pode jogar com ela.`);
+
+        if (dataValor === imageDrop || dataValor == "9")
         {
-          sendRequest({
-            url: 'makeMove',
-            method: 'POST',
-            body: {
-              player: props.connectionId,
-              quantity: 1,
-              position: value,
-              gameId: props.gameId
-            }
-          })
+          const board = webSocket.gameState.board;
+          const existe = board.positions.filter(x => x.position == dataValor);
+          if(existe)
+            board.positions.forEach(x => {
+              if(x.position == dataValor)
+                x.quantity = x.quantity + 1;
+            })
+          else
+            board.positions.push({
+              position: dataValor,
+              quantity: 1
+            })
+
+          const deck = webSocket.gameState.deck;
+          const meuDeck = deck.players.find(x => x.connectionId == webSocket.connectionId)?.deck;
+          meuDeck.forEach(item => {
+            if(item.cardId == dataValor)
+              item.quantity = item.quantity - 1;
+          });
+
+          webSocket.setGameState({
+            ...webSocket.gameState,
+            ...{board: board, deck: deck}
+          });
+          
+          props.guardarCartas(dataValor);
         }
     }
 
@@ -45,12 +67,13 @@ const Pilha = (props) => {
 
     function dragLeave(e)
     {
+      console.log('dragleave');
       e.target.style = "border: none;";
     }
 
     return(
       <div id={props.id} class="pilha" onDrop={dropTarget} onDragOver={dragOver} onDragEnter={dragEnter} onDragLeave={dragLeave}>
-        {board.map(card => {
+        {board.filter(x => x.position == value).map(card => {
 
           let retorno = [];
           for(let i = 0; i < card.quantity; i++)

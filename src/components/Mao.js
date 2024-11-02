@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Carta from './AvisoPosicaoCarta';
+import Carta from './Carta';
 
 const Mao = (props) => 
 {
@@ -25,7 +25,7 @@ const Mao = (props) =>
                     const retorno = [];
                     
                     for (let i = 0; i < card.quantity; i++) {
-                        retorno.push(<Carta key={`${card.cardId}-${i}`} dragStart={dragStart} value={card.cardId} />);
+                        retorno.push(<Carta minhaVez={props.minhaVez} key={`${card.cardId}-${i}`} dragStart={dragStart} value={card.cardId} />);
                     }
                     return retorno;
                 })}
