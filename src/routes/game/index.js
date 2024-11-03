@@ -63,7 +63,20 @@ export default function Game() {
 
     const toast = useRef(null);
 
-    
+    useEffect(() => {
+        if(webSocket.gameState.match.winner)
+        {
+            webSocket.closeSocket();
+            if(webSocket.gameState.match.winner == webSocket.connectionId)
+                navigate('../vencedor');
+            else if(webSocket.gameState.match.winner == 'tied')
+                navigate('../empate');
+            else
+                navigate('../perdedor');
+
+        }
+    }, [webSocket.gameState.match.winner])
+
     useEffect(() => {
         if (webSocket.gameState) {
             const placar = webSocket.gameState.score.players;

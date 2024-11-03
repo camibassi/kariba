@@ -48,14 +48,18 @@ const useWebSocket = (url) => {
     [socket, connectionId]
   );
 
-  const closeSocket = useCallback(() => {
+  const closeSocket = () => {
     if (socket) {
       socket.close();
       setSocket(null);
+      setConnectionId(null);
+      setGameId(null);
+      setMessages([]);
+      setGameState({});
       setIsConnected(false);
       console.log("WebSocket fechado");
     }
-  }, [socket]);
+  }
 
   return {
     messages,
