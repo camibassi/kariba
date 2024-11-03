@@ -6,13 +6,19 @@ import './styles/menuNavbar.css'; // Estilos adicionais
 const MenuNavbar = (props) => {
   const navigate = useNavigate();
 
+  function voltar_menu(){
+    if( props.finalizaPartida )
+      props.finalizaPartida();
+      navigate('../menu');
+  }
+
   return (
     <>
       <Navbar className={"styled-navbar w-100" + props.className || ""} style={{zIndex: '1', height: '45px'}}>
         <Container>
           <Navbar.Brand className="navbar-brand">Kariba</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link className="navbar-link" onClick={() => navigate('../menu')}>
+            <Nav.Link className="navbar-link" onClick={voltar_menu}>
               <FaReply className="navbar-icon" /> Menu
             </Nav.Link>
           </Nav>

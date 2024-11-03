@@ -21,7 +21,7 @@
 #lagoa .imgLagoa{
     margin: 0;
     position: absolute;
-    top: 52%;
+    top: 50%;
     left: 50%;
     -ms-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
@@ -205,10 +205,10 @@
     width:13vh;
 }
 
-.deck img:hover, #mao .carta img:hover {
+/*.deck img:hover, #mao .carta img:hover {
     transform: scale(1.1);
     cursor: pointer;
-}
+}*/
 
 #placar {
     position: absolute;
@@ -266,7 +266,7 @@
     height: auto;
 }
 
-#botoes {
+.botoes {
     margin: 0;
     position: absolute;
     top: 66%;
@@ -275,7 +275,16 @@
     transform: translateY(-50%) translateX(-50%);
 }
 
-#botoes button{
+#sairJogo {
+    margin: 0;
+    position: absolute;
+    top: 49%;
+    left: 87%;
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.botoes button{
     background-color: #C9E8FC;
     color: #41616E;
     border: 2px solid #41616E;
@@ -359,3 +368,15 @@
     align-items: center;
     width: 25vh;
   }
+
+  #deckMensagem{
+    margin: 0;
+    position: absolute;
+    top: 133%;
+    left: 48%;
+    -ms-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+
+  

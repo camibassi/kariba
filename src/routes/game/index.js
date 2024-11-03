@@ -12,6 +12,8 @@ import '../game/index.css'
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
+import { Dialog } from 'primereact/dialog';
+
 
 export default function Game() {
     const visivel = useShowHide();
@@ -29,6 +31,18 @@ export default function Game() {
     const navigate = useNavigate();
     const [cartas, setCartas] = useState([]);
     const [cartasAdversario, setCartasAdversario] = useState([]);
+    const [showDialog, setShowDialog] = useState(false); // Controle da caixa de diálogo de seleção de modo
+
+    async function confirmaSaida(resposta) {
+        if (resposta === "sim") {
+            setShowDialog(false);
+            finalizaPartida();
+        } else if (resposta === "não") {
+            //verificar como bloquear o modo normal do outro jogador
+            setShowDialog(false);
+        }
+    }
+
 
     async function iniciaPartida() {
         visivel.apareceCarta();
@@ -37,18 +51,19 @@ export default function Game() {
 
     // Função que finaliza a partida
     async function finalizaPartida() {
+        // Zera a mão e a ultima jogada
+        setCartas([]);
+        setCartaMovimentada('');
+        setQuantidadeMovimentada(0);
+
+        // Reseta as configuracoes do websocket
         webSocket.closeSocket();
         navigate("/menu");
     }
 
     const toast = useRef(null);
 
-    // Array de objetos para os botões
-    const botoes = [
-        { texto: 'Iniciar', onClick: iniciaPartida, mostrar: !visivel.status },
-        { texto: 'Encerrar', onClick: finalizaPartida, mostrar: visivel.status }
-    ];
-
+    
     useEffect(() => {
         if (webSocket.gameState) {
             const placar = webSocket.gameState.score.players;
@@ -64,7 +79,7 @@ export default function Game() {
         <div className="overflow-hidden">
             
     <Toast ref={toast} position="center" />
-            <MenuNavbar>
+            <MenuNavbar finalizaPartida={finalizaPartida}>
                 <h1>
                     <img src="/images/favicon.png" alt="Logo" /> Kariba <img src="/images/favicon.png" alt="Logo" />
                 </h1>
@@ -83,15 +98,13 @@ export default function Game() {
                        setCartaMovimentada(numero);
                        setQuantidadeMovimentada(quantidadeMovimentada + 1);
                     }} />
-
-                <div id="botoes">
-                    {botoes.map((botao, index) =>
-                        botao.mostrar && (
-                            <button key={index} onClick={botao.onClick}>
-                                {botao.texto}
-                            </button>
-                        )
-                    )}
+                {!visivel.status &&
+                <div className="botoes">
+                    <button onClick={iniciaPartida}> Iniciar </button>
+                </div>
+                }
+                <div className="botoes" id= "sairJogo" > 
+                    <button onClick={() => setShowDialog(true)}> Sair do jogo </button>
                 </div>
 
                 {/* Exibe o Contador condicionalmente */}
@@ -119,6 +132,18 @@ export default function Game() {
                 <Mao minhaVez={minhaVez} cartas={cartas} board={webSocket.gameState.board} />
                 <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />
             </div>
+
+            {/* Caixa de diálogo com opções de modo */}
+            <Dialog
+                visible={showDialog}
+                onHide={() => setShowDialog(false)}
+                header="Você tem certeza que quer sair do jogo?"
+            >
+                <div className="dialog-content">
+                    <button onClick={() => confirmaSaida('sim')}>Sim</button>
+                    <button onClick={() => confirmaSaida('não')}>Não</button>
+                </div>
+            </Dialog>
 
             {/* Exibe loading e erros da requisição */}
             {loading && <p>Carregando dados...</p>}
