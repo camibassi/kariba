@@ -16,6 +16,7 @@ import RecuperarSenha from './routes/recuperarSenha';
 import WebSocketScreen from './routes/webSocketScreen';
 import Vencedor from './routes/vencedor/vencedor';
 import Perdedor from './routes/perdedor/perdedor';
+import Empate from './routes/empate/empate';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -37,6 +38,7 @@ root.render(
             <Route path="sobre" element={<Sobre />} />
             <Route path="vencedor" element={<Vencedor />} />
             <Route path="perdedor" element={<Perdedor />} />
+            <Route path="empate" element={<Empate />} />
             <Route path="aguardando" element={<WebSocketScreen />} />
         </Route>
       </Routes>

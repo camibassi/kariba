@@ -1,0 +1,57 @@
+/* Estilo da página do perdedor */
+#empate .container-fluid {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../../public/images/fundoempate.png'); /* Caminho do fundo */
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  /* Estilos de texto */
+  #empate h1 {
+    font-size: 150px;
+    color: #fffc44;
+    margin: 0;
+    padding: 0;
+  }
+  #empate p {
+    font-size: 25px;
+    color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  
+   /* Botões */
+   .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Espaçamento entre os botões */
+  }
+  
+  .button {
+  display: inline-block;
+  background: orange;
+  padding: 20px 35px;
+  color: white;
+  border-radius: 5px;
+  margin: 10px auto;
+  text-decoration: none;
+  font-size: 20px;
+  width: 200px;
+  text-align: center;
+  transition: background 0.3s;
+  }
+
+  .button:hover {
+  background: orangered;
+  cursor: pointer;
+  }
+  

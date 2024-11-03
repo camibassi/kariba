@@ -37,6 +37,7 @@ export default function MenuPrincipal() {
                     <Link className="botao" to="/store">Loja</Link>
                     <Link className="botao" to="/regras">Regras</Link>
                     <Link className="botao" to="/sobre">Sobre nós</Link>
+                    <Link className="botao" to="/empate">EMPATOU</Link>
                 </div>
             </header>
             <Rodape />
