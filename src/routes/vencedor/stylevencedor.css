@@ -24,7 +24,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-image: url('../../../public/images/fundovencedor.png'); /* Caminho do fundo */
+    background-image: url('../../../public/images/fundovencedor2.png'); /* Caminho do fundo */
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 1; /* Certifique-se de que o fundo fique abaixo do confete */

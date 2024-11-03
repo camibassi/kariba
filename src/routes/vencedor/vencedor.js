@@ -22,6 +22,7 @@ export default function Vencedor() {
             <Link className="botao" to="/aguardando">Jogar Novamente</Link>
             <Link className="botao" to="/menu">Menu Principal</Link>
           </div>
+          <img id="vencedor-image" src='../../../images/fant51.gif' alt="Elefante Vitoria"/>
         </Container>
       </div>
     </div>
