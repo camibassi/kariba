@@ -39,6 +39,7 @@ const Pilha = (props) => {
 
           const deck = webSocket.gameState.deck;
           const meuDeck = deck.players.find(x => x.connectionId == webSocket.connectionId)?.deck;
+          
           meuDeck.forEach(item => {
             if(item.cardId == dataValor)
               item.quantity = item.quantity - 1;

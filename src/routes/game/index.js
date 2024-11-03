@@ -30,7 +30,7 @@ export default function Game() {
     const { loading, error, sendRequest } = useRequest();
     const navigate = useNavigate();
     const [cartas, setCartas] = useState([]);
-    const [cartasAdversario, setCartasAdversario] = useState([]);
+    const [cartasAdversario, setCartasAdversario] = useState(0);
     const [showDialog, setShowDialog] = useState(false); // Controle da caixa de diálogo de seleção de modo
 
     async function confirmaSaida(resposta) {
@@ -67,11 +67,18 @@ export default function Game() {
     useEffect(() => {
         if (webSocket.gameState) {
             const placar = webSocket.gameState.score.players;
+
+            console.log("GAMESTATE", webSocket.gameState );
+;
             setMatch(webSocket.gameState.match)
             setMeuPlacar(placar.find(placar => placar.connectionId == webSocket.connectionId)?.collectedCards);
             setPlacarAdversario(placar.find(placar => placar.connectionId != webSocket.connectionId)?.collectedCards);
             setCartas(webSocket.gameState.deck.players.find(cartas => cartas.connectionId  == webSocket.connectionId)?.deck);
-            setCartasAdversario(webSocket.gameState.deck.players.find(cartas => cartas.connectionId  != webSocket.connectionId)?.deck);
+            
+            
+            let cartasAdversario = webSocket.gameState.deck.players.find(cartas => cartas.connectionId  != webSocket.connectionId)?.deck
+            let totalAdversario = cartasAdversario.reduce((partialSum, c) => partialSum + parseInt(c.quantity), 0);
+            setCartasAdversario(totalAdversario);
         }
     }, [webSocket.gameState]);
 
@@ -140,8 +147,8 @@ export default function Game() {
                 header="Você tem certeza que quer sair do jogo?"
             >
                 <div className="dialog-content">
-                    <button onClick={() => confirmaSaida('sim')}>Sim</button>
-                    <button onClick={() => confirmaSaida('não')}>Não</button>
+                    <button className="dialog-button" onClick={() => confirmaSaida('sim')}>Sim</button>
+                    <button className="dialog-button" onClick={() => confirmaSaida('não')}>Não</button>
                 </div>
             </Dialog>
 

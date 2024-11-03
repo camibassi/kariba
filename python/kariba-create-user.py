@@ -17,8 +17,9 @@ def lambda_handler(event, context):
 
     # Obtém o username e password do evento
     try:
-        username = event['username']
-        password = event['password']
+        username = event['username'];
+        password = event['password'];
+        email    = event['email'];
     except KeyError as e:
         logger.error(f"Erro ao processar o corpo da solicitação: {e}")
         return {
@@ -66,7 +67,7 @@ def lambda_handler(event, context):
                 'username': username,
                 'password': password,
                 'nome': '',
-                'email': '',
+                'email': email,
                 'pais': '',
                 'dataNascimento': '',
                 'vitorias': 0,

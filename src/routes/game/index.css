@@ -269,7 +269,7 @@
 .botoes {
     margin: 0;
     position: absolute;
-    top: 66%;
+    top: 56%;
     left: 50%;
     -ms-transform: translateY(-50%) translateX(-50%);
     transform: translateY(-50%) translateX(-50%);
@@ -379,4 +379,11 @@
   }
 
 
-  
+.dialog-content {
+    display: flex;
+    justify-content: space-around; /* Alternativa: flex-direction: column; para alinhar verticalmente */
+}
+
+.dialog-button {
+    padding: 10px 30px; /* Ajuste o preenchimento para estilizar os botões */
+}

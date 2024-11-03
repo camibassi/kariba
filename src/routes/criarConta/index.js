@@ -9,6 +9,7 @@ import { Toast } from 'primereact/toast'; // Importando o Toast do PrimeReact
 
 const CriarConta = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); 
   const [validated, setValidated] = useState(false); 
   const [passwordConfirm, setPasswordConfirm] = useState(''); 
@@ -34,7 +35,7 @@ const CriarConta = () => {
     request.sendRequest({
       url: 'user',
       method: 'POST',
-      body: { username: username, password: passwordConfirm }
+      body: { username: username, password: passwordConfirm , email: email}
     }, (response) => {
       if (response.error) {
         toast.current.show({ severity: 'error', summary: 'Erro', detail: response.error, life: 3000 });
@@ -65,6 +66,18 @@ const CriarConta = () => {
             className="light-input"
           />
         </Form.Group>
+
+        <Form.Group controlId="formEmail">
+            <Form.Label className="light-label">E-mail</Form.Label>
+            <Form.Control
+            type="email"
+            required={true}
+            placeholder="Digite seu e-mail"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value?.toLowerCase())}
+            className="light-input"
+           />
+         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label className="light-label">Senha</Form.Label>

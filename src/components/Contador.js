@@ -10,7 +10,7 @@ export default function Contador({ match, currentPlayerConId, setMinhaVez }) {
 
     const isPlayer1 = match.player1conId === currentPlayerConId;
     const isPlayer2 = match.player2conId === currentPlayerConId;
-debugger;
+
     // Verifica o estado do jogo e se o jogador atual está jogando
     if (match.gameState === 'in progress') {
       if ((isPlayer1 && match.player1State === 'playing') || 
