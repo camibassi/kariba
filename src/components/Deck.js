@@ -7,12 +7,11 @@ const Deck = (props) =>
 
   return(
     <div className="deck"
+        onClick={props.onClick}
         style={{ visibility: props.visibilidade.status == true ? "visible" : "hidden"}}>
         <img src={`images/cards/${backgroundCard}/verso.png`}/>
-        <div className="botoes" id="deckMensagem"  onClick={props.onClick}>
-            <button>
-              Enviar a jogada
-            </button>
+        <div className="overlay">
+          <span>Finalizar jogada</span>
         </div>
     </div>
   );
