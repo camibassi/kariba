@@ -59,18 +59,8 @@ h3{
   transform: scale(1.1);
   cursor: pointer;
 }
-
-  .decks-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 50vw; /* Limita a div "Decks" a metade da largura da tela */
-    overflow: hidden; /* Oculta o conteúdo que excede a largura */
-    position: relative;
-    margin-top:20px;
-  }
   
-  .decks-container-full {
+  .decks-container-full, .decks-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -111,10 +101,6 @@ h3{
     right: -20px;
   }
   
-  .containerCentral {
-    display: flex;
-    gap: 5px;
-}
 
 .cardComponent{
   height: 30vh;
