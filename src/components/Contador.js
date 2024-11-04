@@ -12,22 +12,26 @@ export default function Contador({ match, currentPlayerConId, setMinhaVez }) {
     const isPlayer2 = match.player2conId === currentPlayerConId;
 
     // Verifica o estado do jogo e se o jogador atual está jogando
+    console.log( match.gameState, currentPlayerConId );
+    console.log("Player 1", isPlayer1, match.player1State);
+    console.log("Player 2", isPlayer2, match.player2State);
+
+
     if (match.gameState === 'in progress') {
-      if ((isPlayer1 && match.player1State === 'playing') || 
-          (isPlayer2 && match.player2State === 'playing')) {
-        if (message === 'Aguarde sua vez') {
+      if ((isPlayer1 == true && match.player1State === 'playing') || 
+          (isPlayer2 == true && match.player2State === 'playing')) {
           setMessage('Sua vez');
           setMinhaVez(true);
           setTimeLeft(15); // Reseta o contador
           setIsCounting(false); // Para a contagem anterior
-        }
+
       } else {
-        if (message !== 'Aguarde sua vez') {
+
           setMessage('Aguarde sua vez');
           setMinhaVez(false);
           setIsCounting(false); // Para a contagem se não for a vez do jogador
           setTimeLeft(15); // Reseta o contador se não for a vez
-        }
+
       }
     }
 /*

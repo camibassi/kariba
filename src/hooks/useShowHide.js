@@ -2,10 +2,10 @@ import { useState } from "react";
 
 const useShowHide = function() 
 {
-    const [status, setStatus] = useState(false);
+    const [status, setStatus] = useState(true);
 
     function apareceCarta() {
-        setStatus(true);
+
     }
 
     return {

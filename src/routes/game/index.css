@@ -227,10 +227,10 @@
     font-size: 0.8em;
 }
 
-/*.deck img:hover, #mao .carta img:hover {
+.deck img:hover, #mao .carta img:hover {
     transform: scale(1.1);
     cursor: pointer;
-}*/
+}
 
 #placar {
     position: absolute;

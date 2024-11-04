@@ -56,7 +56,6 @@ const Pilha = (props) => {
 
     function dragOver(e)
     {
-      console.log("Dragover", );
       e.stopPropagation();
       e.preventDefault();
     }
@@ -68,7 +67,6 @@ const Pilha = (props) => {
 
     function dragLeave(e)
     {
-      console.log('dragleave');
       e.target.style = "border: none;";
     }
 

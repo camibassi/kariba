@@ -18,7 +18,7 @@ import { Dialog } from 'primereact/dialog';
 export default function Game() {
     const visivel = useShowHide();
     const [minhaVez, setMinhaVez] = useState(true);
-    const [mostrarContador, setMostrarContador] = useState(false);
+    const [mostrarContador, setMostrarContador] = useState(true);
     const [quantidadeMovimentada, setQuantidadeMovimentada] = useState(0);
     const [cartaMovimentada, setCartaMovimentada] = useState('');
     const [match, setMatch] = useState({});
@@ -41,12 +41,6 @@ export default function Game() {
             //verificar como bloquear o modo normal do outro jogador
             setShowDialog(false);
         }
-    }
-
-
-    async function iniciaPartida() {
-        visivel.apareceCarta();
-        setMostrarContador(true);
     }
 
     // Função que finaliza a partida
@@ -95,6 +89,7 @@ export default function Game() {
         }
     }, [webSocket.gameState]);
 
+    
     return (
         <div className="overflow-hidden">
             
@@ -118,11 +113,8 @@ export default function Game() {
                        setCartaMovimentada(numero);
                        setQuantidadeMovimentada(quantidadeMovimentada + 1);
                     }} />
-                {!visivel.status &&
-                <div className="botoes">
-                    <button onClick={iniciaPartida}> Iniciar </button>
-                </div>
-                }
+
+                
                 <div className="botoes" id= "sairJogo" > 
                     <button onClick={() => setShowDialog(true)}> Sair do jogo </button>
                 </div>
