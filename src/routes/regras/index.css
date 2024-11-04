@@ -1,6 +1,33 @@
-#topo{
-    position: fixed;
-    width: 100%;
+/* Estilo para a barra de navegação */
+.navbar-regras {
+    background-image: url(../../../public/images/fundobarra4.png);
+    background-repeat: repeat; /* Faz a imagem se repetir */
+    background-size: contain; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
+    height: 65px; /* Altura da barra de navegação */
+    width: 100%; /* Garante que a barra de navegação use toda a largura disponível */
+}
+
+/* Estilo para a marca */
+.navbar-brand {
+    color: rgb(255, 34, 0); /* Cor do texto da marca */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+.navbar-brand:hover{
+    color: rgb(255, 255, 255);
+}
+.icone img {
+    width: 50px; /* Define a largura do ícone */
+    height: auto; /* Mantém a proporção */
+    margin-top: 0%;
+    margin-right: 30px;
+}
+
+/* Container da navbar para usar flexbox */
+.d-flex {
+    display: flex;
+    justify-content: space-between; /* Espaça os itens entre eles */
+    align-items: center; /* Alinha verticalmente no centro */
 }
 
 #regras section {
