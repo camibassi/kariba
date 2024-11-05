@@ -13,7 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import { Dialog } from 'primereact/dialog';
-
+import Rodape from "../../components/Rodape";
 
 export default function Game() {
     const visivel = useShowHide();
@@ -144,6 +144,7 @@ export default function Game() {
                 <Mao minhaVez={minhaVez} cartas={cartas} board={webSocket.gameState.board} />
                 <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />
             </div>
+            <Rodape />
 
             {/* Caixa de diálogo com opções de modo */}
             <Dialog

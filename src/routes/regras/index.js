@@ -2,6 +2,7 @@ import './index.css'
 import MenuNavbar from "../../components/MenuNavbar";
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Rodape from "../../components/Rodape";
 
 export default function Regras()
 {
@@ -64,6 +65,7 @@ export default function Regras()
                 <p>Divirta-se jogando Kariba!</p>
             </footer>
         </Container>
+        <Rodape />
     </div>
     );
 

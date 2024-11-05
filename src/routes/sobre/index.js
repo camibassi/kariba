@@ -2,6 +2,7 @@ import './index.css'
 import MenuNavbar from "../../components/MenuNavbar";
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Rodape from "../../components/Rodape";
 
 export default function Sobre()
 {
@@ -57,8 +58,8 @@ export default function Sobre()
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
+         <Rodape />
     </div>
-
   ); 
 }

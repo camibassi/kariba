@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../components/AuthContext';
 import useRequest from '../../hooks/useRequest';
 import Loading from '../../components/Loading';
+import Rodape from "../../components/Rodape";
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -82,6 +83,7 @@ const Login = () => {
           </div>
         </Form>
       </Container>
+      <Rodape />
     </>
   );
 };

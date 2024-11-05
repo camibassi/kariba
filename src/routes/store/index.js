@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
 import useRequest from "../../hooks/useRequest";
+import Rodape from "../../components/Rodape";
 
 export default function Store() {
   const { user } = useContext(AuthContext);
@@ -151,6 +152,7 @@ export default function Store() {
             ]}
           />
         </div>
+        <Rodape />
       </div>
     </div>
   );
