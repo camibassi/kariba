@@ -4,21 +4,50 @@
     box-sizing: border-box;
 }
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    background: none;
+/* Estilo para a barra de navegação */
+.navbar-menu {
+    background-image: url(../../../public/images/fundobarra4.png);
+    background-repeat: repeat; /* Faz a imagem se repetir */
+    background-size: contain; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
+    height: 65px; /* Altura da barra de navegação */
+    width: 100%; /* Garante que a barra de navegação use toda a largura disponível */
 }
 
-.logo h1 {
+.nameuser {
+    margin-right: 50px !important; /* Define uma margem à direita do nome do usuário */
+    color: #ffffff;
+}
+
+/* Estilo para a marca */
+.navbar-brand {
+    color: rgb(255, 34, 0); /* Cor do texto da marca */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+.navbar-brand:hover{
+    color: rgb(255, 255, 255);
+}
+
+.icone img {
+    width: 50px; /* Define a largura do ícone */
+    height: auto; /* Mantém a proporção */
+    margin-top: 0%;
+    margin-right: 30px;
+}
+
+/* Container da navbar para usar flexbox */
+.d-flex {
+    display: flex;
+    justify-content: space-between; /* Espaça os itens entre eles */
+    align-items: center; /* Alinha verticalmente no centro */
+}
+
+h1 .menuprincipal{
     font-family: "Matemasie", sans-serif;
     color: white;
-    font-size: 70px;
+    font-size: 100px !important;
     text-align: center;
 }
-
 .header {
     display: flex;
     flex-direction: row;
