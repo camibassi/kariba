@@ -83,7 +83,6 @@ const Login = () => {
           </div>
         </Form>
       </Container>
-      <Rodape />
     </>
   );
 };
