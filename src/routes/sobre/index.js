@@ -1,6 +1,5 @@
-import './index.css'
-import MenuNavbar from "../../components/MenuNavbar";
-import { Container } from 'react-bootstrap';
+import './index.css';
+import { Container, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rodape from "../../components/Rodape";
 
@@ -8,14 +7,14 @@ export default function Sobre()
 {
   return(
     <div id="sobre">
-        <MenuNavbar>
-        <div id="navSobre" >    
-            <h1>
-                <img src="/images/favicon.png" alt="Logo" /> Equipe Kariba <img src="/images/favicon.png" alt="Logo" />
-            </h1>
-            <Link className="icone" to="/user"><img src="images/icone50.png"/></Link>
-        </div>
-        </MenuNavbar>
+      <Navbar className="navbar-sobre">
+        <Container className="d-flex justify-content-between">
+          <Navbar.Brand as={Link} to="/menu">Menu</Navbar.Brand>
+            <Link className="icone" to="/user">
+              <img src="images/icone50.png" alt="Ícone do usuário" />
+            </Link>
+        </Container>
+      </Navbar>
         <div class="organograma">
             <div class="ceo-container">
                 <div class="box ceo">
