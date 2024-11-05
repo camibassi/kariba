@@ -10,6 +10,7 @@ export default function App() {
   const { user } = useContext(AuthContext);
   const [background, setBackground] = useState("/images/natureza.png");
   const [backgroundCard, setBackgroundCard] = useState('default');
+  const [filter, setFilter] = useState('');
   const webSocket = useWebSocket('wss://1na5t5v281.execute-api.sa-east-1.amazonaws.com/production/');
 
   useEffect(() => {
@@ -20,6 +21,17 @@ export default function App() {
 
   }, [background]);
 
+  useEffect(()=> {
+    const root = document.getElementById('root');
+    if (root) 
+    {
+      console.log("Configurando filtro de imagem", filter);
+      
+      if (filter === "") root.style.filter = "";
+      else root.style.filter = 'url("'+ filter +'")';
+    }
+  }, [ filter ]);
+
   return (
     <>
       <div>
@@ -28,8 +40,10 @@ export default function App() {
             {
               setBackground: setBackground, 
               setBackgroundCard: setBackgroundCard, 
+              setFilter : setFilter,
               backgroundCard: backgroundCard,
               background: background,
+              filter : filter,
               webSocket: webSocket
             }} />
         ) : (

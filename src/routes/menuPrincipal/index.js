@@ -4,15 +4,17 @@ import { useContext } from "react";
 import { AuthContext } from "../../components/AuthContext";
 import Menu from "../../components/Menu";
 import Rodape from "../../components/Rodape";
+import { useRef } from "react";
 
 export default function MenuPrincipal() {
     const { user } = useContext(AuthContext); 
     const context = useOutletContext();
     const webSocket = context.webSocket;
     const navigate = useNavigate();
+    const containerRef = useRef(null);
 
     return (
-        <div>
+        <div ref={containerRef}>
             <Menu />
             <nav className="navbar">
                 <div className="logo">
@@ -42,7 +44,7 @@ export default function MenuPrincipal() {
                     <Link className="botao" to="/perdedor">perdedor</Link>
                 </div>
             </header>
-            <Rodape />
+            <Rodape targetRef={containerRef}/>
         </div>
     );
 }

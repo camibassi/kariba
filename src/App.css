@@ -43,7 +43,7 @@ body h1{
   background-color: #41616E; /* Cor de fundo */
   color: white; /* Cor do texto */
   border: none; /* Remove bordas padrão */
-  padding: 10px 15px; /* Espaçamento interno */
+  padding: 5px 10px; /* Espaçamento interno */
   border-radius: 5px; /* Bordas arredondadas */
   cursor: pointer; /* Muda o cursor ao passar o mouse */
   transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */

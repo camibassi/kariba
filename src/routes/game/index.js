@@ -15,6 +15,7 @@ import { Toast } from "primereact/toast";
 import { Dialog } from 'primereact/dialog';
 import Rodape from "../../components/Rodape";
 
+
 export default function Game() {
     const visivel = useShowHide();
     const [minhaVez, setMinhaVez] = useState(true);
@@ -55,6 +56,13 @@ export default function Game() {
         navigate("/menu");
     }
 
+    async function distribuirCarta() {
+        const audioElement = document.getElementById("distribuiCarta");
+        if (audioElement) {
+            audioElement.play();
+        }
+    }
+    
     const toast = useRef(null);
 
     useEffect(() => {
@@ -89,6 +97,27 @@ export default function Game() {
         }
     }, [webSocket.gameState]);
 
+    function finalizaJogada()
+    {
+        if( quantidadeMovimentada == 0 ){
+            alert("Faça uma jogada");
+            return ;
+        }
+        
+        sendRequest({
+            url: 'makeMove',
+            method: 'POST',
+            body: {
+              player: webSocket.connectionId,
+              quantity: parseInt(quantidadeMovimentada),
+              position: parseInt(cartaMovimentada),
+              gameId: webSocket.gameId
+            }
+          }, () => {
+            setCartaMovimentada('');
+            setQuantidadeMovimentada(0);
+        })
+    }
     
     return (
         <div className="overflow-hidden">
@@ -125,26 +154,12 @@ export default function Game() {
                     match={match}
                     currentPlayerConId={webSocket.connectionId}/>}
 
-                <Deck onClick={() => {
-                    sendRequest({
-                        url: 'makeMove',
-                        method: 'POST',
-                        body: {
-                          player: webSocket.connectionId,
-                          quantity: parseInt(quantidadeMovimentada),
-                          position: parseInt(cartaMovimentada),
-                          gameId: webSocket.gameId
-                        }
-                      }, () => {
-                        setCartaMovimentada('');
-                        setQuantidadeMovimentada(0);
-                      })
-                }} cartas={cartas} visibilidade={visivel} />
+                <Deck onClick={finalizaJogada} cartas={cartas} visibilidade={visivel} />
                 <Placar meuPlacar={meuPlacar} adversario={placarAdversario} />
                 <Mao minhaVez={minhaVez} cartas={cartas} board={webSocket.gameState.board} />
                 <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />
+                <audio id="distribuiCarta" src='/sounds/distribuir_cartas.mp3'/>
             </div>
-            <Rodape />
 
             {/* Caixa de diálogo com opções de modo */}
             <Dialog
@@ -157,7 +172,7 @@ export default function Game() {
                     <button className="dialog-button" onClick={() => confirmaSaida('não')}>Não</button>
                 </div>
             </Dialog>
-
+            <Rodape/>
             {/* Exibe loading e erros da requisição */}
             {loading && <p>Carregando dados...</p>}
             {error && <p>Erro ao carregar dados: {error.message}</p>}

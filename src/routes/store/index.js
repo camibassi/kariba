@@ -122,7 +122,7 @@ export default function Store() {
       <div id="fundo">
         <GroupCard
           className="decks-container-full"
-          name="Decks"
+          name="Decks (Unidade: R$ 50,00)"
           itens={[
             renderCardProps("default", "Padrão"),
             renderCardProps("alice", "Alice"),
@@ -139,7 +139,7 @@ export default function Store() {
         <div className="containerCentral">
           <GroupCard
             classNameDeck="imagemMenor"
-            name="Planos de Fundo"
+            name="Planos de Fundo (Unidade: R$ 50,00)"
             itens={[
               renderBackgroundProps("natureza", "Natureza"),
               renderBackgroundProps("natureza3", "Natureza (2)"),
@@ -149,11 +149,15 @@ export default function Store() {
               renderBackgroundProps("halloween", "Halloween"),
               renderBackgroundProps("natal", "Natal"),
               renderBackgroundProps("natal2", "Natal (2)"),
+              renderBackgroundProps("pokemon1", "Pokémon"),
+              renderBackgroundProps("pokemon2", "Pokémon (2)"),
+              renderBackgroundProps("pokemon3", "Pokémon (3)"),
+
             ]}
           />
         </div>
-        <Rodape />
       </div>
+      <Rodape/>
     </div>
   );
 }

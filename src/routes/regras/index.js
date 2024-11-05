@@ -3,6 +3,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rodape from "../../components/Rodape";
 
+
 export default function Regras() {
     return (
         <div id="regras">
@@ -61,11 +62,11 @@ export default function Regras() {
                     <p>O vencedor é o jogador que mais coletou pontos ao final do jogo.</p>
                 </section>
 
-            <footer>
-                <p>Divirta-se jogando Kariba!</p>
-            </footer>
-        </Container>
-        <Rodape />
-    </div>
+                <footer>
+                    <p>Divirta-se jogando Kariba!</p>
+                </footer>
+            </Container>
+            <Rodape/>
+        </div>
     );
 }

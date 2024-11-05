@@ -12,6 +12,8 @@ import { BsFillPersonFill } from "react-icons/bs";
 import useRequest from "../../hooks/useRequest";
 import Loading from "../../components/Loading";
 import ReactInputMask from "react-input-mask";
+import Rodape from "../../components/Rodape";
+
 
 export default function User() {
     const countryOptions = [
@@ -169,6 +171,7 @@ export default function User() {
                     </Form>
                 </Card>
             </Container>
+            <Rodape/>
         </div>
     );
 }

@@ -1,16 +1,24 @@
+import { useOutletContext } from "react-router-dom";
+
 const Rodape = (props) => {
+  const context = useOutletContext();
+
   function changeFilter(f) {
-    let root = document.getElementById("root");
-    if (f === "") root.style = "";
-    else root.style = "filter: url(" + f + ");";
+    // Seta o filtro dentro do context
+    context.setFilter(f);
   }
 
-  return (<div style={{ position: 'fixed', bottom: '10px', right: '10px', display: 'flex', gap: '5px' }}>
-    <button className="botaoRodape" onClick={() => changeFilter('')}>Normal</button>
-    <button className="botaoRodape" onClick={() => changeFilter("#protanopia")}>Protanopia</button>
-    <button className="botaoRodape" onClick={() => changeFilter("#deuteranopia")}>Deuteranopia</button>
-    <button className="botaoRodape" onClick={() => changeFilter("#tritanopia")}>Tritanopia</button>
-    <button className="botaoRodape" onClick={() => changeFilter("#achromatomaly")}>Achromatopsia</button>
+  return (<div style={{ position: 'fixed', bottom: '10px', right: '10px', display: 'flex', gap: '5px' }}> 
+    <div className="selecaoFiltro">
+        <select onChange={(e) => changeFilter(e.target.value)} className="botaoRodape">
+          <option value="" selected={context.filter == ""?"selected":""} > Sem filtro</option>
+          <option value="#protanopia" selected={context.filter == "#protanopia"?"selected":""} >Protanopia</option>
+          <option value="#deuteranopia" selected={context.filter == "#deuteranopia"?"selected":""} >Deuteranopia</option>
+          <option value="#tritanopia" selected={context.filter == "#tritanopia"?"selected":""} >Tritanopia</option>
+          <option value="#achromatomaly" selected={context.filter == "#achromatomaly"?"selected":""} >Achromatopsia</option>
+        </select>
+    </div>
+
   </div>)
 }
 
