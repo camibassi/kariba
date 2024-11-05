@@ -6,6 +6,7 @@ import useRequest from '../../hooks/useRequest';
 import Loading from '../../components/Loading';
 import { FaReply } from 'react-icons/fa6';
 import { Toast } from 'primereact/toast'; // Importando o Toast do PrimeReact
+import Rodape from "../../components/Rodape";
 
 const CriarConta = () => {
   const [username, setUsername] = useState('');
@@ -112,6 +113,7 @@ const CriarConta = () => {
         </Button>
       </Form>
     </Container>
+    <Rodape/>
   </>);
 };
 
