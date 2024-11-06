@@ -10,8 +10,6 @@ const MenuNavbar = (props) => {
   const [showDialog, setShowDialog] = useState(false); // Controle da caixa de diálogo de seleção de modo
 
   function voltar_menu(){
-    if( props.finalizaPartida )
-      props.finalizaPartida();
       navigate('../menu');
   }
 
@@ -30,7 +28,14 @@ const MenuNavbar = (props) => {
         <Container>
           <Navbar.Brand className="navbar-brand">Kariba</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link className="navbar-link" onClick={() => setShowDialog(true)}>
+            <Nav.Link className="navbar-link" 
+            onClick={() => {
+              if (props.exibirDialogo) {
+                setShowDialog(true); // Exibir caixa de diálogo na tela específica
+              } else {
+                navigate('../menu'); // Navegar diretamente para o menu nas outras telas
+              }
+            }}>
               <FaReply className="navbar-icon" /> Menu
             </Nav.Link>
           </Nav>

@@ -113,7 +113,7 @@ export default function Game() {
         <div className="overflow-hidden">
             
     <Toast ref={toast} position="center" />
-            <MenuNavbar finalizaPartida={finalizaPartida}>
+            <MenuNavbar finalizaPartida={finalizaPartida} exibirDialogo={true} >
                 <h1>
                     <img src="/images/favicon.png" alt="Logo" /> Kariba <img src="/images/favicon.png" alt="Logo" />
                 </h1>

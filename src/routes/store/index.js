@@ -111,7 +111,7 @@ export default function Store() {
     <div style={{ overflow: "hidden" }}>
       <Toast ref={toast} position="center" />
       <ConfirmDialog />
-      <MenuNavbar>
+      <MenuNavbar exibirDialogo={false}>
         <h1>
           <img src="/images/favicon.png" alt="Logo" /> Loja <img src="/images/favicon.png" alt="Logo" />
         </h1>
