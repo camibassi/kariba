@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import Rodape from "../../components/Rodape";
+import useApareceMouseBotao from "../../hooks/useApareceMouseBotao";
 
 
 export default function Game() {
@@ -32,6 +33,8 @@ export default function Game() {
     const [cartas, setCartas] = useState([]);
     const [cartasAdversario, setCartasAdversario] = useState(0);
     const [showDialog, setShowDialog] = useState(false); // Controle da caixa de diálogo de seleção de modo
+    const { mostrarMensagem, onMouseEnter, onMouseLeave } = useApareceMouseBotao();
+    const [showNotMyTurnMessage, setShowNotMyTurnMessage] = useState(false);
 
 
     // Função que finaliza a partida
@@ -210,13 +213,36 @@ export default function Game() {
                 <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />
                 <audio id="distribuiCarta" src='/sounds/distribuir_cartas.mp3'/>
             </div>
-            <img class="botaoTrombeta" style={{ visibility: visivel ? "visible" : "hidden"}} src="/images/perfil - botao.png" onClick={sendActionElefante}/>
-            <div id="trombeta" class="hidden">
-                <img class="elefante" src="images/elefante andando.gif"/>
-                <audio id="audio-elefante" loop>
-                    <source src="/sounds/elefante.mp3" type="audio/mp3" />
-                </audio>
-            </div>
+            <div 
+                onMouseEnter={() => {
+                    onMouseEnter();
+                    if (!minhaVez) setShowNotMyTurnMessage(true); // Exibe a mensagem se não for a vez
+                }}
+                onMouseLeave={() => {
+                    onMouseLeave();
+                    setShowNotMyTurnMessage(false); // Oculta a mensagem ao sair do mouse
+                }}
+            >
+                    <img class="botaoTrombeta" style={{ 
+                        visibility: visivel ? "visible" : "hidden",
+                        opacity: minhaVez ? 0.5 : 1, // Reduz opacidade se for sua vez
+                        cursor: minhaVez ? "not-allowed" : "pointer" // Cursor muda quando desabilitado
+                    }} src="/images/perfil - botao.png" onClick={sendActionElefante}/>
+                    {mostrarMensagem === 1 && !minhaVez &&( // Exibe a mensagem de arraste apenas se for a vez
+                        <div id="mensagemTrombeta">
+                            Provocar (1x)
+                        </div>
+                    )}
+
+                </div>
+
+
+                <div id="trombeta" class="hidden">
+                    <img class="elefante" src="images/elefante andando.gif"/>
+                    <audio id="audio-elefante" loop>
+                        <source src="/sounds/elefante.mp3" type="audio/mp3" />
+                    </audio>
+                </div>
 
             <Rodape/>
             {/* Exibe loading e erros da requisição */}
