@@ -12,7 +12,6 @@ import '../game/index.css'
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
-import { Dialog } from 'primereact/dialog';
 import Rodape from "../../components/Rodape";
 
 
@@ -34,15 +33,6 @@ export default function Game() {
     const [cartasAdversario, setCartasAdversario] = useState(0);
     const [showDialog, setShowDialog] = useState(false); // Controle da caixa de diálogo de seleção de modo
 
-    async function confirmaSaida(resposta) {
-        if (resposta === "sim") {
-            setShowDialog(false);
-            finalizaPartida();
-        } else if (resposta === "não") {
-            //verificar como bloquear o modo normal do outro jogador
-            setShowDialog(false);
-        }
-    }
 
     // Função que finaliza a partida
     async function finalizaPartida() {
@@ -144,9 +134,9 @@ export default function Game() {
                     }} />
 
                 
-                <div className="botoes" id= "sairJogo" > 
+               {/* <div className="botoes" id= "sairJogo" > 
                     <button onClick={() => setShowDialog(true)}> Sair do jogo </button>
-                </div>
+                </div>*/}
 
                 {/* Exibe o Contador condicionalmente */}
                 {mostrarContador && <Contador 
@@ -177,17 +167,6 @@ export default function Game() {
                 <audio id="distribuiCarta" src='/sounds/distribuir_cartas.mp3'/>
             </div>
 
-            {/* Caixa de diálogo com opções de modo */}
-            <Dialog
-                visible={showDialog}
-                onHide={() => setShowDialog(false)}
-                header="Você tem certeza que quer sair do jogo?"
-            >
-                <div className="dialog-content">
-                    <button className="dialog-button" onClick={() => confirmaSaida('sim')}>Sim</button>
-                    <button className="dialog-button" onClick={() => confirmaSaida('não')}>Não</button>
-                </div>
-            </Dialog>
             <Rodape/>
             {/* Exibe loading e erros da requisição */}
             {loading && <p>Carregando dados...</p>}
