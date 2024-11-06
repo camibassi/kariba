@@ -4,11 +4,21 @@
     box-sizing: border-box;
 }
 
+.tela-jogo {
+    background-image: url('../../../public/images/natureza4.png'); /* Caminho da imagem de fundo */
+    background-size: cover; /* Preenche a tela */
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Garante que o background ocupe toda a altura da tela */
+    display: flex;
+    flex-direction: column;
+}
+
 /* Estilo para a barra de navegação */
 .navbar-menu {
     background-image: url(../../../public/images/fundobarra4.png);
-    background-repeat: repeat; /* Faz a imagem se repetir */
-    background-size: contain; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
+    background-repeat: no-repeat; /* Faz a imagem se repetir */
+    background-size:cover; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
     height: 65px; /* Altura da barra de navegação */
     width: 100%; /* Garante que a barra de navegação use toda a largura disponível */
 }
@@ -27,6 +37,41 @@
 .navbar-brand:hover{
     color: rgb(255, 255, 255);
 }
+/*para ajustar o logo*/
+.logo-container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 100%;
+    margin-top: 10px; /* Espaço entre a navbar e o logo */
+}
+
+.logonovo {
+    height: 180px; /* Define a altura da imagem */
+    max-width: 100%; /* Ajusta a largura da imagem conforme necessário */
+}
+
+/* Ajuste responsivo para telas menores */
+@media (max-width: 768px) {
+    .logonovo {
+        height: 150px; /* Ajusta a altura do logo em telas pequenas */
+    }
+}
+
+.placa {
+    background-image: url('../../../public/images/placa.png'); /* Insira o caminho da imagem da placa */
+    background-size: contain; /* Ajusta o tamanho da imagem para caber no conteúdo */
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ajusta para a largura desejada */
+    height: 380px; /* Ajuste conforme o tamanho da imagem */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
 
 .icone img {
     width: 50px; /* Define a largura do ícone */
@@ -59,6 +104,7 @@ h1 .menuprincipal{
     flex-wrap: wrap; /* Adicionado para garantir que o layout se ajuste em telas menores */
 }
 
+
 .headline {
     flex: 1;
     margin: 20px;
@@ -66,15 +112,16 @@ h1 .menuprincipal{
 
 .headline h2 {
     font-weight: 900;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     margin: 0;
 }
 
 .headline p {
     color: #ffffff;
+    margin-top: 20px;
     text-align: left;
-    font-size: 35px;
+    font-size: 25px;
     line-height: 1.4;
 }
 
@@ -87,7 +134,7 @@ h1 .menuprincipal{
 
 .botao {
     display: inline-block;
-    background: orange;
+    background: orangered;
     padding: 20px 35px;
     color: white;
     border-radius: 5px;
@@ -100,7 +147,7 @@ h1 .menuprincipal{
 }
 
 .botao:hover {
-    background: orangered;
+    background: orange;
     cursor: pointer;
 }
 
@@ -156,3 +203,23 @@ section h2 {
         margin: 5% auto;
     }
 }
+
+@keyframes moveUpDownInfinite {
+    0% {
+      transform: translateY(0); /* Começa na posição inicial */
+    }
+    50% {
+      transform: translateY(-20px); /* Sobe 20px */
+    }
+    100% {
+      transform: translateY(0); /* Volta para a posição inicial */
+    }
+  }
+  
+  .texto-movimento-continuo {
+    animation: moveUpDownInfinite 5s ease-in-out infinite; /* Animação que repete infinitamente */
+  }
+  
+  .texto-movimento {
+    animation: moveUpDown 2s ease-in-out forwards; /* 2 segundos de animação */
+  }
