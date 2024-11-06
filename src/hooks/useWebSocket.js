@@ -7,6 +7,7 @@ const useWebSocket = (url) => {
   const [connectionId, setConnectionId] = useState({});
   const [isConnected, setIsConnected] = useState(false);
   const [gameId, setGameId] = useState(null);
+  const [elefante, setElefante] = useState(0);
 
   const open = () => {
     const newSocket = new WebSocket(url);
@@ -30,7 +31,11 @@ const useWebSocket = (url) => {
         setGameState(data.gameState);
         setConnectionId(data.connectionId);
       }
-    };
+      if( data.action === "elefante")
+        {
+          setElefante(1);
+        }
+      };
 
     newSocket.onerror = (error) => {
       console.error("WebSocket Error: ", error);
@@ -66,6 +71,8 @@ const useWebSocket = (url) => {
     sendMessage,
     closeSocket,
     gameState,
+    elefante,
+    setElefante,
     isConnected,
     open,
     connectionId,

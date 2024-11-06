@@ -411,3 +411,32 @@
 .dialog-button {
     padding: 10px 30px; /* Ajuste o preenchimento para estilizar os botões */
 }
+
+#trombeta{
+    position:absolute;
+    top:5%;
+    left:-50%;
+    width:100%;
+}
+#trombeta.hidden { display: none; }
+
+#trombeta.anim { 
+    animation-name: caminhada;
+    animation-duration: 15s;
+    visibility: hidden;
+}
+
+@keyframes caminhada {
+    0%   {visibility: visible; left:-50%; top:5%;}
+    100% {visibility: visible; left:100%; top:5%;}
+  }
+
+.botaoTrombeta{
+    position: absolute;
+    top: 35%;
+    right: 11%;
+    display: inline;
+    text-align: right;
+    width:10vh;
+}
+

@@ -108,7 +108,51 @@ export default function Game() {
             setQuantidadeMovimentada(0);
         })
     }
-    
+    useEffect(() => {
+        if( webSocket.elefante === 1 )
+        {
+            disparaElefante();
+        }
+    }, [webSocket.elefante]);
+
+
+    // Dispara a animação do elefante
+    function disparaElefante()
+    {
+        console.log("Elefante!!!");
+
+        // Exibe o elefante
+        let trombeta = document.getElementById("trombeta");
+        trombeta.className = "anim";
+
+        // Toca o audio do elefante
+        let audio = trombeta.getElementsByTagName("audio")[0];
+        audio.play();
+
+        // Apos 15s reseta
+        setTimeout( function(){
+            console.log("Parar animação") 
+            trombeta.className = "hidden";
+            audio.pause();
+            audio.currentTime = 0;
+            webSocket.setElefante(0);
+        }, 15000 );
+    }
+
+    // Envia a mensagem para disparar o elefante no outro jogador
+    function sendActionElefante()
+    {
+        // Chama a lambda para ativar o elefante
+        fetch("https://wzs22vrog2d3xlzmermz7x3er40plueu.lambda-url.sa-east-1.on.aws/")
+            .then( function(response) {
+                webSocket.setElefante(1);
+                //alert("Elefante enviado");
+            })
+            .catch( function() { 
+                alert("Erro ao disparar o elefante. Tente novamente");
+            } );
+    }
+
     return (
         <div className="overflow-hidden">
             
@@ -165,6 +209,13 @@ export default function Game() {
                 <Mao minhaVez={minhaVez} cartas={cartas} board={webSocket.gameState.board} />
                 <CartasAdversario cartas={cartasAdversario} visibilidade={visivel} />
                 <audio id="distribuiCarta" src='/sounds/distribuir_cartas.mp3'/>
+            </div>
+            <img class="botaoTrombeta" style={{ visibility: visivel ? "visible" : "hidden"}} src="/images/perfil - botao.png" onClick={sendActionElefante}/>
+            <div id="trombeta" class="hidden">
+                <img class="elefante" src="images/elefante andando.gif"/>
+                <audio id="audio-elefante" loop>
+                    <source src="/sounds/elefante.mp3" type="audio/mp3" />
+                </audio>
             </div>
 
             <Rodape/>
