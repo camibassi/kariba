@@ -440,3 +440,19 @@
     width:10vh;
 }
 
+#mensagemTrombeta {
+    position: absolute;
+    top:45%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(65, 97, 110, 0.8);
+    color: white;
+    font-size: small;
+    padding: 2px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vh;
+  }
