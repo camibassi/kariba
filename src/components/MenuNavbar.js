@@ -51,6 +51,7 @@ const MenuNavbar = (props) => {
       header="Você realmente quer sair do jogo?"
       >
           <div className="dialog-content">
+              <img src="images/sad.png"/>
               <button className="dialog-button" onClick={() => confirmaSaida('sim')}>Sim</button>
               <button className="dialog-button" onClick={() => confirmaSaida('não')}>Não</button>
           </div>
