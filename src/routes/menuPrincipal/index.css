@@ -42,12 +42,19 @@
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
     width: 100%;
+    height: 15vh;
     margin-top: 10px; /* Espaço entre a navbar e o logo */
 }
 
 .logonovo {
-    height: 180px; /* Define a altura da imagem */
-    max-width: 100%; /* Ajusta a largura da imagem conforme necessário */
+    height: 180px;
+    max-width: 100%;
+    animation: floatLogo 3s ease-in-out infinite; /* Animação de flutuação */
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
 /* Ajuste responsivo para telas menores */

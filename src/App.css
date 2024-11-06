@@ -93,6 +93,82 @@ body h1{
   animation: toastOut 0.3s forwards;
 }
 
+/* Estilos para ConfirmDialog */
+.p-confirm-dialog {
+  font-family: 'Roboto', sans-serif;
+  background-color: #41616E !important; /* Fundo com cor de jogo */
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+  color: #ff8800;
+  max-width: 500px;
+}
+
+.p-confirm-dialog .p-confirm-dialog-message {
+  color: #ff8800; /* Cor do texto */
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.p-confirm-dialog .p-dialog-header {
+  background-color: #ff8800 !important; /* Cor de fundo do header */
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 15px;
+}
+
+.p-confirm-dialog .p-dialog-footer .p-button {
+  font-weight: bold;
+  color: #41616E; /* Cor do botão */
+  background-color: #C9E8FC; /* Fundo do botão */
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.p-confirm-dialog .p-dialog-footer .p-button:hover {
+  background-color: #ff8800; /* Cor ao passar o mouse */
+  color: #ffffff;
+}
+
+/* Animação de entrada e saída */
+.p-confirm-dialog-enter-active {
+  animation: dialogIn 0.4s forwards;
+}
+
+.p-confirm-dialog-leave-active {
+  animation: dialogOut 0.4s forwards;
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dialogOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+
 @keyframes toastIn {
   from {
       opacity: 0;
