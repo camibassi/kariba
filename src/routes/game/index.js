@@ -152,6 +152,22 @@ export default function Game() {
                 {mostrarContador && <Contador 
                     setMinhaVez={setMinhaVez}
                     match={match}
+                    tempoEsgotado={() => {
+                        sendRequest({
+                            url: 'makeMove',
+                            method: 'POST',
+                            body: {
+                                player: webSocket.connectionId,
+                                gameId: webSocket.gameId,
+                                quantity: parseInt(quantidadeMovimentada),
+                                position: parseInt(cartaMovimentada)
+                            }
+                            }, () => {
+                                setCartaMovimentada('');
+                                setQuantidadeMovimentada(0);
+                            });
+                    }}
+                    
                     currentPlayerConId={webSocket.connectionId}/>}
 
                 <Deck onClick={finalizaJogada} cartas={cartas} visibilidade={visivel} />

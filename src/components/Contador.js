@@ -1,73 +1,67 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Contador({ match, currentPlayerConId, setMinhaVez }) {
+export default function Contador({ match, currentPlayerConId, setMinhaVez, tempoEsgotado }) {
   const [timeLeft, setTimeLeft] = useState(15); // Contador inicial de 15 segundos
   const [message, setMessage] = useState('Aguarde sua vez');
   const [isCounting, setIsCounting] = useState(false); // Controle do estado de contagem
 
+  // Verifica se é a vez do jogador e atualiza a mensagem
   useEffect(() => {
-    let timer;
-
     const isPlayer1 = match.player1conId === currentPlayerConId;
     const isPlayer2 = match.player2conId === currentPlayerConId;
 
-    // Verifica o estado do jogo e se o jogador atual está jogando
-    console.log( match.gameState, currentPlayerConId );
-    console.log("Player 1", isPlayer1, match.player1State);
-    console.log("Player 2", isPlayer2, match.player2State);
-
-
     if (match.gameState === 'in progress') {
-      if ((isPlayer1 == true && match.player1State === 'playing') || 
-          (isPlayer2 == true && match.player2State === 'playing')) {
-          setMessage('Sua vez');
-          setMinhaVez(true);
-          setTimeLeft(15); // Reseta o contador
-          setIsCounting(false); // Para a contagem anterior
-
+      if ((isPlayer1 && match.player1State === 'playing') || 
+          (isPlayer2 && match.player2State === 'playing')) {
+        setMessage('Sua vez');
+        setMinhaVez(true);
+        setIsCounting(false); // Para a contagem anterior
+        setTimeLeft(15); // Reseta o contador
       } else {
-
-          setMessage('Aguarde sua vez');
-          setMinhaVez(false);
-          setIsCounting(false); // Para a contagem se não for a vez do jogador
-          setTimeLeft(15); // Reseta o contador se não for a vez
-
+        setMessage('Aguarde sua vez');
+        setMinhaVez(false);
+        setIsCounting(false);
+        setTimeLeft(15); // Reseta o contador se não for a vez
       }
     }
-/*
-    // Inicia a contagem após 2 segundos de "Sua vez"
+  }, [match, currentPlayerConId, setMinhaVez]);
+
+  // Inicia o contador quando a mensagem é 'Sua vez' e depois de 2 segundos muda para contagem
+  useEffect(() => {
+    let timer;
     if (message === 'Sua vez' && !isCounting) {
       timer = setTimeout(() => {
         setMessage('Contador');
-        setIsCounting(true); // Começa a contagem
+        setIsCounting(true);
       }, 2000);
     }
+    return () => clearTimeout(timer);
+  }, [message, isCounting]);
 
-    // Inicia o contador de 15 segundos
+  // Executa o contador quando `isCounting` está ativo
+  useEffect(() => {
     if (isCounting && timeLeft > 0) {
-      timer = setInterval(() => {
+      const interval = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
+      return () => clearInterval(interval);
     } else if (timeLeft === 0) {
       setMessage('Tempo esgotado');
-      setIsCounting(false); // Para a contagem
-      setTimeLeft(15); // Reseta o contador para a próxima rodada
+      setIsCounting(false);
+      tempoEsgotado();
     }
+  }, [isCounting, timeLeft]);
 
-    // Exibe "Tempo esgotado" por 2 segundos
+  // Exibe "Tempo esgotado" por 2 segundos e reseta a mensagem
+  useEffect(() => {
+    let timer;
     if (message === 'Tempo esgotado') {
       timer = setTimeout(() => {
         setMessage('Aguarde sua vez');
-        setIsCounting(false); // Para a contagem
       }, 2000);
     }
-*/
-    // Limpa o intervalo ou timeout quando o efeito termina ou o estado muda
-    return () => {
-      clearTimeout(timer);
-      clearInterval(timer);
-    };
-  }, [match, currentPlayerConId, message, timeLeft, isCounting, setMinhaVez]);
+    return () => clearTimeout(timer);
+  }, [message]);
 
   return (
     <div
