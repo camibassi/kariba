@@ -55,7 +55,7 @@ const CriarConta = () => {
     <Toast ref={toast} position="center" />
     <Container className="light-login-container">
       <Form className="light-login-form" noValidate validated={validated ?? false} ref={setRef}>
-        <h2 className="light-title">Kariba</h2>
+        <img className="logonovo-criarConta" src="images/novologo.png" alt="logo" />
         <Form.Group controlId="formBasicEmail">
           <Form.Label className="light-label">Nome de usuário</Form.Label>
           <Form.Control

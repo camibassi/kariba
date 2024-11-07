@@ -45,9 +45,9 @@ const Login = () => {
       {request.loading && <Loading />}
       <Container className="light-login-container">
         <Form className="light-login-form" noValidate validated={validated ?? false} ref={setRef}>
-          <h2 className="light-title">Login</h2>
+          <img className="logonovo" src="images/novologo.png" alt="logo" />
           <Form.Group controlId="formBasicEmail">
-            <Form.Label className="light-label">Nome de usuário</Form.Label>
+            <Form.Label className="light-label">Login <br/>Nome de usuário</Form.Label>
             <Form.Control
               type="text"
               required={true}

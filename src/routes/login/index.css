@@ -24,6 +24,12 @@ body {
   .light-login-form {
     animation: fadeIn 1.5s ease-in-out forwards;
   }
+
+  .logonovo-criarConta {
+    height: 130px;
+    max-width: 100%;
+    animation: floatLogo 3s ease-in-out infinite; /* Animação de flutuação */
+}
   
   .light-title {
     font-size: 2em;
