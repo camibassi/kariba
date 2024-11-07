@@ -35,7 +35,7 @@ export default function Game() {
     const [showDialog, setShowDialog] = useState(false); // Controle da caixa de diálogo de seleção de modo
     const { mostrarMensagem, onMouseEnter, onMouseLeave } = useApareceMouseBotao();
     const [showNotMyTurnMessage, setShowNotMyTurnMessage] = useState(false);
-
+    const [promise, setPromise] = useState(null);
 
     // Função que finaliza a partida
     async function finalizaPartida() {
@@ -97,7 +97,8 @@ export default function Game() {
             return ;
         }
         
-        sendRequest({
+        if(!promise)
+        setPromise(sendRequest({
             url: 'makeMove',
             method: 'POST',
             body: {
@@ -109,7 +110,8 @@ export default function Game() {
           }, () => {
             setCartaMovimentada('');
             setQuantidadeMovimentada(0);
-        })
+            setPromise(null);
+        }));
     }
     useEffect(() => {
         if( webSocket.elefante === 1 )
@@ -190,19 +192,21 @@ export default function Game() {
                     setMinhaVez={setMinhaVez}
                     match={match}
                     tempoEsgotado={() => {
-                        sendRequest({
-                            url: 'makeMove',
-                            method: 'POST',
-                            body: {
-                                player: webSocket.connectionId,
-                                gameId: webSocket.gameId,
-                                quantity: parseInt(quantidadeMovimentada),
-                                position: parseInt(cartaMovimentada)
-                            }
-                            }, () => {
-                                setCartaMovimentada('');
-                                setQuantidadeMovimentada(0);
-                            });
+                        if(!promise)
+                            setPromise(sendRequest({
+                                url: 'makeMove',
+                                method: 'POST',
+                                body: {
+                                    player: webSocket.connectionId,
+                                    gameId: webSocket.gameId,
+                                    quantity: parseInt(quantidadeMovimentada),
+                                    position: parseInt(cartaMovimentada)
+                                }
+                                }, () => {
+                                    setCartaMovimentada('');
+                                    setQuantidadeMovimentada(0);
+                                    setPromise(null);
+                                }))
                     }}
                     
                     currentPlayerConId={webSocket.connectionId}/>}
