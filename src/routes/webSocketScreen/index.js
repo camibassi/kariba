@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom'; // Importa o hook useNavigate
 import useWebSocket from '../../hooks/useWebSocket'; // Importa o hook personalizado
 import './index.css';
+import useRequest from '../../hooks/useRequest';
 
 function WebSocketScreen() {
   const context = useOutletContext();
@@ -15,6 +16,7 @@ function WebSocketScreen() {
     navigate("/menu");
   }
 
+  const {sendRequest} = useRequest();
   // Monitora se o WebSocket conectou e recebeu mensagens
   useEffect(() => {
     if (webSocket.messages.length > 0) {
@@ -22,7 +24,11 @@ function WebSocketScreen() {
       setFoundPlayer(true);
 
       const timer = setTimeout(() => {
-        navigate('/game');
+        sendRequest({
+          url: `gameState?gameId=${webSocket.gameId}`
+        }, () => {
+          navigate('/game');
+        })
       }, 2000);
 
       return () => clearTimeout(timer);

@@ -38,17 +38,25 @@ export default function Contador({ match, currentPlayerConId, setMinhaVez, tempo
     return () => clearTimeout(timer);
   }, [message, isCounting]);
 
+  const [requisicao, setRequisicao] = useState(0);
   // Executa o contador quando `isCounting` está ativo
   useEffect(() => {
     if (isCounting && timeLeft > 0) {
       const interval = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        setRequisicao(0);
+      };
     } else if (timeLeft === 0) {
       setMessage('Tempo esgotado');
       setIsCounting(false);
-      tempoEsgotado();
+      if(requisicao == 0)
+      {
+        tempoEsgotado();
+        setRequisicao(1);
+      }
     }
   }, [isCounting, timeLeft]);
 
