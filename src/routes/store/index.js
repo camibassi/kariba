@@ -107,6 +107,7 @@ export default function Store() {
     };
   };
 
+
   return (
     <div style={{ overflow: "hidden" }}>
       <Toast ref={toast} position="center" />
@@ -114,6 +115,9 @@ export default function Store() {
       <Navbar className="navbar-store">
         <Container className="d-flex justify-content-between">
           <Navbar.Brand as={Link} to="/menu">Menu</Navbar.Brand>
+          <div className="nameuser">
+            {user.nome?.toUpperCase() || user.username?.toUpperCase()}
+          </div>
             <Link className="icone" to="/user">
               <img src="images/icone50.png" alt="Ícone do usuário" />
             </Link>

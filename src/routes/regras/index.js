@@ -1,15 +1,22 @@
 import './index.css';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rodape from "../../components/Rodape";
-
+import { useContext } from "react";
+import { AuthContext } from "../../components/AuthContext";
 
 export default function Regras() {
+    const { user } = useContext(AuthContext);
+
+
     return (
         <div id="regras">
             <Navbar className="navbar-regras">
                 <Container className="d-flex justify-content-between">
                     <Navbar.Brand as={Link} to="/menu">Menu</Navbar.Brand>
+                    <div className="nameuser">
+                            {user.nome?.toUpperCase() || user.username?.toUpperCase()}
+                        </div>
                     <Link className="icone" to="/user">
                         <img src="images/icone50.png" alt="Ícone do usuário" />
                     </Link>
@@ -70,3 +77,4 @@ export default function Regras() {
         </div>
     );
 }
+

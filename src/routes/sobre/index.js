@@ -2,14 +2,21 @@ import './index.css';
 import { Container, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Rodape from "../../components/Rodape";
+import { useContext } from "react";
+import { AuthContext } from "../../components/AuthContext";
 
-export default function Sobre()
-{
+
+export default function Sobre(){
+const { user } = useContext(AuthContext);
+
   return(
     <div id="sobre">
       <Navbar className="navbar-sobre">
         <Container className="d-flex justify-content-between">
           <Navbar.Brand as={Link} to="/menu">Menu</Navbar.Brand>
+          <div className="nameuser">
+            {user.nome?.toUpperCase() || user.username?.toUpperCase()}
+            </div>
             <Link className="icone" to="/user">
               <img src="images/icone50.png" alt="Ícone do usuário" />
             </Link>

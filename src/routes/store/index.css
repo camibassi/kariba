@@ -2,8 +2,8 @@
 /* Estilo para a barra de navegação */
 .navbar-store {
   background-image: url(../../../public/images/fundobarra4.png);
-  background-repeat: repeat; /* Faz a imagem se repetir */
-  background-size: contain; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
+  background-repeat: no-repeat;
+  background-size: cover; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
   height: 65px; /* Altura da barra de navegação */
   width: 100%; /* Garante que a barra de navegação use toda a largura disponível */
 }

@@ -1,6 +1,6 @@
 /* Estilos de cores claras puxando para laranja */
 body {
-    background: linear-gradient(135deg, #ffecd2, #ffac81);
+    
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -33,7 +33,7 @@ body {
   
   .light-title {
     font-size: 2em;
-    color: #ff6f47;
+    color: #000000;
     margin-bottom: 20px;
     font-weight: bold;
   }

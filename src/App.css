@@ -1,5 +1,6 @@
 #root { 
-  background-size: 100%!important;
+  background-size: cover!important;
+  background-repeat: no-repeat !important; 
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image: url('../public/images/natureza.png');
