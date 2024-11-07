@@ -191,3 +191,8 @@ body h1{
       transform: translateX(100%);
   }
 }
+
+.hover:hover{
+  cursor: pointer;
+  transform: scale(1.1)
+}

@@ -4,7 +4,6 @@ import { useOutletContext } from "react-router-dom";
 import './index.css';
 import BotaoLigarDesligar from "../../hooks/useOnOff";
 import MenuNavbar from "../../components/MenuNavbar";
-import UpdateUserForm from "../../hooks/useAtualizaPerfil";
 import { Button, Form, Row, Col, Container, Card } from "react-bootstrap";
 import { Dropdown } from 'primereact/dropdown';
 import { FaCoins, FaEye, FaEyeSlash } from "react-icons/fa"; // Importação dos ícones de olho
@@ -171,7 +170,6 @@ export default function User() {
                     </Form>
                 </Card>
             </Container>
-            <Rodape/>
         </div>
     );
 }

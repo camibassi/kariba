@@ -161,7 +161,6 @@ export default function Store() {
           />
         </div>
       </div>
-      <Rodape/>
     </div>
   );
 }

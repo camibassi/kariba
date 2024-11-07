@@ -70,7 +70,6 @@ export default function MenuPrincipal() {
                     <Link className="botao" to="/sobre">Sobre nós</Link>
                 </div>
             </header>
-            <Rodape targetRef={containerRef}/>
         </div>
     );
 }

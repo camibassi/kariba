@@ -248,7 +248,6 @@ export default function Game() {
                     </audio>
                 </div>
 
-            <Rodape/>
             {/* Exibe loading e erros da requisição */}
             {loading && <p>Carregando dados...</p>}
             {error && <p>Erro ao carregar dados: {error.message}</p>}

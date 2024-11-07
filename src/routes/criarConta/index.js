@@ -113,7 +113,6 @@ const CriarConta = () => {
         </Button>
       </Form>
     </Container>
-    <Rodape/>
   </>);
 };
 

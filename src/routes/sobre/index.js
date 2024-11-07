@@ -65,7 +65,6 @@ const { user } = useContext(AuthContext);
                 </div>
             </div>
          </div>
-         <Rodape />
     </div>
   ); 
 }

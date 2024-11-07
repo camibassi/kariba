@@ -73,7 +73,6 @@ export default function Regras() {
                     <p>Divirta-se jogando Kariba!</p>
                 </footer>
             </Container>
-            <Rodape/>
         </div>
     );
 }
