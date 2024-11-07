@@ -2,7 +2,6 @@ import "../store/index.css";
 import GroupCard from "../../components/GroupCard";
 import { useContext, useState, useRef } from "react";
 import { AuthContext } from "../../components/AuthContext";
-import MenuNavbar from "../../components/MenuNavbar";
 import { FaCoins, FaLock, FaRegEye } from "react-icons/fa6";
 import { useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -10,6 +9,7 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Toast } from 'primereact/toast';
 import useRequest from "../../hooks/useRequest";
 import Rodape from "../../components/Rodape";
+import { Container, Navbar } from 'react-bootstrap';
 
 export default function Store() {
   const { user } = useContext(AuthContext);
@@ -111,14 +111,14 @@ export default function Store() {
     <div style={{ overflow: "hidden" }}>
       <Toast ref={toast} position="center" />
       <ConfirmDialog />
-      <MenuNavbar exibirDialogo={false}>
-        <h1>
-          <img src="/images/favicon.png" alt="Logo" /> Loja <img src="/images/favicon.png" alt="Logo" />
-        </h1>
-        <Link className="icone" to="/user">
-          <img src="images/icone50.png" />
-        </Link>
-      </MenuNavbar>
+      <Navbar className="navbar-store">
+        <Container className="d-flex justify-content-between">
+          <Navbar.Brand as={Link} to="/menu">Menu</Navbar.Brand>
+            <Link className="icone" to="/user">
+              <img src="images/icone50.png" alt="Ícone do usuário" />
+            </Link>
+        </Container>
+      </Navbar>
       <div id="fundo">
         <GroupCard
           className="decks-container-full"
