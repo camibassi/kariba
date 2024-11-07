@@ -79,8 +79,8 @@ export default function App() {
               webSocket: webSocket
             }} />
           <div className="hover" 
-            style={{ position: 'fixed', borderRadius: '51%', backgroundColor: '#41616E',
-            bottom: '40px', fontSize: '30px', color: 'white', right: '10px', display: 'flex', gap: '5px' }}>
+            style={{ position: 'fixed', borderRadius: '51%', backgroundColor: '#41616E', padding:'5px',
+              bottom: '5px', fontSize: '30px', color: 'white', right: '170px', display: 'flex', gap: '5px' }}>
             {!soundMuted && <FaVolumeHigh onClick={() => {
               setSoundMuted(true);
               handlePlay();
