@@ -48,7 +48,8 @@ export default function Game() {
 
         // Reseta as configuracoes do websocket
         webSocket.closeSocket();
-        navigate("/menu");
+        navigate('../menu');
+
     }
 
     async function distribuirCarta() {
@@ -108,6 +109,14 @@ export default function Game() {
             }
             setQtdElefantes(elefantes);
             setElefanteJogada(false);
+
+            let abandoned = webSocket.gameState.match.gameState;
+    
+            if (abandoned === "abandoned"){
+                webSocket.closeSocket();
+                navigate("/menu");
+            }    
+
 
         }
     }, [webSocket.gameState]);
