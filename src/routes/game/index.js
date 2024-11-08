@@ -37,6 +37,7 @@ export default function Game() {
     const [showNotMyTurnMessage, setShowNotMyTurnMessage] = useState(false);
     const [promise, setPromise] = useState(null);
     const [qtdElefantes, setQtdElefantes] = useState(3);
+    const [elefanteJogada, setElefanteJogada] = useState(false);
 
     // Função que finaliza a partida
     async function finalizaPartida() {
@@ -106,11 +107,15 @@ export default function Game() {
                 elefantes = match.actionElephantPlayer2;
             }
             setQtdElefantes(elefantes);
+            setElefanteJogada(false);
+
         }
     }, [webSocket.gameState]);
 
     function finalizaJogada()
     {
+        setElefanteJogada(false);
+
         if( quantidadeMovimentada == 0 ){
             alert("Faça uma jogada");
             return ;
@@ -144,7 +149,6 @@ export default function Game() {
     function disparaElefante()
     {
         console.log("Elefante!!!");
-
         // Exibe o elefante
         let trombeta = document.getElementById("trombeta");
         trombeta.className = "anim";
@@ -166,6 +170,8 @@ export default function Game() {
     // Envia a mensagem para disparar o elefante no outro jogador
     function sendActionElefante()
     {
+        setElefanteJogada(true);
+
         let gameState=webSocket.gameState;
         if (gameState==null){
             return
@@ -288,12 +294,12 @@ export default function Game() {
             >
                     <img class="botaoTrombeta" style={{ 
                         visibility: visivel ? "visible" : "hidden",
-                        opacity: minhaVez || (qtdElefantes==0) ? 0.5 : 1, // Reduz opacidade se for sua vez
-                        cursor: minhaVez  || (qtdElefantes==0) ? "not-allowed" : "pointer" // Cursor muda quando desabilitado
+                        opacity: minhaVez || (qtdElefantes==0) || elefanteJogada ? 0.5 : 1, // Reduz opacidade se for sua vez
+                        cursor: minhaVez  || (qtdElefantes==0) || elefanteJogada ? "not-allowed" : "pointer" // Cursor muda quando desabilitado
                     }} src="/images/perfil - botao.png" onClick={sendActionElefante}/>
                     {mostrarMensagem === 1 && !minhaVez && qtdElefantes && ( // Exibe a mensagem de arraste apenas se for a vez
                         <div id="mensagemTrombeta">
-                            Provocar (Máx 3x)
+                            Provocar {qtdElefantes}x
                         </div>
                     )}
 
