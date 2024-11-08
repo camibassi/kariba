@@ -12,7 +12,7 @@ import { FaVolumeOff } from "react-icons/fa";
 export default function App() {
   const { user } = useContext(AuthContext);
   const [background, setBackground] = useState("/images/natureza.png");
-  const [sounds, setSounds] = useState(["/sounds/intro.mpeg"]);
+  const [sounds, setSounds] = useState(["/sounds/night_africa.mp3"]);
   const [backgroundCard, setBackgroundCard] = useState('default');
   const [filter, setFilter] = useState('');
   const [soundMuted, setSoundMuted] = useState(false);
