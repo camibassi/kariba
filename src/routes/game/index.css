@@ -2,6 +2,10 @@
     color: #FFF;
 }
 
+.mensagem-status {
+    display: none; /* Oculta as mensagens */
+}
+
 #lagoa {
     position: absolute;
     margin-left: 12%;

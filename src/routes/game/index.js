@@ -325,8 +325,11 @@ export default function Game() {
 
 
             {/* Exibe loading e erros da requisição */}
-            {loading && <p>Carregando dados...</p>}
-            {error && <p>Erro ao carregar dados: {error.message}</p>}
+            <div className="mensagem-status">
+                {loading && <p>Carregando dados...</p>}
+                {error && <p>Erro ao carregar dados: {error.message}</p>} 
+            </div>
+           
         </div>
     );
 }
