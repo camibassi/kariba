@@ -454,5 +454,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 15vh;
+    width: 10vh;
+  }
+
+  #funnyElephant{
+    width: 40%;
   }

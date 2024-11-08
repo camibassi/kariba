@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import Rodape from "../../components/Rodape";
 import useApareceMouseBotao from "../../hooks/useApareceMouseBotao";
-
+import { Dialog } from "primereact/dialog";
 
 export default function Game() {
     const visivel = useShowHide();
@@ -36,6 +36,7 @@ export default function Game() {
     const { mostrarMensagem, onMouseEnter, onMouseLeave } = useApareceMouseBotao();
     const [showNotMyTurnMessage, setShowNotMyTurnMessage] = useState(false);
     const [promise, setPromise] = useState(null);
+    const [qtdElefantes, setQtdElefantes] = useState(3);
 
     // Função que finaliza a partida
     async function finalizaPartida() {
@@ -89,6 +90,22 @@ export default function Game() {
             // verifica se cartasAdversario for undefined ou null 
             let totalAdversario = cartasAdversario?.reduce((partialSum, c) => partialSum + parseInt(c.quantity), 0) || 0;
             setCartasAdversario(totalAdversario);
+
+            // Atualiza a contagem de elefantes
+            let origemConnectionId=webSocket.connectionId;
+            
+            // Atualiza a quantidade de elefantes
+            let elefantes = 0;
+            let match = webSocket.gameState.match;
+            if( match.player1conId == webSocket.connectionId )
+            { 
+                elefantes = match.actionElephantPlayer1;
+            }
+            else
+            {
+                elefantes = match.actionElephantPlayer2;
+            }
+            setQtdElefantes(elefantes);
         }
     }, [webSocket.gameState]);
 
@@ -160,15 +177,21 @@ export default function Game() {
         let player2=webSocket.gameState.match.player2conId;
         let origemNumero=0;
         let destinoNumero=0;
+        let qtdElefanteP1=webSocket.gameState.match.actionElephantPlayer1;
+        let qtdElefanteP2=webSocket.gameState.match.actionElephantPlayer2;
+        let origemQtdeEl=0;
 
         if (player1==origemConnectionId){
             origemNumero=1;
+            origemQtdeEl=qtdElefanteP1;
             destinoNumero=2;
-            destinoConnectionId=player2
+            destinoConnectionId=player2;
+
         } else {
             origemNumero=2;
+            origemQtdeEl=qtdElefanteP2;
             destinoNumero=1;
-            destinoConnectionId=player1
+            destinoConnectionId=player1;
         }
 
         let body={
@@ -188,13 +211,15 @@ export default function Game() {
             method: 'PUT',
             body: body
           }, () => {
-            alert("Elefante enviado para o outro jogador");            
+                // setQtdElefantes(origemQtdeEl);
+                if (origemQtdeEl>0){
+                    setShowDialog(true);
+                }
         });
     }
 
     return (
         <div className="overflow-hidden">
-            
     <Toast ref={toast} position="center" />
             <MenuNavbar finalizaPartida={finalizaPartida} exibirDialogo={true} >
                 <h1>
@@ -263,12 +288,12 @@ export default function Game() {
             >
                     <img class="botaoTrombeta" style={{ 
                         visibility: visivel ? "visible" : "hidden",
-                        opacity: minhaVez ? 0.5 : 1, // Reduz opacidade se for sua vez
-                        cursor: minhaVez ? "not-allowed" : "pointer" // Cursor muda quando desabilitado
+                        opacity: minhaVez || (qtdElefantes==0) ? 0.5 : 1, // Reduz opacidade se for sua vez
+                        cursor: minhaVez  || (qtdElefantes==0) ? "not-allowed" : "pointer" // Cursor muda quando desabilitado
                     }} src="/images/perfil - botao.png" onClick={sendActionElefante}/>
-                    {mostrarMensagem === 1 && !minhaVez &&( // Exibe a mensagem de arraste apenas se for a vez
+                    {mostrarMensagem === 1 && !minhaVez && qtdElefantes && ( // Exibe a mensagem de arraste apenas se for a vez
                         <div id="mensagemTrombeta">
-                            Provocar (1x)
+                            Provocar (Máx 3x)
                         </div>
                     )}
 
@@ -281,6 +306,17 @@ export default function Game() {
                         <source src="/sounds/elefante.mp3" type="audio/mp3" />
                     </audio>
                 </div>
+
+                <Dialog
+                visible={showDialog}
+                onHide={() => setShowDialog(false)}
+                header="Elefante enviado para o adversário"
+                >
+                    <div className="dialog-content">
+                        <img id="funnyElephant"src="images/funny_elephant.gif"/>
+                    </div>
+                </Dialog>
+
 
             {/* Exibe loading e erros da requisição */}
             {loading && <p>Carregando dados...</p>}
