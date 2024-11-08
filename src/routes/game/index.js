@@ -222,8 +222,21 @@ export default function Game() {
                     setShowDialog(true);
                 }
         });
+
+    
     }
 
+    useEffect(() => {
+        if (showDialog) {
+        const timer = setTimeout(() => {
+            setShowDialog(false); // Fecha o diálogo após 2 segundos
+        }, 3000);
+
+      // Limpeza do timer caso o componente seja desmontado
+          return () => clearTimeout(timer);
+    }
+      }, [showDialog]); // Esse efeito só será executado quando isOpen mudar
+      
     return (
         <div className="overflow-hidden">
     <Toast ref={toast} position="center" />
@@ -297,12 +310,16 @@ export default function Game() {
                         opacity: minhaVez || (qtdElefantes==0) || elefanteJogada ? 0.5 : 1, // Reduz opacidade se for sua vez
                         cursor: minhaVez  || (qtdElefantes==0) || elefanteJogada ? "not-allowed" : "pointer" // Cursor muda quando desabilitado
                     }} src="/images/perfil - botao.png" onClick={sendActionElefante}/>
-                    {mostrarMensagem === 1 && !minhaVez && qtdElefantes && ( // Exibe a mensagem de arraste apenas se for a vez
+                    {mostrarMensagem === 1 && !minhaVez && qtdElefantes && !elefanteJogada && ( // Exibe a mensagem de arraste apenas se for a vez
                         <div id="mensagemTrombeta">
                             Provocar {qtdElefantes}x
                         </div>
                     )}
-
+                    {qtdElefantes===0 && ( // Exibe a mensagem de arraste apenas se for a vez
+                        <div id="mensagemTrombeta">
+                            Esgotado
+                        </div>
+                    )}
                 </div>
 
 
@@ -312,7 +329,8 @@ export default function Game() {
                         <source src="/sounds/elefante.mp3" type="audio/mp3" />
                     </audio>
                 </div>
-
+                
+                {showDialog && (
                 <Dialog
                 visible={showDialog}
                 onHide={() => setShowDialog(false)}
@@ -322,6 +340,7 @@ export default function Game() {
                         <img id="funnyElephant"src="images/funny_elephant.gif"/>
                     </div>
                 </Dialog>
+                )}
 
 
             {/* Exibe loading e erros da requisição */}
