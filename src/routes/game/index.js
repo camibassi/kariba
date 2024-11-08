@@ -147,15 +147,47 @@ export default function Game() {
     // Envia a mensagem para disparar o elefante no outro jogador
     function sendActionElefante()
     {
-        // Chama a lambda para ativar o elefante
-        fetch("https://wzs22vrog2d3xlzmermz7x3er40plueu.lambda-url.sa-east-1.on.aws/")
-            .then( function(response) {
-                webSocket.setElefante(1);
-                //alert("Elefante enviado");
-            })
-            .catch( function() { 
-                alert("Erro ao disparar o elefante. Tente novamente");
-            } );
+        let gameState=webSocket.gameState;
+        if (gameState==null){
+            return
+        }
+
+        let origemConnectionId=webSocket.connectionId;
+        let destinoConnectionId;
+        let player1=webSocket.gameState.match.player1conId;
+        let player2=webSocket.gameState.match.player2conId;
+        let origemNumero=0;
+        let destinoNumero=0;
+
+        if (player1==origemConnectionId){
+            origemNumero=1;
+            destinoNumero=2;
+            destinoConnectionId=player2
+        } else {
+            origemNumero=2;
+            destinoNumero=1;
+            destinoConnectionId=player1
+        }
+
+        let body={
+            "gameId": webSocket.gameId,
+            "origin": { 
+                "player": origemConnectionId,
+                "number": origemNumero
+            },
+            "destination": {
+                "player": destinoConnectionId,
+                "number": destinoNumero
+            }
+          };
+
+          sendRequest({
+            url: 'actions/elephant',
+            method: 'PUT',
+            body: body
+          }, () => {
+            alert("Elefante enviado para o outro jogador");            
+        });
     }
 
     return (

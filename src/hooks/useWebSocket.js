@@ -31,7 +31,8 @@ const useWebSocket = (url) => {
         setGameState(data.gameState);
         setConnectionId(data.connectionId);
       }
-      if( data.action === "elefante")
+
+      if( data.action === "elephant")
         {
           setElefante(1);
         }
