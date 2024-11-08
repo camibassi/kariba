@@ -85,7 +85,9 @@ export default function Game() {
             
             
             let cartasAdversario = webSocket.gameState.deck.players.find(cartas => cartas.connectionId  != webSocket.connectionId)?.deck
-            let totalAdversario = cartasAdversario.reduce((partialSum, c) => partialSum + parseInt(c.quantity), 0);
+//          let totalAdversario = cartasAdversario.reduce((partialSum, c) => partialSum + parseInt(c.quantity), 0);
+            // verifica se cartasAdversario for undefined ou null 
+            let totalAdversario = cartasAdversario?.reduce((partialSum, c) => partialSum + parseInt(c.quantity), 0) || 0;
             setCartasAdversario(totalAdversario);
         }
     }, [webSocket.gameState]);
