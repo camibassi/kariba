@@ -114,7 +114,7 @@ export default function Game() {
     
             if (abandoned === "abandoned"){
                 webSocket.closeSocket();
-                navigate("/menu");
+                navigate("/abandono");
             }    
 
 
@@ -239,7 +239,7 @@ export default function Game() {
         if (showDialog) {
         const timer = setTimeout(() => {
             setShowDialog(false); // Fecha o diálogo após 2 segundos
-        }, 3000);
+        }, 2500);
 
       // Limpeza do timer caso o componente seja desmontado
           return () => clearTimeout(timer);
