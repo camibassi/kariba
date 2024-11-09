@@ -1,20 +1,16 @@
 /* Estilos para o Navbar no mesmo estilo da tela de login */
 
 .styled-navbar {
-    background-color: rgba(var(--bs-secondary-rgb))!important;
-    height: 80px;
-    box-shadow: 0px 4px 6px rgba(255, 175, 75, 0.3);
-    border-bottom: 3px solid rgba(var(--bs-secondary-rgb));
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-image: url(../../../public/images/fundobarra4.png);
+  background-repeat: no-repeat; /* Faz a imagem se repetir */
+  background-size: cover; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
+  height: 65px !important; /* Altura da barra de navegação */
+  width: 100%; /* Garante que a barra de navegação use toda a largura disponível */
   }
   
   .navbar-brand {
-    color: white;
-    font-size: 1.5em !important;
-    font-weight: bold !important;
-    transition: color 0.3s ease-in-out;
+    color: #ff2200; /* Cor do texto da marca */
+    font-weight: bold; /* Negrito para destaque */
   }
   
   .navbar-link {
@@ -26,7 +22,7 @@
   }
   
   .navbar-link:hover {
-    color: #ffe6d8;
+    color: #ff2200;
   }
   
   .navbar-icon {
@@ -37,7 +33,14 @@
   .navbar-link:hover {
     color: #ffe6d8; /* Tom claro de laranja no hover */
   }
+
+.logonovogame {
+  height: 55px !important; /* Ajusta a altura */
+  width: auto !important; /* Ajusta a largura proporcionalmente */
   
+}
+
+
   /* Custom content (título com logo) */
   .custom-content {
     text-align: center;
@@ -88,4 +91,12 @@
     right: 5%;
     display: inline;
     text-align: right;
+  }
+
+  .nameuser {
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    margin: 0; /* Remover margens para evitar qualquer espaçamento extra */
+    pointer-events: none;
+    text-decoration: none;
   }

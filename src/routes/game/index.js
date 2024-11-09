@@ -15,6 +15,10 @@ import { Toast } from "primereact/toast";
 import Rodape from "../../components/Rodape";
 import useApareceMouseBotao from "../../hooks/useApareceMouseBotao";
 import { Dialog } from "primereact/dialog";
+import { Container, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../components/AuthContext";
 
 export default function Game() {
     const visivel = useShowHide();
@@ -38,6 +42,7 @@ export default function Game() {
     const [promise, setPromise] = useState(null);
     const [qtdElefantes, setQtdElefantes] = useState(3);
     const [elefanteJogada, setElefanteJogada] = useState(false);
+    const { user } = useContext(AuthContext);
 
     // Função que finaliza a partida
     async function finalizaPartida() {
@@ -248,12 +253,18 @@ export default function Game() {
       
     return (
         <div className="overflow-hidden">
-    <Toast ref={toast} position="center" />
-            <MenuNavbar finalizaPartida={finalizaPartida} exibirDialogo={true} >
-                <h1>
-                    <img src="/images/favicon.png" alt="Logo" /> Kariba <img src="/images/favicon.png" alt="Logo" />
-                </h1>
+            <Toast ref={toast} position="center" />
+            <MenuNavbar className="navbar-game" finalizaPartida={finalizaPartida} exibirDialogo={true}>
+                <Container className="d-flex justify-content-end align-items-center">
+                    <div className="d-flex align-items-center">
+                     <div className="nameuser">
+                         {user.nome?.toUpperCase() || user.username?.toUpperCase()}
+                    </div>
+                     </div>
+                </Container>
             </MenuNavbar>
+
+
             <div className="position-relative" style={{ height: '90vh' }}>
 
                 <Lagoa board={webSocket.gameState.board.positions}

@@ -24,26 +24,26 @@ const MenuNavbar = (props) => {
 }
   return (
     <>
-      <Navbar className={"styled-navbar w-100" + props.className || ""} style={{zIndex: '1', height: '45px'}}>
-        <Container>
-          <Navbar.Brand className="navbar-brand">Kariba</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link className="navbar-link" 
-            onClick={() => {
-              if (props.exibirDialogo) {
-                setShowDialog(true); // Exibir caixa de diálogo na tela específica
-              } else {
-                navigate('../menu'); // Navegar diretamente para o menu nas outras telas
-              }
-            }}>
-              <FaReply className="navbar-icon" /> Menu
-            </Nav.Link>
-          </Nav>
-          <div className="custom-content">
-          {props.children}
-          </div>
-        </Container>
-      </Navbar>
+      <Navbar className={"styled-navbar w-100" + (props.className || "")} style={{ zIndex: '1', height: '45px' }}>
+  <Container>
+    <img className="logonovogame" src="images/novologo.png" alt="logo" />
+    <Nav className="me-auto">
+      <Nav.Link className="navbar-link" 
+        onClick={() => {
+          if (props.exibirDialogo) {
+            setShowDialog(true); // Exibir caixa de diálogo na tela específica
+          } else {
+            navigate('../menu'); // Navegar diretamente para o menu nas outras telas
+          }
+        }}>
+        <FaReply className="navbar-icon" /> Menu
+      </Nav.Link>
+    </Nav>
+    <div className="custom-content">
+      {props.children}
+    </div>
+  </Container>
+</Navbar>
       {/* Caixa de diálogo com opções de modo */}
       <Dialog
       visible={showDialog}

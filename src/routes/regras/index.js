@@ -24,7 +24,6 @@ export default function Regras() {
             </Navbar>
 
             <Container fluid>
-            <Link className="botao" to="/abandono">Menu Principal</Link>
                 <section>
                     <img src="images/objetivo.png" alt="Objetivo do jogo" />
                     <p>O objetivo de <strong>Kariba</strong> é capturar o maior número de cartas de animais. Os jogadores colocam animais próximos ao lago e usam a força de uns para afugentar os outros.</p>

@@ -464,3 +464,52 @@
   #funnyElephant{
     width: 40%;
   }
+
+/* Estilo para o novo NAVBAR */
+
+  .navbar-game {
+    background-image: url(../../../public/images/fundobarra4.png);
+    background-repeat: no-repeat; /* Faz a imagem se repetir */
+    background-size: cover; /* Ajusta o tamanho da imagem, pode ser alterado conforme necessidade */
+    height: 65px; /* Altura da barra de navegação */
+    width: 100%; /* Garante que a barra de navegação use toda a largura disponível */
+}
+
+/* Estilo para a marca */
+.navbar-brand {
+    color: rgb(255, 34, 0); /* Cor do texto da marca */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+.navbar-brand:hover{
+    color: rgb(255, 255, 255);
+}
+
+
+/* Contêiner que contém o nome do usuário e o ícone */
+.d-flex.align-items-center {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    gap: 5px; /* Utiliza gap para controlar o espaçamento entre o nome e o ícone */
+  }
+  
+  /* Nome do usuário */
+  .nameuser {
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+    margin: 0; /* Remover margens para evitar qualquer espaçamento extra */
+  }
+  
+  /* Ícone */
+  .icone {
+    display: flex;
+    align-items: center; /* Alinha o ícone verticalmente */
+    justify-content: center; /* Garante que o ícone fique centralizado */
+  }
+  
+  /* Tamanho do ícone */
+  .icone img {
+    width: 50px; /* Ajusta o tamanho do ícone */
+    height: auto; /* Mantém a proporção do ícone */
+  }
+  
