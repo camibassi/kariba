@@ -150,7 +150,7 @@ export default function Store() {
               renderBackgroundProps("animais", "Animais"),
               renderBackgroundProps("criaturas", "Criaturas"),
               renderBackgroundProps("heroes", "Heróis"),
-              renderBackgroundProps("pokemon", "Pokémon"),
+              renderBackgroundProps("pokemon1", "Pokémon"),
               renderBackgroundProps("folclore", "Folclore"),
               renderBackgroundProps("natal", "Natal"),
               renderBackgroundProps("halloween", "Halloween"),
