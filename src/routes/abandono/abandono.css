@@ -1,0 +1,111 @@
+/* Estilo da página do abandono */
+#abandono .container-fluid {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../../../public/images/abandono.png'); /* Caminho do fundo */
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  #abandono-image {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 300px;
+    width: auto; /* Mantém a proporção da imagem */
+  }
+  
+  /* Estilos de texto */
+  #abandono h1 {
+    font-size: 70px;
+    color: #0046e6;
+    margin: 0;
+    padding: 0;
+  }
+  #abandono p {
+    font-size: 25px;
+    color: #0046e6;
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  
+  /* Botões */
+   /* Botões */
+   .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px; /* Espaçamento entre os botões */
+    margin-bottom: 200px;
+  }
+  
+  .button {
+    display: inline-block;
+    background: orange;
+    padding: 20px 35px;
+    color: white;
+    border-radius: 5px;
+    margin: 5px auto;
+    text-decoration: none;
+    font-size: 20px;
+    width: 200px;
+    text-align: center;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); /* Sombra mais visível */
+  }
+  
+  .button:hover {
+    background: orangered;
+    cursor: pointer;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6); /* Sombra mais intensa ao passar o mouse */
+  }
+
+/* Define a animação para a bola de feno com efeito de quique */
+@keyframes rolarBolaDeFeno {
+    0% {
+      right: -100px; /* Começa fora da tela à direita */
+      bottom: 20vh; /* Começa mais acima da tela */
+      transform: rotate(0deg);
+    }
+    30% {
+      bottom: 0; /* Bola de feno atinge o chão */
+      transform: rotate(-120deg);
+    }
+    50% {
+      bottom: 40px; /* Primeiro quique */
+      transform: rotate(-240deg);
+    }
+    70% {
+      bottom: 0; /* Volta ao chão */
+      transform: rotate(-360deg);
+    }
+    85% {
+      bottom: 15px; /* Segundo quique menor */
+      transform: rotate(-450deg);
+    }
+    100% {
+      right: 100vw; /* Termina fora da tela à esquerda */
+      bottom: 0; /* Finaliza no chão */
+      transform: rotate(-550deg); /* Roda a bola de feno enquanto ela se move */
+    }
+  }
+  
+  /* Estilo para a bola de feno */
+  .bola-de-feno {
+    position: fixed;
+    bottom: 0; /* Começa na parte inferior */
+    right: -100px; /* Começa fora da tela à direita */
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    animation: rolarBolaDeFeno 11s linear infinite; /* Duração e repetição da animação */
+    pointer-events: none; /* Evita interação com o clique */
+    z-index: 10; /* Garante que a bola de feno fique visível na frente */
+  }
