@@ -145,17 +145,16 @@ export default function Store() {
             classNameDeck="imagemMenor"
             name="Planos de Fundo (Unidade: R$ 50,00)"
             itens={[
-              renderBackgroundProps("natureza", "Natureza"),
-              renderBackgroundProps("natureza3", "Natureza (2)"),
-              renderBackgroundProps("deserto", "Deserto"),
-              renderBackgroundProps("fundoRegras", "Mata"),
+              renderBackgroundProps("natureza", "Padrão"),
+              renderBackgroundProps("alice", "Alice"),
+              renderBackgroundProps("animais", "Animais"),
+              renderBackgroundProps("criaturas", "Criaturas"),
               renderBackgroundProps("heroes", "Heróis"),
-              renderBackgroundProps("halloween", "Halloween"),
+              renderBackgroundProps("pokemon", "Pokémon"),
+              renderBackgroundProps("folclore", "Folclore"),
               renderBackgroundProps("natal", "Natal"),
-              renderBackgroundProps("natal2", "Natal (2)"),
-              renderBackgroundProps("pokemon1", "Pokémon"),
-              renderBackgroundProps("pokemon2", "Pokémon (2)"),
-              renderBackgroundProps("pokemon3", "Pokémon (3)"),
+              renderBackgroundProps("halloween", "Halloween"),
+              renderBackgroundProps("halloween2", "Halloween (2)"),
 
             ]}
           />
