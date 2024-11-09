@@ -38,7 +38,6 @@
     margin-bottom: 50px;
   }
   
-  /* Botões */
    /* Botões */
    .button-container {
     display: flex;
@@ -98,12 +97,11 @@
     }
   }
   
-  /* Estilo para a bola de feno */
   .bola-de-feno {
     position: fixed;
-    bottom: 0; /* Começa na parte inferior */
-    right: -100px; /* Começa fora da tela à direita */
-    width: 100px; /* Ajuste o tamanho conforme necessário */
+    bottom: 0; 
+    right: -100px; 
+    width: 100px; 
     height: auto;
     animation: rolarBolaDeFeno 11s linear infinite; /* Duração e repetição da animação */
     pointer-events: none; /* Evita interação com o clique */
