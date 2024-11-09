@@ -29,7 +29,6 @@ export default function Carta(props) {
         <div 
             id={uid} 
             className="carta" 
-            draggable={props.minhaVez} // Permite arrastar somente se for a vez
             onDragStart={props.minhaVez ? props.dragStart : undefined} // Define dragStart somente se for a vez
             onMouseEnter={() => {
                 onMouseEnter();
@@ -39,11 +38,10 @@ export default function Carta(props) {
                 onMouseLeave();
                 setShowNotMyTurnMessage(false); // Oculta a mensagem ao sair do mouse
             }}
-            style={{
-                cursor: props.minhaVez ? 'grab' : 'not-allowed', // Muda o cursor dependendo da vez
-            }}
         >
-            <img style={{
+            <img 
+            draggable={props.minhaVez} // Permite arrastar somente se for a vez            
+            style={{
                 cursor: props.minhaVez ? 'grab' : 'not-allowed', // Muda o cursor dependendo da vez
             }}
             src={imgCarta} alt="Carta" />
