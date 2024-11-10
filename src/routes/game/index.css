@@ -37,7 +37,7 @@
 {
     position: relative;
     width: 120vh;
-    height: 100vh;
+    height: calc( 100vh - 49px );
     display: flex;
     justify-content: center;
     align-items: center;
@@ -437,7 +437,7 @@
 
 .botaoTrombeta{
     position: absolute;
-    top: 35%;
+    top: 40%;
     right: 11%;
     display: inline;
     text-align: right;
