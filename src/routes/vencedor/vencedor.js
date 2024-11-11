@@ -18,19 +18,20 @@ export default function Vencedor() {
       <div id="confetti"></div> {/* Confete fora de #vencedor */}
       <div id="vencedor">
         <Container fluid>
-          <h1 id="vencedor">TEMOS UM</h1>
-          <h1 id="vencedor">VENCEDOR</h1>
-          <p id="vencedor">EM BREVE TEREMOS UM NOVO REI NA SAVANA!</p>
-
+          <h1>TEMOS UM</h1>
+          <h1>VENCEDOR</h1>
+          <p>EM BREVE TEREMOS UM NOVO REI NA SAVANA!</p>
+  
           <div className="button-container">
             <Link className="botao" onClick={() => {
                         webSocket.open();
                     }} to="/aguardando">Jogar Novamente</Link>
             <Link className="botao" to="/menu">Menu Principal</Link>
           </div>
-          <img id="vencedor-image" src='../../../images/fant51.gif' alt="Elefante Vitoria"/>
+          <img className="vencedor-image" src='../../../images/fant51.gif' alt="Elefante Vitoria"/>
         </Container>
       </div>
     </div>
   );
+  
 }

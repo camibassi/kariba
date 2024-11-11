@@ -26,7 +26,7 @@ export default function Perdedor() {
                     }} to="/aguardando">Jogar Novamente</Link>
             <Link className="botao" to="/menu">Menu Principal</Link>
           </div>
-          <img id='perdedor-image' src='../../images/tristedeitado.png' alt='Triste Deitado'/>
+          <img className='perdedor-image' src='../../images/tristedeitado.png' alt='Triste Deitado'/>
         </Container>
       </div>
     </div>

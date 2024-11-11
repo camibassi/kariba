@@ -14,6 +14,13 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  .empate-image {
+    margin-top: -200px; /* Ajuste este valor conforme necessário */
+    height: 300px;
+    width: auto;
+    z-index: 2;
+  }
   
   /* Estilos de texto */
   #empate h1 {

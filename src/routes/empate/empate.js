@@ -25,7 +25,7 @@ export default function Empate() {
             }} to="/aguardando">Jogar Novamente</Link>
           <Link className="botao" to="/menu">Menu Principal</Link>
         </div>
-        <img id="empate-image" src='../../../images/elefantecaido.png' alt="Elefante Empate"/>
+        <img className="empate-image" src='../../../images/elefantecaido.png' alt="Elefante Empate"/>
       </Container>
     </div>
   );
