@@ -91,14 +91,26 @@ export default function Store() {
     };
   };
 
-  const renderBackgroundProps = (item, nome) => {
+  const alterarBackground = (item, pastaSound = null) => {
+    context.setBackground(`/images/${item}.png`);
+
+    if(pastaSound)
+    {
+      const sounds = [1, 2, 3, 4, 5].map(x => `/sounds/${pastaSound}/musica${x}.mp3`);
+      context.setSounds(sounds);
+    }
+    else
+      context.setSounds(["/sounds/night_africa.mp3"]);
+  }
+
+  const renderBackgroundProps = (item, nome, pastaMusicas = null) => {
     const isLocked = !user.permissoes?.background.includes(item);
     return {
       name: nome,
       item: item,
       imgSrc: `/images/${item}.png`,
       styleSrc: (context.background === item || isLocked) ? { opacity: "50%" } : {},
-      onClick: () => isLocked ? showConfirm(item, 'background') : context.setBackground(`/images/${item}.png`),
+      onClick: () => isLocked ? showConfirm(item, 'background') : alterarBackground(item, pastaMusicas),
       children: isLocked ? (
         <FaLock style={{ fontSize: "2rem", color: "white" }} />
       ) : (
@@ -146,15 +158,15 @@ export default function Store() {
             name="Planos de Fundo (Unidade: R$ 50,00)"
             itens={[
               renderBackgroundProps("natureza", "Padrão"),
-              renderBackgroundProps("alice", "Alice"),
-              renderBackgroundProps("animais", "Animais"),
-              renderBackgroundProps("criaturas", "Criaturas"),
+              renderBackgroundProps("alice", "Alice", "alice"),
+              renderBackgroundProps("animais", "Animais", "animals"),
+              renderBackgroundProps("criaturas", "Criaturas", "animals"),
               renderBackgroundProps("heroes", "Heróis"),
               renderBackgroundProps("pokemon1", "Pokémon"),
-              renderBackgroundProps("folclore", "Folclore"),
-              renderBackgroundProps("natal", "Natal"),
-              renderBackgroundProps("halloween", "Halloween"),
-              renderBackgroundProps("halloween2", "Halloween (2)"),
+              renderBackgroundProps("folclore", "Folclore", "folclore"),
+              renderBackgroundProps("natal", "Natal", "natal"),
+              renderBackgroundProps("halloween", "Halloween", "halloween"),
+              renderBackgroundProps("halloween2", "Halloween (2)", "halloween"),
 
             ]}
           />

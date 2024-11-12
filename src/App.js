@@ -72,6 +72,7 @@ export default function App() {
             {
               setBackground: setBackground, 
               setBackgroundCard: setBackgroundCard, 
+              setSounds: setSounds,
               setFilter : setFilter,
               backgroundCard: backgroundCard,
               background: background,
