@@ -35,10 +35,19 @@ const { user } = useContext(AuthContext);
                         <p>FRONT-END</p>
                     </div>
                     <div class="sub-boxes">
-                        <div class="box analista">Camila Bassi</div>
-                        <div class="box analista">Gabriel Rodrigues</div>
-                        <div class="box analista">Roger Albuquerque</div>
-                        <div class="box analista">Rosemeire Ponzeto</div>
+                        <a href="https://www.linkedin.com/in/camila-fernandes-a76a80271/" target="_blank">
+                            <div class="box analista">Camila Bassi</div>
+                        </a>                        
+                        <a href="https://www.linkedin.com/in/gabriel-rodrigues-45b418289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Gabriel Rodrigues</div>
+                        </a>                        
+                        <a href="https://www.linkedin.com/in/devrogeralbuquerque?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Roger Albuquerque</div>
+                        </a>                        
+                        <a href="http://www.linkedin.com/in/rosemeire-ramos-ponzeto-5b981731" target="_blank">
+                            <div class="box analista">Rosemeire Ponzeto</div>
+                        </a>                        
+
                     </div>
                 </div>
                 <div class="col">
@@ -46,10 +55,15 @@ const { user } = useContext(AuthContext);
                         <p>BACK-END</p>
                     </div>
                     <div class="sub-boxes">
-                        <div class="box analista">Alan Soares</div>
-                        <div class="box analista">Amanda Pires</div>
-                        <div class="box analista">Isaac Figueiredo</div>
-                        <div class="box analista">Roger Albuquerque</div>
+                        <a href="https://www.linkedin.com/in/alansolima" target="_blank">
+                            <div class="box analista">Alan Soares</div>
+                        </a>                        
+                        <a href="https://www.linkedin.com/in/amanda-cardoso-62ba3a213?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Amanda Pires</div>
+                        </a>                        
+                        <a href="https://www.linkedin.com/in/isaac-figueiredo-67b2a1149" target="_blank">
+                            <div class="box analista">Isaac Figueiredo</div>
+                        </a>                        
                     </div>
                 </div>
                 <div class="col">
@@ -57,10 +71,18 @@ const { user } = useContext(AuthContext);
                         <p>BANCO DE DADOS</p>
                     </div>
                     <div class="sub-boxes">
-                        <div class="box analista">Raphael Carvalhal</div>
-                        <div class="box analista">Raul Cezar</div>
-                        <div class="box analista">Roger Tioji</div>
-                        <div class="box analista">Thaiany Paina</div>
+                    <a href="https://www.linkedin.com/in/raphael-carvalhal-mota-348821201?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Raphael Carvalhal</div>
+                        </a>                        
+                        <a href="https://www.linkedin.com/in/dev-raul-oliveira?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Raul Cezar</div>
+                        </a>                        
+                        <a href="https://github.com/pacgiras" target="_blank">
+                            <div class="box analista">Roger Tioji</div>
+                        </a>                        
+                        <a href="https://www.linkedin.com/in/thaiany-paina?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Thaiany Paina</div>
+                        </a>                        
                     </div>
                 </div>
             </div>

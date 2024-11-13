@@ -134,13 +134,13 @@ export default function User() {
 
                         <Row>
                             <Col md={4} className="text-center">
-                                <h5 className="stat-title">Vitórias</h5>
-                                <span className="stat-badge">{user.vitorias}</span>
+{/*                                <h5 className="stat-title">Vitórias</h5>
+                                <span className="stat-badge">{user.vitorias}</span>*/}
                             </Col>
-                            <Col md={4} className="text-center">
+{/*                            <Col md={4} className="text-center">
                                 <h5 className="stat-title">Derrotas</h5>
                                 <span className="stat-badge">{user.derrotas}</span>
-                            </Col>
+                            </Col>*/}
                             <Col md={4} className="text-center">
                                 <h5 className="stat-title">Saldo</h5>
                                 <div className="d-flex align-items-center justify-content-center">

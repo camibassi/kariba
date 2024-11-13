@@ -140,3 +140,12 @@
     font-size: 14px;
     font-weight: 300;
 }
+
+a {
+    text-decoration: none;
+  }
+  
+a .box.analista {
+    text-decoration: none;
+  }
+  

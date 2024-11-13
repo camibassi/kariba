@@ -100,7 +100,10 @@ export default function Store() {
       context.setSounds(sounds);
     }
     else
-      context.setSounds(["/sounds/night_africa.mp3"]);
+    {
+      const sounds = [1, 2, 3, 4, 5].map(x => `/sounds/default/musica${x}.mp3`);
+      context.setSounds(sounds);
+    }
   }
 
   const renderBackgroundProps = (item, nome, pastaMusicas = null) => {

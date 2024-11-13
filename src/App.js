@@ -12,7 +12,8 @@ import { FaVolumeOff } from "react-icons/fa";
 export default function App() {
   const { user } = useContext(AuthContext);
   const [background, setBackground] = useState("/images/natureza.png");
-  const [sounds, setSounds] = useState(["/sounds/night_africa.mp3"]);
+  const soundsDefault = [1,2].map(x => `/sounds/default/musica${x}.mp3`);
+  const [sounds, setSounds] = useState(soundsDefault);
   const [backgroundCard, setBackgroundCard] = useState('default');
   const [filter, setFilter] = useState('');
   const [soundMuted, setSoundMuted] = useState(false);
@@ -42,6 +43,9 @@ export default function App() {
   const handleAudioEnded = () => {
     if (currentTrackIndex < sounds.length - 1) {
       setCurrentTrackIndex((prevIndex) => prevIndex + 1);
+    } else {
+      // Se for a última música, volta para o início
+      setCurrentTrackIndex(0);
     }
   };
 
