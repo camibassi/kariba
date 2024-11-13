@@ -24,10 +24,13 @@ const { user } = useContext(AuthContext);
       </Navbar>
         <div class="organograma">
             <div class="ceo-container">
-                <div class="box ceo">
-                    <p>Alan Soares</p>
-                    <span>Gerente</span>
-                </div>
+                <a href="https://www.linkedin.com/in/alansolima" target="_blank">
+
+                    <div class="box ceo">
+                        <p>Alan Soares</p>
+                        <span>Gerente</span>
+                    </div>
+                </a>                        
             </div>
             <div class="container">
                 <div class="col">

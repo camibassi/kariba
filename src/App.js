@@ -81,7 +81,8 @@ export default function App() {
               backgroundCard: backgroundCard,
               background: background,
               filter : filter,
-              webSocket: webSocket
+              webSocket: webSocket,
+              audioRef
             }} />
           <div className="hover" 
             style={{ position: 'fixed', borderRadius: '51%', backgroundColor: '#41616E', padding:'5px',
