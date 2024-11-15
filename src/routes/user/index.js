@@ -58,11 +58,7 @@ export default function User() {
             {loading && <Loading />}
             <MenuNavbar>
                 <Container fluid className="text-center mt-3">
-                    <h1>
-                        <img src="/images/favicon.png" alt="Logo" className="logo-icon" /> 
-                        Perfil do Usuário 
-                        <img src="/images/favicon.png" alt="Logo" className="logo-icon" />
-                    </h1>
+                    
                 </Container>
             </MenuNavbar>
 
@@ -70,7 +66,7 @@ export default function User() {
                 <Card style={{maxHeight: '80vh'}} className="p-4 w-100 shadow-lg border-0">
                     <div className="text-center iconePerfil">
                         <img src="images/icone100.png" width={"70px"} alt="User Icon" className="profile-icon" />
-                        <h2>{user.username?.toUpperCase()}</h2>
+                        <h2>Perfil do Usuário: {user.username?.toUpperCase()}</h2>
                     </div>
 
                     <Form className="mt-4">
