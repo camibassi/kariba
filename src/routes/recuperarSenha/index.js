@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import '../login/index.css'; // Estilos adicionais
 import { useNavigate } from 'react-router-dom';
+import useRequest from '../../hooks/useRequest';
 
 const RecuperarSenha = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState(''); 
   const navigate = useNavigate();
+  const request = useRequest();
 
+  const recuperarSenha = () => {
+    request.sendRequest({
+      url: 'sendEmail',
+      method: 'POST',
+      body: {
+        username: username
+      }
+    }, () => {
+      navigate('../login');
+    })
+  }
+  
   return (
     <Container className="light-login-container">
       <Form className="light-login-form">
@@ -23,7 +37,7 @@ const RecuperarSenha = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" className="light-button mt-3" type="submit" onClick={() => navigate('../login')}>Enviar e-mail de recuperação</Button>
+        <Button variant="primary" type="button" className="light-button mt-3" onClick={recuperarSenha}>Enviar e-mail de recuperação</Button>
       </Form>
     </Container>
   );

@@ -70,7 +70,7 @@ export default function App() {
         Seu navegador não suporta o elemento de áudio.
       </audio>
       <div>
-        {user || ["/criarConta", "/recuperarSenha"].includes(window.location.pathname) ? (
+        {user || ["/criarConta", "/recuperarSenha", "/redefinir"].includes(window.location.pathname) ? (
           <>
           <Outlet context={
             {

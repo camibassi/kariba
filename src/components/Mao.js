@@ -30,8 +30,8 @@ const Mao = (props) =>
     
             // Verifica se `cartaDiv` possui um ID e se `imageDrag` está definido
             if (cartaDiv && cartaDiv.attributes['id'] && imageDrag) {
-                e.dataTransfer.setData("cartaValor", imageDrag);
-                e.dataTransfer.setData("cartaDiv", cartaDiv.attributes['id'].value);
+                e.dataTransfer?.setData("cartaValor", imageDrag);
+                e.dataTransfer?.setData("cartaDiv", cartaDiv.attributes['id'].value);
             } else {
                 console.error("Elemento ou atributos estão indefinidos.");
             }

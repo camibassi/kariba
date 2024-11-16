@@ -11,7 +11,7 @@ const CartasAdversario = (props) => {
         totalCartas = parseInt(props.cartas);
     
       return(
-        <div id="maoAdversario" style={{ visibility: visible == true ? "visible" : "hidden"}}>
+        <div id="maoAdversario" className='d-none d-md-inline' style={{ visibility: visible == true ? "visible" : "hidden"}}>
             { [...Array(totalCartas).keys()].map(() => 
                 <div class ="adversario">
                     <img src={`images/cards/${backgroundCard}/verso.png`}/> 

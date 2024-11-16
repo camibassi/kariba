@@ -18,6 +18,7 @@ import Vencedor from './routes/vencedor/vencedor';
 import Perdedor from './routes/perdedor/perdedor';
 import Empate from './routes/empate/empate';
 import Abandono from './routes/abandono/abandono';
+import RedefinirSenha from './routes/redefinir';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +26,7 @@ root.render(
     <Routes>
     <Route path="criarConta" element={<CriarConta />} />
     <Route path="recuperarSenha" element={<RecuperarSenha />} />
+    <Route path="redefinir" element={<RedefinirSenha />} />
     </Routes>
     <AuthProvider>
       <Routes>
