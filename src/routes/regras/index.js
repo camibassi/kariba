@@ -8,15 +8,14 @@ import { AuthContext } from "../../components/AuthContext";
 export default function Regras() {
     const { user } = useContext(AuthContext);
 
-
     return (
         <div id="regras">
             <Navbar className="navbar-regras">
                 <Container className="d-flex justify-content-between">
                     <Navbar.Brand as={Link} to="/menu">Menu</Navbar.Brand>
                     <div className="nameuser">
-                            {user.nome?.toUpperCase() || user.username?.toUpperCase()}
-                        </div>
+                        {user.nome?.toUpperCase() || user.username?.toUpperCase()}
+                    </div>
                     <Link className="icone" to="/user">
                         <img src="images/icone50.png" alt="Ícone do usuário" />
                     </Link>
@@ -24,11 +23,13 @@ export default function Regras() {
             </Navbar>
 
             <Container fluid>
+                {/* Seções existentes */}
                 <section>
                     <img src="images/objetivo.png" alt="Objetivo do jogo" />
                     <p>O objetivo de <strong>Kariba</strong> é capturar o maior número de cartas de animais. Os jogadores colocam animais próximos ao lago e usam a força de uns para afugentar os outros.</p>
                 </section>
 
+                {/* Seções restantes */}
                 <section>
                     <img src="images/preparacao.png" alt="Preparação do jogo" />
                     <ul>
@@ -40,6 +41,17 @@ export default function Regras() {
 
                 <section>
                     <img src="images/comoJogar.png" alt="Como jogar" />
+                    <div className="video-container">
+                        <iframe
+                            width="100%"
+                            height="400"
+                            src="https://www.youtube.com/embed/HNlBXNiX-_k"
+                            title="Vídeo do YouTube"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
                     <ol>
                         <li>No seu turno, o jogador deve colocar uma ou mais cartas do mesmo tipo de animal em sua respectiva posição numérica no tabuleiro.</li>
                         <li>Se, após a jogada, houver 3 ou mais cartas do mesmo animal em um número, ele afugenta os animais numericamente mais fracos (adjacentes). Exemplo: 3 ou mais elefantes (8) afugentam os rinocerontes (7).</li>
@@ -76,4 +88,3 @@ export default function Regras() {
         </div>
     );
 }
-

@@ -67,6 +67,9 @@ const { user } = useContext(AuthContext);
                         <a href="https://www.linkedin.com/in/isaac-figueiredo-67b2a1149" target="_blank">
                             <div class="box analista">Isaac Figueiredo</div>
                         </a>                        
+                        <a href="https://www.linkedin.com/in/devrogeralbuquerque?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <div class="box analista">Roger Albuquerque</div>
+                        </a>                        
                     </div>
                 </div>
                 <div class="col">
