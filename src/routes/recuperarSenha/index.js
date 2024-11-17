@@ -38,6 +38,9 @@ const RecuperarSenha = () => {
         </Form.Group>
 
         <Button variant="primary" type="button" className="light-button mt-3" onClick={recuperarSenha}>Enviar e-mail de recuperação</Button>
+        <Button variant="primary" type="button" className="light-button mt-3" onClick={() => {
+          navigate('/login')
+        }}> Voltar para o login</Button>
       </Form>
     </Container>
   );

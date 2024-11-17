@@ -10,7 +10,10 @@ body {
   
   .light-login-container {
     background-color: #fff5e6;
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom:20px;
+    padding-top:20px;
     border-radius: 15px;
     width: 100%;
     max-width: 400px;
@@ -49,7 +52,6 @@ body {
     color: #ff6f47;
     font-size: 1em;
     margin-bottom: 15px;
-    padding: 10px;
     border-radius: 8px;
   }
   
@@ -62,7 +64,6 @@ body {
     border: none;
     width: 100%;
     font-size: 1.2em;
-    padding: 10px;
     color: white;
     font-weight: bold;
     border-radius: 8px;

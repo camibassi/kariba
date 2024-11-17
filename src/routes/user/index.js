@@ -63,7 +63,7 @@ export default function User() {
             </MenuNavbar>
 
             <Container className="my-5">
-                <Card style={{maxHeight: '80vh'}} className="p-4 w-100 shadow-lg border-0">
+                <Card style={{maxHeight: '85vh', marginTop:'-3%'}} className="p-4 w-100 shadow-lg border-0">
                     <div className="text-center iconePerfil">
                         <img src="images/icone100.png" width={"70px"} alt="User Icon" className="profile-icon" />
                         <h2>Perfil do Usuário: {user.username?.toUpperCase()}</h2>
