@@ -1,3 +1,12 @@
+/* Não exibir barra de rolagem */
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* Estilo da página do abandono */
 #abandono .container-fluid {
     font-family: Arial, sans-serif;
@@ -8,6 +17,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     height: 100vh;
     width: 100vw;
     background-image: url('../../../public/images/abandono.png'); /* Caminho do fundo */
@@ -91,7 +101,7 @@
       transform: rotate(-450deg);
     }
     100% {
-      right: 100vw; /* Termina fora da tela à esquerda */
+      right: 120vw; /* Termina fora da tela à esquerda */
       bottom: 0; /* Finaliza no chão */
       transform: rotate(-550deg); /* Roda a bola de feno enquanto ela se move */
     }
