@@ -140,24 +140,27 @@ export default function User() {
                             <Col md={4} className="text-center">
                                 <h5 className="stat-title">Saldo</h5>
                                 <div className="d-flex align-items-center justify-content-center">
-                                    <FaCoins className="text-warning me-1" />
+                                <FaCoins className="text-warning me-1" />
                                     {isEditingSaldo ? (
                                         <input
-                                            type="number"
-                                            value={saldo}
-                                            name="saldo"
-                                            onChange={(event) => {
-                                                handleSaldoChange(event);
-                                                onChange(event);
-                                            }}
-                                            onBlur={handleSaldoBlur}
-                                            autoFocus
-                                            className="stat-badge-input"
-                                        />
+                                        type="number"
+                                        value={saldo}
+                                        name="saldo"
+                                        onChange={(event) => {
+                                    const newSaldo = parseFloat(event.target.value); 
+                                    if (newSaldo >= 0) { 
+                                        handleSaldoChange(event); 
+                                        onChange(event);
+                                        }
+                                    }}
+                                    onBlur={handleSaldoBlur}
+                                    autoFocus
+                                    className="stat-badge-input"
+                                    />
                                     ) : (
-                                        <span className="stat-badge" onClick={toggleEditingSaldo}>
-                                            R$ {saldo}
-                                        </span>
+                                    <span className="stat-badge" onClick={toggleEditingSaldo}>
+                                        R$ {saldo}
+                                    </span>
                                     )}
                                 </div>
                             </Col>
