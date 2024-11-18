@@ -63,7 +63,11 @@ const CriarConta = () => {
             required={true}
             placeholder="Digite seu nome de usuário"
             value={username}
-            onChange={(e) => setUsername(e.target.value?.toLowerCase())}
+            onChange={(e) => {
+              // Remove qualquer espaço no valor inserido
+              const newValue = e.target.value.replace(/\s/g, '');
+              setUsername(newValue.toLowerCase());
+            }}
             className="light-input"
           />
         </Form.Group>
