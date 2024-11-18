@@ -130,6 +130,12 @@ export default function Game() {
     {
         setElefanteJogada(false);
 
+        // Nova verificação para saber se é a vez do jogador
+        if (!minhaVez) {
+            alert("Aguarde sua vez...");
+            return;
+        }
+
         if( quantidadeMovimentada == 0 ){
             alert("Faça uma jogada");
             return ;
